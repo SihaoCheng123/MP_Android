@@ -1,13 +1,13 @@
 <resources>
     <color name="primary">#CCD87F</color>
     <color name="secondary">#A8A1D4</color>
-    <color name="background">#F8F7ED</color>
+    <color name="background">#1A1A1A</color>
     <color name="error">#FF5449</color>
     <color name="text_on_white">#000000</color>
-    <color name="text_on_background">#000000</color>
-    <color name="text_on_primary_empty">#F5F5F5</color>
-    <color name="text_on_Secondary_empty">#F5F5F5</color>
+    <color name="text_on_background">#F8F7ED</color>
     <color name="text_on_primary">#000000</color>
     <color name="text_on_Secondary">#000000</color>
-    <color name="emojis">#505050</color>
+    <color name="text_on_primary_empty">#F5F5F5</color>
+    <color name="text_on_Secondary_empty">#F5F5F5</color>
+    <color name="emojis">#FFFFFF</color>
 </resources>
