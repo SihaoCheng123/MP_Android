@@ -1,3 +1,4 @@
 <resources>
     <string name="app_name">MealPlanner</string>
+    <string name="login">Log In</string>
 </resources>
