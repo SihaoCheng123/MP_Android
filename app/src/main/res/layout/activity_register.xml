@@ -19,7 +19,21 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:orientation="horizontal"
+            app:layout_constraintGuide_percent="0.05" />
+
+        <androidx.constraintlayout.widget.Guideline
+            android:id="@+id/gV1"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
             app:layout_constraintGuide_percent="0.10" />
+
+        <androidx.constraintlayout.widget.Guideline
+            android:id="@+id/gV2"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            app:layout_constraintGuide_percent="0.90" />
 
         <TextView
             android:id="@+id/RegistroText"
@@ -30,20 +44,219 @@
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintTop_toBottomOf="@id/gH1"
-            />
+            android:fontFamily="@font/poppins_bold"
+            android:textColor="@color/md_theme_scrim" />
+
 
         <LinearLayout
-            android:layout_width="match_parent"
+            android:id="@+id/linearLayout"
+            android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:orientation="vertical"
             app:layout_constraintTop_toBottomOf="@id/RegistroText"
-            android:layout_marginTop="20dp">
+            android:autofillHints="User"
+            app:layout_constraintStart_toStartOf="@id/gV1"
+            app:layout_constraintEnd_toEndOf="@id/gV2"
+            android:layout_marginTop="42dp">
 
+            <com.google.android.material.textfield.TextInputLayout
+                android:id="@+id/firstName"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                style="@style/ThemeOverlay.Material3.TextInputEditText.FilledBox.Dense"
+                app:boxCornerRadiusTopStart="40dp"
+                app:boxCornerRadiusBottomEnd="40dp"
+                app:boxCornerRadiusBottomStart="40dp"
+                app:boxCornerRadiusTopEnd="40dp"
+                android:layout_marginBottom="16dp"
+                app:boxBackgroundColor="@color/md_theme_register_container"
+                app:boxStrokeWidth="0dp">
 
+                <EditText
+                    android:autofillHints="Lara"
+                    android:labelFor="@id/firstName"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:hint="@string/firstName"
+                    android:inputType="text"
+                    android:textSize="16sp"
+                    android:fontFamily="@font/poppins_bold"
+                    android:padding="12dp"
+                    android:textColor="@color/md_theme_scrim"
+                    />
 
+            </com.google.android.material.textfield.TextInputLayout>
+
+            <com.google.android.material.textfield.TextInputLayout
+                android:id="@+id/lastName"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                style="@style/ThemeOverlay.Material3.TextInputEditText.FilledBox.Dense"
+                app:boxCornerRadiusTopStart="40dp"
+                app:boxCornerRadiusBottomEnd="40dp"
+                app:boxCornerRadiusBottomStart="40dp"
+                app:boxCornerRadiusTopEnd="40dp"
+                android:layout_marginBottom="16dp"
+                app:boxBackgroundColor="@color/md_theme_register_container"
+                app:boxStrokeWidth="0dp">
+
+                <EditText
+                    android:labelFor="@id/lastName"
+                    android:autofillHints="Croft"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:hint="@string/lastName"
+                    android:inputType="text"
+                    android:textSize="16sp"
+                    android:fontFamily="@font/poppins_bold"
+                    android:padding="12dp"
+                    android:textColor="@color/md_theme_scrim"
+                    />
+
+            </com.google.android.material.textfield.TextInputLayout>
+
+            <com.google.android.material.textfield.TextInputLayout
+                android:id="@+id/age"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                style="@style/ThemeOverlay.Material3.TextInputEditText.FilledBox.Dense"
+                app:boxCornerRadiusTopStart="40dp"
+                app:boxCornerRadiusBottomEnd="40dp"
+                app:boxCornerRadiusBottomStart="40dp"
+                app:boxCornerRadiusTopEnd="40dp"
+                android:layout_marginBottom="16dp"
+                app:boxBackgroundColor="@color/md_theme_register_container"
+                app:boxStrokeWidth="0dp">
+
+                <EditText
+                    android:autofillHints="18"
+                    android:labelFor="@id/age"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:inputType="number"
+                    android:textSize="16sp"
+                    android:hint="@string/age"
+                    android:fontFamily="@font/poppins_bold"
+                    android:padding="12dp"
+                    android:textColor="@color/md_theme_scrim"
+                    />
+
+            </com.google.android.material.textfield.TextInputLayout>
+
+            <com.google.android.material.textfield.TextInputLayout
+                android:id="@+id/email"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                style="@style/ThemeOverlay.Material3.TextInputEditText.FilledBox.Dense"
+                app:boxCornerRadiusTopStart="40dp"
+                app:boxCornerRadiusBottomEnd="40dp"
+                app:boxCornerRadiusBottomStart="40dp"
+                app:boxCornerRadiusTopEnd="40dp"
+                android:layout_marginBottom="16dp"
+                app:boxBackgroundColor="@color/md_theme_register_container"
+                app:boxStrokeWidth="0dp">
+
+                <EditText
+                    android:labelFor="@id/email"
+                    android:autofillHints="example@gmail.com"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:hint="@string/email"
+                    android:inputType="textEmailAddress"
+                    android:fontFamily="@font/poppins_bold"
+                    android:textSize="16sp"
+                    android:padding="12dp"
+                    android:textColor="@color/md_theme_scrim"
+                    />
+
+            </com.google.android.material.textfield.TextInputLayout>
+
+            <com.google.android.material.textfield.TextInputLayout
+                android:id="@+id/password"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:hint="@string/password"
+                style="@style/ThemeOverlay.Material3.TextInputEditText.FilledBox.Dense"
+                app:boxCornerRadiusTopStart="40dp"
+                app:boxCornerRadiusBottomEnd="40dp"
+                app:boxCornerRadiusBottomStart="40dp"
+                app:boxCornerRadiusTopEnd="40dp"
+                android:layout_marginBottom="16dp"
+                app:boxBackgroundColor="@color/md_theme_register_container"
+                app:boxStrokeWidth="0dp">
+
+                <EditText
+                    android:labelFor="@id/password"
+                    android:autofillHints="12345"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:inputType="textPassword"
+                    android:textSize="16sp"
+                    android:fontFamily="@font/poppins_bold"
+                    android:padding="12dp"
+                    android:textColor="@color/md_theme_scrim"
+                    />
+
+            </com.google.android.material.textfield.TextInputLayout>
+
+            <com.google.android.material.textfield.TextInputLayout
+                android:id="@+id/confirmPassword"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:hint="@string/confirmPassword"
+                style="@style/ThemeOverlay.Material3.TextInputEditText.FilledBox.Dense"
+                app:boxCornerRadiusTopStart="40dp"
+                app:boxCornerRadiusBottomEnd="40dp"
+                app:boxCornerRadiusBottomStart="40dp"
+                app:boxCornerRadiusTopEnd="40dp"
+                android:layout_marginBottom="16dp"
+                app:boxBackgroundColor="@color/md_theme_register_container"
+                app:boxStrokeWidth="0dp">
+
+                <EditText
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:autofillHints="12345"
+                    android:fontFamily="@font/poppins_bold"
+                    android:inputType="textPassword"
+                    android:labelFor="@id/confirmPassword"
+                    android:padding="12dp"
+                    android:textColor="@color/md_theme_scrim"
+                    android:textSize="16sp" />
+
+            </com.google.android.material.textfield.TextInputLayout>
+
+            <CheckBox
+                android:id="@+id/checkbox_meat"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/termsConditions"
+                android:autoLink="all"
+                android:clickable="true"/>
+
+            <com.google.android.material.button.MaterialButton
+                android:id="@+id/btnRegister"
+                style="@style/ThemeOverlay.Material3.Button"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="@string/create"
+                android:textColor="@color/md_theme_scrim"
+                android:layout_marginBottom="15dp"
+                android:textSize="16sp"
+                 />
 
         </LinearLayout>
 
+        <TextView
+            android:id="@+id/existingAccount"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/haveAccount"
+            android:textAlignment="center"
+            app:layout_constraintTop_toBottomOf="@id/linearLayout"
+            app:layout_constraintStart_toStartOf="@id/gV1"
+            app:layout_constraintEnd_toEndOf="@id/gV2"
+            android:textSize="16sp"/>
 
 
 

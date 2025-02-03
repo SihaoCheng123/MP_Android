@@ -1,5 +1,5 @@
 <resources>
-    <color name="md_theme_primary">#5A6417</color>
+    <color name="md_theme_primary">#CCD87F</color>
     <color name="md_theme_onPrimary">#FFFFFF</color>
     <color name="md_theme_primaryContainer">#CCD87F</color>
     <color name="md_theme_onPrimaryContainer">#545E12</color>
@@ -140,4 +140,5 @@
     <color name="md_theme_surfaceContainer_highContrast">#E5E3D8</color>
     <color name="md_theme_surfaceContainerHigh_highContrast">#D6D5CB</color>
     <color name="md_theme_surfaceContainerHighest_highContrast">#C8C7BD</color>
+    <color name="md_theme_register_container">#E7E7E7</color>
 </resources>
