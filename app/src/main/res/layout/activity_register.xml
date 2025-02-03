@@ -30,7 +30,7 @@
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintTop_toBottomOf="@id/gH1"
-            android:fontFamily="@font/Poppins_SemiBold" />
+            android:fontFamily="@font/poppins_bold" />
 
         <LinearLayout
             android:layout_width="match_parent"
