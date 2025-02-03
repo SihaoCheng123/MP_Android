@@ -1,7 +1,19 @@
 # WEATLY :blush:
 
-Weatly es una aplicación multiplataforma tanto para dispositivos Android como para plataformas web.
-El objetivo principal es la planificación de comidas con la posibilidad de gestioanr las recetas y realizar una lista la compra con los ingredientes.
+### Índice
+
+1. [Introducción](#introducción)
+2. [Nombre](#nombre)
+3. [Logo](#logo)
+4. [Diseño](#diseño)
+5. [Modelo E-R](#modelo-e-r)
+6. [Funcionalidades](#funcionalidades)
+7. [Flujo de navegación](#flujo-de-navegación)
+8. [Softwares utilizados](#softwares-utilizados)
+
+## Introducción
+**Weatly** es una aplicación multiplataforma tanto para dispositivos Android como para plataformas web.
+El objetivo principal es la planificación de comidas con la posibilidad de gestionar las recetas y realizar una lista la compra con los ingredientes.
 
 ## Nombre
 El nombre de la app viene a juego con la palabra _week_ que significa "semana" y la palabra _eat_, de "comer" en inglés.
@@ -62,12 +74,6 @@ Asimismo, la elevación de algunos elementos darán dimensión y profundidad al 
 - Lista de compras generada automáticamente
 - Notificaciones y recordatorios
 
-## Elementos
-dasda
-çadsasd
-asd
-asd
-
 ## Flujo de navegación
 
 1.  La aplicación empieza por el inicio de sesión. El usuario debe introducir sus credenciales y podrá entrar a la aplicación.
@@ -88,8 +94,41 @@ Para confirmar que están bien los datos, comprobaremos que en la base de datos 
 <img src="https://github.com/user-attachments/assets/35b04911-09eb-4596-8df6-6c9d0ccb6d24" width="300" height="600">
 
 
-5. 
-## Hecho con:
+- En la parte de arriba, aparece el nombre de usuario guardado
+  
+- Después, aparece un calendario con vista semanal en forma de carrusel y el usuario puede deslizar hacia los lados para ver días anteriores o posteriores. También puede pulsar un día específico para ver el menú de ese día.
+  
+- Por último, aparece cada comida en una tarjeta y está separada por secciones. Si no hay una comida específica para ese día, tiene la posibilidad de añadirla.
+
+5.  El usuario puede entrar en la sección de planificador a través de la barra de navegación inferior.
+ 
+<img src="https://github.com/user-attachments/assets/28296c2c-7c06-45aa-8425-d00ea75a555f" width="300" height="600">
+
+- Puede acceder a una vista mensual del calendario si pulsa en el nombre del mes
+
+<img src="https://github.com/user-attachments/assets/6f44b19b-9b9e-42b4-bc51-f6d4f9271c56" width="300" height="300">
+
+- Puede ver cada tarjeta con su comida e ingredientes correspondientes. Si pulsa en la tarjeta, aparece la receta completa
+
+6. Si le da al botón flotante de añadir, un pop-up sube para añadir una nueva receta.
+
+  <img src="https://github.com/user-attachments/assets/95d08e52-2228-4cdd-b843-88a7cc113e57" width="300" height="500"> 
+
+- El usuario puede crear su propia receta introduciendo el nombre, la fecha, la hora, los pasos. También pude seleccionar una categoría para la receta y añadir sus correspondientes ingredientes. 
+
+7. Tras añadir una receta con sus ingredientes, el usuario puede acceder a la sección de compra a través de la barra de navegación inferior.
+
+- Por defecto, aparecen todos los ingredientes o puede filtrar por categoría
+
+- Cada ingrediente aparece con su nombre, cantidad, precio aproximado y un checkbox para marcar si ya lo tiene.
+
+8. También existe una sección de usuario, accesible desde la barra de navegación inferior
+
+- El usuario puede ver su nombre de usuario con una imagen, si es que ha subido una anteriormente
+- Puede modificarr sus datos personales, al igual que cambiar la contraseña
+- Puede visualizar tanto sus recetas creadas como sus favoritas 
+
+## Softwares utilizados
 ![My Skills](https://skillicons.dev/icons?i=java,react,nodejs,androidstudio,mysql,figma,docker)
 
 
