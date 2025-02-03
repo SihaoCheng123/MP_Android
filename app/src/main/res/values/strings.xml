@@ -2,4 +2,9 @@
     <string name="app_name">MealPlanner</string>
     <string name="login">Log In</string>
     <string name="register">Create account</string>
+    <string name="don_t_have_an_account">Dont have an account? Create an account</string>
+    <string name="or">or</string>
+    <string name="continuetext">Continue</string>
+    <string name="create_an_account">Create an account</string>
+
 </resources>
