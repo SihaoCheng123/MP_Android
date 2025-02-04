@@ -186,13 +186,13 @@
                 app:boxStrokeWidth="0dp">
 
                 <EditText
-                    android:labelFor="@id/password"
-                    android:autofillHints="12345"
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
+                    android:autofillHints="12345"
                     android:inputType="textPassword"
                     android:textSize="16sp"
                     android:fontFamily="@font/poppins_bold"
+                    android:labelFor="@id/password"
                     android:padding="12dp"
                     android:textColor="@color/md_theme_scrim"
                     />
