@@ -11,7 +11,7 @@
         android:id="@+id/main"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        tools:context=".ui.Register">
+        tools:context=".ui.auth.Register">
 
 
         <androidx.constraintlayout.widget.Guideline
@@ -238,6 +238,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:text="@string/create"
+                android:backgroundTint="@color/md_theme_primary"
                 android:textColor="@color/md_theme_scrim"
                 android:layout_marginBottom="15dp"
                 android:textSize="16sp"
