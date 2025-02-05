@@ -1,4 +1,4 @@
-package com.example.mealplanner.model.recyler;
+package com.example.mealplanner.model.recycler.ingredientsComplex;
 
 import android.content.Context;
 import android.view.LayoutInflater;
@@ -26,7 +26,7 @@ public class IngredientAdapter extends RecyclerView.Adapter<IngredientAdapter.My
     @Override
     public MyViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
         LayoutInflater inflater = LayoutInflater.from(context);
-        View view = inflater.inflate(R.layout.cardview_ingredient, parent, false);
+        View view = inflater.inflate(R.layout.cardview_ingredient_complex, parent, false);
         return new IngredientAdapter.MyViewHolder(view);
     }
 

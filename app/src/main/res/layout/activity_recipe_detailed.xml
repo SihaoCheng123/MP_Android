@@ -1,0 +1,226 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+
+    </data>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/main"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        tools:context=".ui.components.RecipeDetailed">
+
+        <RelativeLayout
+            android:id="@+id/frameImageDR"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            android:layout_gravity="top">
+
+
+            <ImageView
+                android:id="@+id/recipeImageDR"
+                android:layout_width="match_parent"
+                android:layout_height="350dp"
+                android:background="@color/md_theme_primary_opacity" />
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:layout_marginTop="40dp"
+                android:layout_marginHorizontal="27dp">
+
+                <androidx.constraintlayout.widget.ConstraintLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent">
+
+                    <ImageView
+                        android:id="@+id/iconBackDR"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:src="@drawable/icon_arrow_back"
+                        android:background="@drawable/round_category_primary"
+                        android:padding="7dp"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toTopOf="parent" />
+
+                    <ImageView
+                        android:id="@+id/iconFavRecipeDR"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:src="@drawable/icon_star"
+                        android:background="@drawable/round_category_primary"
+                        android:padding="7dp"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintTop_toTopOf="parent" />
+                </androidx.constraintlayout.widget.ConstraintLayout>
+            </LinearLayout>
+
+
+            <LinearLayout
+                android:id="@+id/frameDetailDR"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                android:background="@drawable/round_corner_detailed_recipe"
+                app:layout_constraintBottom_toBottomOf="parent"
+                android:orientation="vertical"
+                android:layout_centerInParent="true"
+                android:layout_alignParentBottom="true">
+
+                <TextView
+                    android:id="@+id/ingredientNameDR"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/waffles_with_dulce_de_leche"
+                    android:fontFamily="@font/poppins_medium"
+                    android:textSize="24sp"
+                    android:layout_marginTop="30dp"
+                    android:layout_marginStart="35sp" />
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent">
+
+                    <androidx.constraintlayout.widget.ConstraintLayout
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content">
+
+                        <ImageView
+                            android:id="@+id/iconClockDR"
+                            android:layout_width="19dp"
+                            android:layout_height="match_parent"
+                            android:layout_marginStart="36dp"
+                            android:src="@drawable/icon_clock"
+                            app:layout_constraintBottom_toBottomOf="parent"
+                            app:layout_constraintStart_toStartOf="parent"
+                            app:layout_constraintTop_toTopOf="parent"
+                            app:layout_constraintVertical_bias="0.444" />
+
+                        <TextView
+                            android:id="@+id/recipeTimeTextDR"
+                            android:layout_width="wrap_content"
+                            android:layout_height="match_parent"
+                            android:textSize="15sp"
+                            android:fontFamily="@font/poppins_medium"
+                            android:textColor="@color/md_theme_onTertiaryContainer"
+                            android:text="@string/_20_mins"
+                            app:layout_constraintStart_toEndOf="@id/iconClockDR"
+                            app:layout_constraintTop_toTopOf="parent"
+                            android:layout_marginStart="14dp" />
+                    </androidx.constraintlayout.widget.ConstraintLayout>
+
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal">
+
+                    <androidx.constraintlayout.widget.ConstraintLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent">
+
+                        <TextView
+                            android:id="@+id/servingsTextDR"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginStart="35dp"
+                            android:fontFamily="@font/poppins_medium"
+                            android:text="@string/servings"
+                            android:textSize="16sp"
+                            app:layout_constraintBottom_toBottomOf="parent"
+                            app:layout_constraintStart_toStartOf="parent"
+                            app:layout_constraintTop_toTopOf="parent" />
+
+                        <LinearLayout
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginVertical="4dp"
+                            android:orientation="horizontal"
+                            app:layout_constraintStart_toEndOf="@id/servingsTextDR"
+                            app:layout_constraintTop_toTopOf="parent"
+                            app:layout_constraintBottom_toBottomOf="parent"
+                            android:layout_marginStart="22dp">
+
+                            <ImageView
+                                android:id="@+id/iconLessDR"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:src="@drawable/icon_add_ingredient" />
+
+                            <TextView
+                                android:id="@+id/servingsAmountDR"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_marginHorizontal="6dp"
+                                android:fontFamily="@font/poppins_regular"
+                                android:text="1"
+                                android:textSize="14sp" />
+
+                            <ImageView
+                                android:id="@+id/iconMoreDR"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:src="@drawable/icon_minus_ingredient" />
+                        </LinearLayout>
+                    </androidx.constraintlayout.widget.ConstraintLayout>
+                </LinearLayout>
+
+                <com.google.android.material.tabs.TabLayout
+                    android:id="@+id/tabLayoutDR"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginHorizontal="25dp"
+                    android:background="@drawable/tabs_layout_bg"
+                    app:tabBackground="@drawable/tabs_selector"
+                    app:tabIndicator="@null"
+                    app:tabSelectedTextColor="@color/md_theme_onPrimary"
+                    app:tabTextColor="@color/md_theme_scrim"
+                    android:layout_marginTop="13dp">
+
+                    <com.google.android.material.tabs.TabItem
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="@string/ingredients" />
+
+                    <com.google.android.material.tabs.TabItem
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="@string/steps" />
+                </com.google.android.material.tabs.TabLayout>
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="@string/add_all_to_cart"
+                    android:fontFamily="@font/poppins_regular"
+                    android:textColor="@color/md_theme_secondaryContainer"
+                    android:textSize="16sp"
+                    android:layout_marginTop="24dp"
+                    android:textAlignment="textEnd"
+                    android:layout_marginEnd="50dp" />
+
+                <FrameLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent">
+
+                    <androidx.recyclerview.widget.RecyclerView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginHorizontal="45dp" />
+                </FrameLayout>
+
+            </LinearLayout>
+        </RelativeLayout>
+
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</layout>

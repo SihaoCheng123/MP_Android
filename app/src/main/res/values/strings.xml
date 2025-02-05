@@ -98,6 +98,12 @@
     <string name="meat">Meat</string>
     <string name="details">Details</string>
     <string name="product_name">Product name</string>
+    <string name="waffles_with_dulce_de_leche">Waffles with dulce de leche</string>
+    <string name="_20_mins">20 mins</string>
+    <string name="servings">Servings</string>
+    <string name="ingredients">Ingredients</string>
+    <string name="steps">Steps</string>
+    <string name="add_all_to_cart">Add all to cart</string>
 
     <string-array name="ingredient_name_cv">
         <item>Lettuce</item>

@@ -1,4 +1,4 @@
-package com.example.mealplanner.model.recyler;
+package com.example.mealplanner.model.recycler.ingredientsComplex;
 
 public class IngredientEventModel {
     public String ingredientName;

@@ -15,6 +15,7 @@ import android.widget.TextView;
 import com.example.mealplanner.R;
 import com.example.mealplanner.databinding.FragmentHomeScreenBinding;
 import com.example.mealplanner.ui.components.AddRecipe;
+import com.example.mealplanner.ui.components.RecipeDetailed;
 
 /**
  * A simple {@link Fragment} subclass.
@@ -76,7 +77,7 @@ public class HomeScreen extends Fragment {
         card_breakfast.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent intent = new Intent(view.getContext(), AddRecipe.class);
+                Intent intent = new Intent(view.getContext(), RecipeDetailed.class);
                 startActivity(intent);
             }
         });

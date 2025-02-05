@@ -146,4 +146,5 @@
     <color name="md_theme_card_category">#59505050</color>
     <color name="md_theme_secondary_opacity">#59A8A1D4</color>
     <color name="md_theme_primary_opacity">#59CCD87F</color>
+    <color name="md_theme_detailed_recipe">#F8F8F8</color>
 </resources>

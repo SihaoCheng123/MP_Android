@@ -11,8 +11,8 @@ import android.view.View;
 import android.view.ViewGroup;
 
 import com.example.mealplanner.R;
-import com.example.mealplanner.model.recyler.IngredientAdapter;
-import com.example.mealplanner.model.recyler.IngredientEventModel;
+import com.example.mealplanner.model.recycler.ingredientsComplex.IngredientAdapter;
+import com.example.mealplanner.model.recycler.ingredientsComplex.IngredientEventModel;
 
 import java.util.ArrayList;
 
