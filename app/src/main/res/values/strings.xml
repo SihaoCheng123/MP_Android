@@ -104,6 +104,7 @@
     <string name="ingredients">Ingredients</string>
     <string name="steps">Steps</string>
     <string name="add_all_to_cart">Add all to cart</string>
+    <string name="ingredient_image">Ingredient image</string>
 
     <string-array name="ingredient_name_cv">
         <item>Lettuce</item>
@@ -145,5 +146,19 @@
         <item>0.50 €</item>
         <item>1.50 €</item>
         <item>7.50 €</item>
+    </string-array>
+
+    <string-array name="step_description_cv">
+        <item>Description. Lorem ipsum dolor sit amet consectetur adipiscing elit, sed do </item>
+        <item>Description. Lorem ipsum dolor sit amet consectetur adipiscing elit, sed do </item>
+        <item>Description. Lorem ipsum dolor sit amet consectetur adipiscing elit, sed do </item>
+        <item>Description. Lorem ipsum dolor sit amet consectetur adipiscing elit, sed do </item>
+        <item>Description. Lorem ipsum dolor sit amet consectetur adipiscing elit, sed do </item>
+        <item>Description. Lorem ipsum dolor sit amet consectetur adipiscing elit, sed do </item>
+        <item>Description. Lorem ipsum dolor sit amet consectetur adipiscing elit, sed do </item>
+        <item>Description. Lorem ipsum dolor sit amet consectetur adipiscing elit, sed do </item>
+        <item>Description. Lorem ipsum dolor sit amet consectetur adipiscing elit, sed do </item>
+        <item>Description. Lorem ipsum dolor sit amet consectetur adipiscing elit, sed do </item>
+        <item>Description. Lorem ipsum dolor sit amet consectetur adipiscing elit, sed do </item>
     </string-array>
 </resources>
