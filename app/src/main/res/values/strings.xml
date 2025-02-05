@@ -15,8 +15,6 @@
     <string name="termsConditions">I agree to the Terms &amp; Conditions</string>
     <string name="create">Create</string>
     <string name="haveAccount">Already have an account? Sign in</string>
-<<<<<<< HEAD
-=======
     <string name="title_activity_home">Home</string>
     <string name="title_home">Home</string>
     <string name="title_dashboard">Dashboard</string>
@@ -93,6 +91,53 @@
     <string name="rice">Rice</string>
     <string name="chicken">Chicken</string>
     <string name="upload_picture">Upload picture</string>
+    <string name="category">Category</string>
+    <string name="all">All</string>
+    <string name="vegetables">Vegetables</string>
+    <string name="fruits">Fruits</string>
+    <string name="meat">Meat</string>
+    <string name="details">Details</string>
+    <string name="product_name">Product name</string>
 
->>>>>>> master
+    <string-array name="ingredient_name_cv">
+        <item>Lettuce</item>
+        <item>Rice</item>
+        <item>Tomato</item>
+        <item>Pasta</item>
+        <item>Ketchup</item>
+        <item>Chicken</item>
+        <item>Coffee</item>
+        <item>Chocolate bar</item>
+        <item>Water</item>
+        <item>Cocoa</item>
+        <item>Salmon</item>
+    </string-array>
+
+    <string-array name="ingredient_detail_cv">
+        <item>Vegetable</item>
+        <item>Cereal</item>
+        <item>Vegetable</item>
+        <item>Cereal</item>
+        <item>Sauce</item>
+        <item>Meat</item>
+        <item>Drink</item>
+        <item>Sweet</item>
+        <item>Drink</item>
+        <item>Drink</item>
+        <item>Fish</item>
+    </string-array>
+
+    <string-array name="ingredient_price_cv">
+        <item>1.50 €</item>
+        <item>1.00 €</item>
+        <item>2.50 €</item>
+        <item>3.00 €</item>
+        <item>5.50 €</item>
+        <item>2.50 €</item>
+        <item>1.50 €</item>
+        <item>4.50 €</item>
+        <item>0.50 €</item>
+        <item>1.50 €</item>
+        <item>7.50 €</item>
+    </string-array>
 </resources>

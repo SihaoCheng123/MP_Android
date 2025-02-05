@@ -3,16 +3,90 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".ui.fragments.ShoppingCart">
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    tools:context=".ui.fragments.ShoppingCart"
+    android:background="@color/md_theme_background">
 
-    <!-- TODO: Update blank fragment layout -->
+ <androidx.constraintlayout.widget.ConstraintLayout
+     android:layout_width="match_parent"
+     android:layout_height="match_parent">
+
     <TextView
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:textSize="30sp"
-        android:gravity="center"
-        android:text="Carrito"
-        android:textColor="@color/md_theme_primary"
-        android:fontFamily="@font/poppins_regular"/>
+        android:id="@+id/categorySC"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        android:layout_marginStart="20dp"
+        android:layout_marginTop="70dp"
+        android:text="@string/category"
+        android:fontFamily="@font/poppins_medium"
+        android:textSize="24sp"/>
 
+     <LinearLayout
+         android:id="@+id/categoryLinearSC"
+         android:layout_width="match_parent"
+         android:layout_height="wrap_content"
+         app:layout_constraintTop_toBottomOf="@id/categorySC"
+         android:layout_marginStart="36dp"
+         android:layout_marginTop="26dp">
+
+         <TextView
+             android:id="@+id/categoryAllSP"
+             android:layout_width="wrap_content"
+             android:layout_height="wrap_content"
+             android:text="@string/all"
+             android:paddingHorizontal="20dp"
+             android:paddingVertical="10dp"
+             android:background="@drawable/round_category_ingredient_selected"
+             android:layout_marginEnd="10dp"
+             android:fontFamily="@font/poppins_medium"
+             />
+
+         <TextView
+             android:id="@+id/categoryFruitsSP"
+             android:layout_width="wrap_content"
+             android:layout_height="wrap_content"
+             android:text="@string/fruits"
+             android:paddingHorizontal="20dp"
+             android:paddingVertical="10dp"
+             android:background="@drawable/round_category_ingredient"
+             android:layout_marginEnd="10dp"
+             android:fontFamily="@font/poppins_medium"
+             />
+
+         <TextView
+             android:id="@+id/categoryVegetableSP"
+             android:layout_width="wrap_content"
+             android:layout_height="wrap_content"
+             android:text="@string/vegetables"
+             android:paddingHorizontal="20dp"
+             android:paddingVertical="10dp"
+             android:background="@drawable/round_category_ingredient"
+             android:layout_marginEnd="10dp"
+             android:fontFamily="@font/poppins_medium"
+             />
+
+         <TextView
+             android:id="@+id/categoryDinnerAR"
+             android:layout_width="wrap_content"
+             android:layout_height="wrap_content"
+             android:text="@string/meat"
+             android:paddingHorizontal="20dp"
+             android:paddingVertical="10dp"
+             android:background="@drawable/round_category_ingredient"
+             android:layout_marginEnd="10dp"
+             android:fontFamily="@font/poppins_medium"
+             />
+     </LinearLayout>
+
+     <androidx.recyclerview.widget.RecyclerView
+         android:id="@+id/ingredientsRecycler"
+         android:layout_width="match_parent"
+         android:layout_height="wrap_content"
+         app:layout_constraintTop_toBottomOf="@id/categoryLinearSC"
+         android:layout_marginTop="40dp">
+
+     </androidx.recyclerview.widget.RecyclerView>
+ </androidx.constraintlayout.widget.ConstraintLayout>
 </FrameLayout>

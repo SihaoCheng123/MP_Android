@@ -25,10 +25,11 @@
             android:id="@+id/backbutton"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="<"
+            android:text="..."
             app:layout_constraintTop_toBottomOf="@+id/gH1"
             android:orientation="horizontal"
             android:backgroundTint="@color/md_theme_primary"
+            app:layout_constraintStart_toStartOf="parent"
             />
 
         <TextView
@@ -36,7 +37,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:fontFamily="@font/poppins_regular"
-            android:text="<         September         >"
+            android:text="September"
             android:textColor="@color/md_theme_scrim"
             app:layout_constraintTop_toBottomOf="@id/backbutton"
             android:textSize="16sp"

@@ -3,12 +3,18 @@ package com.example.mealplanner.ui.fragments;
 import android.os.Bundle;
 
 import androidx.fragment.app.Fragment;
+import androidx.recyclerview.widget.LinearLayoutManager;
+import androidx.recyclerview.widget.RecyclerView;
 
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
 import com.example.mealplanner.R;
+import com.example.mealplanner.model.recyler.IngredientAdapter;
+import com.example.mealplanner.model.recyler.IngredientEventModel;
+
+import java.util.ArrayList;
 
 /**
  * A simple {@link Fragment} subclass.
@@ -17,6 +23,7 @@ import com.example.mealplanner.R;
  */
 public class ShoppingCart extends Fragment {
 
+    ArrayList<IngredientEventModel> ingredientsList = new ArrayList<>();
     // TODO: Rename parameter arguments, choose names that match
     // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
     private static final String ARG_PARAM1 = "param1";
@@ -60,7 +67,22 @@ public class ShoppingCart extends Fragment {
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
-        // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_shopping_cart, container, false);
+        View view = inflater.inflate(R.layout.fragment_shopping_cart, container, false);
+        RecyclerView recyclerView = view.findViewById(R.id.ingredientsRecycler);
+        setIngredientEventModels();
+        IngredientAdapter adapter = new IngredientAdapter(view.getContext(), ingredientsList);
+        recyclerView.setAdapter(adapter);
+        recyclerView.setLayoutManager(new LinearLayoutManager(view.getContext()));
+        return view;
+    }
+
+    private void setIngredientEventModels(){
+        String[] ingredientNames = getResources().getStringArray(R.array.ingredient_name_cv);
+        String[] ingreedientDetails = getResources().getStringArray(R.array.ingredient_detail_cv);
+        String[] ingredientPrices = getResources().getStringArray(R.array.ingredient_price_cv);
+
+        for (int i = 0; i < ingredientNames.length; i++) {
+            ingredientsList.add(new IngredientEventModel(ingredientNames[i], ingreedientDetails[i], ingredientPrices[i]));
+        }
     }
 }
