@@ -1,0 +1,300 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/main"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".ui.components.AddRecipe"
+    android:background="@color/md_theme_tertiaryContainer"
+    android:fillViewport="true">
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <TextView
+            android:id="@+id/addTextAR"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/add_new_recipe"
+            android:fontFamily="@font/poppins_medium"
+            android:textSize="24sp"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            android:layout_marginTop="36dp"/>
+
+        <com.google.android.material.textfield.TextInputLayout
+            android:id="@+id/inputRecipeNameAR"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            app:layout_constraintTop_toBottomOf="@id/addTextAR"
+            android:layout_marginVertical="18dp"
+            android:layout_marginHorizontal="32dp"
+            >
+            <EditText
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:hint="@string/recipe_name"
+                android:inputType="text"
+                android:background="@drawable/round_edit_text_add_recipe"
+                />
+        </com.google.android.material.textfield.TextInputLayout>
+
+        <com.google.android.material.textfield.TextInputLayout
+            android:id="@+id/inputDateAR"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            app:layout_constraintTop_toBottomOf="@id/inputRecipeNameAR"
+            android:layout_marginVertical="18dp"
+            android:layout_marginHorizontal="32dp">
+            <EditText
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:hint="@string/date"
+                android:inputType="date"
+                android:background="@drawable/round_edit_text_add_recipe"
+                android:drawableEnd="@drawable/icon_calendar"
+                />
+        </com.google.android.material.textfield.TextInputLayout>
+
+        <com.google.android.material.textfield.TextInputLayout
+            android:id="@+id/inputTimeAR"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            app:layout_constraintTop_toBottomOf="@id/inputDateAR"
+            android:layout_marginVertical="18dp"
+            app:layout_constraintStart_toStartOf="parent"
+            android:layout_marginHorizontal="32dp">
+            <EditText
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:hint="@string/time"
+                android:inputType="time"
+                android:background="@drawable/round_edit_text_add_recipe"
+                android:drawableEnd="@drawable/icon_clock"
+                android:layout_marginEnd="150dp"
+                />
+        </com.google.android.material.textfield.TextInputLayout>
+
+        <com.google.android.material.textfield.TextInputLayout
+            android:id="@+id/inputStepsAR"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            app:layout_constraintTop_toBottomOf="@id/inputTimeAR"
+            android:layout_marginVertical="18dp"
+            android:layout_marginHorizontal="32dp">
+            <EditText
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:hint="@string/add_steps"
+                android:inputType="text"
+                android:background="@drawable/round_edit_text_add_recipe"
+                />
+        </com.google.android.material.textfield.TextInputLayout>
+
+        <TextView
+            android:id="@+id/textAddNewStepAR"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/add_new_step"
+            app:layout_constraintTop_toBottomOf="@id/inputStepsAR"
+            android:textColor="@color/md_theme_primary"
+            android:textSize="14sp"
+            app:layout_constraintStart_toStartOf="parent"
+            android:layout_marginHorizontal="32dp"
+            android:layout_marginTop="12dp"
+            android:fontFamily="@font/poppins_regular"/>
+
+        <TextView
+            android:id="@+id/selectCategoryAR"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/select_category"
+            app:layout_constraintTop_toBottomOf="@id/textAddNewStepAR"
+            android:textSize="18sp"
+            app:layout_constraintStart_toStartOf="parent"
+            android:layout_marginHorizontal="32dp"
+            android:layout_marginTop="12dp"
+            android:fontFamily="@font/poppins_regular"/>
+
+        <LinearLayout
+            android:id="@+id/categoryLinearAR"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            app:layout_constraintTop_toBottomOf="@id/selectCategoryAR"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            android:layout_marginHorizontal="32dp">
+
+            <TextView
+                android:id="@+id/categoryBreakfastAR"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/breakfast"
+                android:paddingHorizontal="20dp"
+                android:paddingVertical="10dp"
+                android:background="@drawable/round_category_grey"
+                android:layout_marginEnd="10dp"
+                />
+
+            <TextView
+                android:id="@+id/categoryLunchAR"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/lunch"
+                android:paddingHorizontal="20dp"
+                android:paddingVertical="10dp"
+                android:background="@drawable/round_category_secondary"
+                android:layout_marginEnd="10dp"
+                />
+
+            <TextView
+                android:id="@+id/categoryDinnerAR"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/dinner"
+                android:paddingHorizontal="20dp"
+                android:paddingVertical="10dp"
+                android:background="@drawable/round_category_primary"
+                android:layout_marginEnd="10dp"
+                />
+
+        </LinearLayout>
+        <TextView
+            android:id="@+id/textAddNewCategoryAR"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/add_new_step"
+            app:layout_constraintTop_toBottomOf="@id/categoryLinearAR"
+            android:textColor="@color/md_theme_primary"
+            android:textSize="14sp"
+            app:layout_constraintStart_toStartOf="parent"
+            android:layout_marginHorizontal="32dp"
+            android:layout_marginTop="12dp"
+            android:fontFamily="@font/poppins_regular"/>
+
+        <TextView
+            android:id="@+id/selectIngredientsAR"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginHorizontal="32dp"
+            android:layout_marginStart="32dp"
+            android:layout_marginTop="12dp"
+            android:fontFamily="@font/poppins_regular"
+            android:text="@string/select_ingredients"
+            android:textSize="18sp"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/textAddNewCategoryAR" />
+
+        <LinearLayout
+            android:id="@+id/ingredientsLinearAR"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            app:layout_constraintTop_toBottomOf="@+id/selectIngredientsAR"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            android:layout_marginHorizontal="32dp">
+
+            <TextView
+                android:id="@+id/ingredient1AR"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/milk"
+                android:paddingHorizontal="20dp"
+                android:paddingVertical="10dp"
+                android:background="@drawable/round_category_grey"
+                android:layout_marginEnd="10dp"
+                />
+
+            <TextView
+                android:id="@+id/ingredient2AR"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/eggs"
+                android:paddingHorizontal="20dp"
+                android:paddingVertical="10dp"
+                android:background="@drawable/round_category_secondary"
+                android:layout_marginEnd="10dp"
+                />
+
+            <TextView
+                android:id="@+id/ingredient3AR"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/rice"
+                android:paddingHorizontal="20dp"
+                android:paddingVertical="10dp"
+                android:background="@drawable/round_category_primary"
+                android:layout_marginEnd="10dp"
+                />
+
+            <TextView
+                android:id="@+id/ingredient4AR"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/chicken"
+                android:paddingHorizontal="20dp"
+                android:paddingVertical="10dp"
+                android:background="@drawable/round_category_grey"
+                android:layout_marginEnd="10dp"
+                />
+
+        </LinearLayout>
+        <TextView
+            android:id="@+id/textAddNewIngredientAR"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/add_new_step"
+            app:layout_constraintTop_toBottomOf="@id/ingredientsLinearAR"
+            android:textColor="@color/md_theme_primary"
+            android:textSize="14sp"
+            app:layout_constraintStart_toStartOf="parent"
+            android:layout_marginHorizontal="32dp"
+            android:layout_marginTop="12dp"
+            android:fontFamily="@font/poppins_regular"/>
+
+        <TextView
+            android:id="@+id/addPictureAR"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginHorizontal="32dp"
+            android:layout_marginStart="32dp"
+            android:layout_marginTop="12dp"
+            android:fontFamily="@font/poppins_regular"
+            android:text="Upload picture"
+            android:textSize="18sp"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/textAddNewIngredientAR" />
+
+        <androidx.appcompat.widget.AppCompatButton
+            android:id="@+id/uploadPictureAR"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            app:layout_constraintTop_toBottomOf="@id/addPictureAR"
+            android:textSize="18sp"
+            android:background="@drawable/round_edit_text_add_recipe"
+            app:layout_constraintStart_toStartOf="parent"
+            android:layout_marginHorizontal="32dp"
+            android:textAlignment="center"
+            android:layout_marginTop="12dp"
+            android:fontFamily="@font/poppins_regular"
+            android:contentDescription="@string/upload_picture"/>
+
+        <com.google.android.material.floatingactionbutton.FloatingActionButton
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="end"
+            android:src="@drawable/icon_add"
+            android:backgroundTint="@color/md_theme_primary"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:fabCustomSize="70dp"
+            android:layout_marginBottom="10dp"
+            android:contentDescription="@string/add_new_recipe"/>
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+
+</ScrollView>

@@ -5,24 +5,24 @@
     <item
         android:id="@+id/home"
         android:title="@string/home"
-        android:icon="@drawable/home"
+        android:icon="@drawable/icon_home"
         />
 
     <item
         android:id="@+id/calendar"
         android:title="@string/calendar"
-        android:icon="@drawable/calendar"
+        android:icon="@drawable/icon_book"
         />
 
     <item
         android:id="@+id/cart"
         android:title="@string/cart"
-        android:icon="@drawable/cart"
+        android:icon="@drawable/icon_cart"
         />
 
     <item
         android:id="@+id/user"
         android:title="@string/user"
-        android:icon="@drawable/user"
+        android:icon="@drawable/icon_user"
         />
 </menu>
