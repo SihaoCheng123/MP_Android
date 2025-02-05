@@ -1,14 +1,20 @@
 package com.example.mealplanner.ui.fragments;
 
+import android.content.Intent;
 import android.os.Bundle;
 
 import androidx.fragment.app.Fragment;
 
+import android.view.Gravity;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.PopupWindow;
+import android.widget.TextView;
 
 import com.example.mealplanner.R;
+import com.example.mealplanner.databinding.FragmentHomeScreenBinding;
+import com.example.mealplanner.ui.components.AddRecipe;
 
 /**
  * A simple {@link Fragment} subclass.
@@ -51,6 +57,8 @@ public class HomeScreen extends Fragment {
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+
+
         if (getArguments() != null) {
             mParam1 = getArguments().getString(ARG_PARAM1);
             mParam2 = getArguments().getString(ARG_PARAM2);
@@ -61,6 +69,31 @@ public class HomeScreen extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_home_screen, container, false);
+        View view = inflater.inflate(R.layout.fragment_home_screen, container, false);
+        TextView card_breakfast = (TextView) view.findViewById(R.id.card_breakfast);
+        TextView card_lunch = (TextView) view.findViewById(R.id.card_lunch);
+        TextView card_dinner = (TextView) view.findViewById(R.id.card_dinner);
+        card_breakfast.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(view.getContext(), AddRecipe.class);
+                startActivity(intent);
+            }
+        });
+        card_lunch.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(view.getContext(), AddRecipe.class);
+                startActivity(intent);
+            }
+        });
+        card_dinner.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(view.getContext(), AddRecipe.class);
+                startActivity(intent);
+            }
+        });
+        return view;
     }
 }

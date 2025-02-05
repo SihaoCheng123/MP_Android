@@ -142,4 +142,8 @@
     <color name="md_theme_surfaceContainerHighest_highContrast">#C8C7BD</color>
     <color name="md_theme_register_container">#E7E7E7</color>
     <color name="md_theme_user_profile_background">#D8E0A6</color>
+    <color name="md_theme_outline_add_recipe">#C5C6CC</color>
+    <color name="md_theme_card_category">#59505050</color>
+    <color name="md_theme_secondary_opacity">#59A8A1D4</color>
+    <color name="md_theme_primary_opacity">#59CCD87F</color>
 </resources>
