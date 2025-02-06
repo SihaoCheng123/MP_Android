@@ -1,4 +1,4 @@
-package com.example.mealplanner.ui;
+package com.example.mealplanner.model.recycler.stepsSimple;
 
 import android.os.Bundle;
 
@@ -12,8 +12,6 @@ import android.view.View;
 import android.view.ViewGroup;
 
 import com.example.mealplanner.R;
-import com.example.mealplanner.model.recycler.stepsSimple.StepsSimpleAdapter;
-import com.example.mealplanner.model.recycler.stepsSimple.StepsSimpleEventModel;
 
 import java.util.ArrayList;
 
