@@ -37,12 +37,12 @@
 
         <ImageView
             android:id="@+id/logoMP"
-            android:layout_width="150dp"
+            android:layout_width="match_parent"
             android:layout_height="150dp"
-            app:layout_constraintEnd_toEndOf="parent"
-
-            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="@id/gH2"
+            app:layout_constraintStart_toStartOf="@id/gH1"
             app:layout_constraintTop_toBottomOf="@+id/guideline1"
+            android:src="@drawable/logocompleto"
             />
 
         <TextView
