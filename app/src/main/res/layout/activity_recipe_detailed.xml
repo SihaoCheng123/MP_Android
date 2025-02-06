@@ -201,26 +201,11 @@
                     android:text="@string/steps" />
             </com.google.android.material.tabs.TabLayout>
 
-            <TextView
+            <androidx.viewpager2.widget.ViewPager2
+                android:id="@+id/viewPagerDR"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="24dp"
-                android:layout_marginEnd="50dp"
-                android:fontFamily="@font/poppins_regular"
-                android:text="@string/add_all_to_cart"
-                android:textAlignment="textEnd"
-                android:textColor="@color/md_theme_secondaryContainer"
-                android:textSize="16sp" />
-
-            <FrameLayout
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content">
-
-                <androidx.recyclerview.widget.RecyclerView
-                    android:id="@+id/ingredientsRecyclerDR"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content" />
-            </FrameLayout>
+                />
 
 
         </LinearLayout>
