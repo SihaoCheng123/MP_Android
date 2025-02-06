@@ -4,7 +4,8 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".ui.fragments.Calendar">
+    tools:context=".ui.fragments.Calendar"
+    android:background="@color/md_theme_tertiaryContainer">
 
     <!-- TODO: Update blank fragment layout -->
 
@@ -21,39 +22,462 @@
             app:layout_constraintGuide_percent="0.07"
             />
 
-        <Button
-            android:id="@+id/backbutton"
+        <LinearLayout
+            android:id="@+id/textMonthCS"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            app:layout_constraintTop_toBottomOf="@id/gH1"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent">
+
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent">
+
+                <ImageView
+                    android:id="@+id/icon_arrow_back_CS"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:src="@drawable/icon_arrow_back"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    android:layout_marginStart="40dp"/>
+                <LinearLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintTop_toTopOf="parent"
+                    app:layout_constraintBottom_toBottomOf="parent">
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="@string/september"
+                        android:fontFamily="@font/poppins_medium"
+                        android:textSize="20sp"/>
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:text="@string/year"
+                        android:fontFamily="@font/poppins_medium"
+                        android:textSize="12sp"
+                        android:textAlignment="center"
+                        android:textColor="@color/md_theme_card_category"/>
+                </LinearLayout>
+
+                <ImageView
+                    android:id="@+id/icon_arrow_forward_CS"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:src="@drawable/icon_arrow_forward"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintTop_toTopOf="parent"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    android:layout_marginEnd="40dp"/>
+            </androidx.constraintlayout.widget.ConstraintLayout>
+
+
+        </LinearLayout>
+        <GridLayout
+            android:id="@+id/gridlayoutCS"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="..."
-            app:layout_constraintTop_toBottomOf="@+id/gH1"
-            android:orientation="horizontal"
-            android:backgroundTint="@color/md_theme_primary"
+            android:columnCount="7"
             app:layout_constraintStart_toStartOf="parent"
-            />
+            app:layout_constraintEnd_toEndOf="parent"
+            android:orientation="horizontal"
+            app:layout_constraintTop_toBottomOf="@+id/textMonthCS"
+            android:layout_marginTop="16dp">
 
-        <TextView
-            android:id="@+id/month"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:fontFamily="@font/poppins_regular"
-            android:text="September"
-            android:textColor="@color/md_theme_scrim"
-            app:layout_constraintTop_toBottomOf="@id/backbutton"
-            android:textSize="16sp"
-            android:gravity="center"
-            />
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                android:padding="15dp">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="MO"
+                    android:fontFamily="@font/poppins_regular" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="19"
+                    android:fontFamily="@font/poppins_regular" />
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                android:padding="15dp">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="TU"
+                    android:fontFamily="@font/poppins_regular" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="20"
+                    android:fontFamily="@font/poppins_regular" />
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                android:padding="15dp">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="WE"
+                    android:fontFamily="@font/poppins_regular" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="21"
+                    android:fontFamily="@font/poppins_regular" />
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:background="@drawable/round_card_primary"
+                android:orientation="vertical"
+                android:padding="15dp">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:fontFamily="@font/poppins_regular"
+                    android:text="TH"
+                    android:textColor="@color/md_theme_onPrimary" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:fontFamily="@font/poppins_regular"
+                    android:text="22"
+                    android:textColor="@color/md_theme_onPrimary" />
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                android:padding="15dp">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="FR"
+                    android:fontFamily="@font/poppins_regular" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="23"
+                    android:fontFamily="@font/poppins_regular" />
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                android:padding="15dp">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="SA"
+                    android:fontFamily="@font/poppins_regular" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="24"
+                    android:fontFamily="@font/poppins_regular" />
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                android:padding="15dp">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="SU"
+                    android:fontFamily="@font/poppins_regular" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="25"
+                    android:fontFamily="@font/poppins_regular" />
+
+            </LinearLayout>
+        </GridLayout>
 
         <View
-            android:id="@+id/hline"
+            android:id="@+id/horizontalLineCS"
             android:layout_width="match_parent"
-            android:layout_height="2dp"
+            android:layout_height="1dp"
             android:background="@color/md_theme_scrim"
-            app:layout_constraintTop_toBottomOf="@+id/month"
-            />
+            app:layout_constraintTop_toBottomOf="@id/gridlayoutCS"
+            android:layout_marginTop="16dp"/>
 
+        <View
+            android:id="@+id/verticalLineCS"
+            android:layout_width="1dp"
+            android:layout_height="wrap_content"
+            android:background="@color/md_theme_scrim"
+            app:layout_constraintTop_toBottomOf="@id/horizontalLineCS"
+            app:layout_constraintStart_toStartOf="parent"
+            android:layout_marginStart="115dp" />
 
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            app:layout_constraintTop_toBottomOf="@id/horizontalLineCS"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="@id/verticalLineCS"
+            android:orientation="vertical">
 
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:fontFamily="@font/poppins_regular"
+                android:text="@string/sept_18"
+                android:textSize="16sp"
+                android:layout_marginTop="14dp"
+                android:layout_marginBottom="33dp"/>
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/breakfast"
+                android:fontFamily="@font/poppins_medium"
+                android:textSize="16sp"
+                android:textColor="@color/md_theme_scrim"
+                android:layout_marginBottom="140dp"/>
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/lunch"
+                android:fontFamily="@font/poppins_medium"
+                android:textSize="16sp"
+                android:textColor="@color/md_theme_scrim"
+                android:layout_marginBottom="140dp"/>
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/dinner"
+                android:fontFamily="@font/poppins_medium"
+                android:textSize="16sp"
+                android:textColor="@color/md_theme_scrim"
+                android:layout_marginBottom="140dp"/>
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            app:layout_constraintStart_toStartOf="@id/verticalLineCS"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/horizontalLineCS">
+
+           <LinearLayout
+               android:id="@+id/card_breakfast_CS"
+               android:layout_width="wrap_content"
+               android:layout_height="wrap_content"
+               android:orientation="vertical"
+               android:background="@drawable/round_card_white"
+               android:layout_marginTop="23dp">
+               <TextView
+                   android:layout_width="wrap_content"
+                   android:layout_height="wrap_content"
+                   android:textSize="16sp"
+                   android:fontFamily="@font/poppins_medium"
+                   android:text="@string/coffe_amp_bread"
+                   android:textColor="@color/md_theme_scrim"
+                   android:layout_gravity="center"
+                   android:layout_marginTop="10dp"/>
+               <LinearLayout
+                   android:layout_width="wrap_content"
+                   android:layout_height="wrap_content"
+                   android:orientation="horizontal">
+                   <ImageView
+                       android:layout_width="80dp"
+                       android:layout_height="80dp"
+                       android:background="@drawable/round_category_primary"
+                       android:layout_marginVertical="15dp"
+                       android:layout_marginStart="30dp"
+                       android:layout_gravity="center"/>
+                   <LinearLayout
+                       android:layout_width="wrap_content"
+                       android:layout_height="wrap_content"
+                       android:orientation="vertical"
+                       android:layout_gravity="center"
+                       android:layout_marginVertical="15dp"
+                       android:layout_marginHorizontal="30dp">
+                       <TextView
+                           android:layout_width="wrap_content"
+                           android:layout_height="wrap_content"
+                           android:text="@string/ingredients"
+                           android:fontFamily="@font/poppins_medium"
+                           android:textSize="14sp"
+                           android:textColor="@color/md_theme_scrim"/>
+                       <TextView
+                           android:layout_width="wrap_content"
+                           android:layout_height="wrap_content"
+                           android:text="@string/ingredients"
+                           android:fontFamily="@font/poppins_medium"
+                           android:textSize="14sp"
+                           android:textColor="@color/md_theme_scrim"/>
+                       <TextView
+                           android:layout_width="wrap_content"
+                           android:layout_height="wrap_content"
+                           android:text="@string/ingredients"
+                           android:fontFamily="@font/poppins_medium"
+                           android:textSize="14sp"
+                           android:textColor="@color/md_theme_scrim"/>
+                   </LinearLayout>
+               </LinearLayout>
+           </LinearLayout>
+            <LinearLayout
+                android:id="@+id/card_lunch_CS"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                android:background="@drawable/round_card_secondary"
+                android:layout_marginTop="23dp">
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:textSize="16sp"
+                    android:fontFamily="@font/poppins_medium"
+                    android:text="@string/coffe_amp_bread"
+                    android:textColor="@color/md_theme_scrim"
+                    android:layout_gravity="center"
+                    android:layout_marginTop="10dp"/>
+                <LinearLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal">
+                    <ImageView
+                        android:layout_width="80dp"
+                        android:layout_height="80dp"
+                        android:background="@drawable/round_card_white"
+                        android:layout_marginVertical="15dp"
+                        android:layout_marginStart="30dp"
+                        android:layout_gravity="center"/>
+                    <LinearLayout
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:orientation="vertical"
+                        android:layout_gravity="center"
+                        android:layout_marginVertical="15dp"
+                        android:layout_marginHorizontal="30dp">
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="@string/ingredients"
+                            android:fontFamily="@font/poppins_medium"
+                            android:textSize="14sp"
+                            android:textColor="@color/md_theme_scrim"/>
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="@string/ingredients"
+                            android:fontFamily="@font/poppins_medium"
+                            android:textSize="14sp"
+                            android:textColor="@color/md_theme_scrim"/>
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="@string/ingredients"
+                            android:fontFamily="@font/poppins_medium"
+                            android:textSize="14sp"
+                            android:textColor="@color/md_theme_scrim"/>
+                    </LinearLayout>
+                </LinearLayout>
+            </LinearLayout>
+            <LinearLayout
+                android:id="@+id/card_dinner_CS"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                android:background="@drawable/round_card_primary"
+                android:layout_marginTop="23dp">
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:textSize="16sp"
+                    android:fontFamily="@font/poppins_medium"
+                    android:text="@string/coffe_amp_bread"
+                    android:textColor="@color/md_theme_scrim"
+                    android:layout_gravity="center"
+                    android:layout_marginTop="10dp"/>
+                <LinearLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal">
+                    <ImageView
+                        android:layout_width="80dp"
+                        android:layout_height="80dp"
+                        android:background="@drawable/round_card_white"
+                        android:layout_marginVertical="15dp"
+                        android:layout_marginStart="30dp"
+                        android:layout_gravity="center"/>
+                    <LinearLayout
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:orientation="vertical"
+                        android:layout_gravity="center"
+                        android:layout_marginVertical="15dp"
+                        android:layout_marginHorizontal="30dp">
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="@string/ingredients"
+                            android:fontFamily="@font/poppins_medium"
+                            android:textSize="14sp"
+                            android:textColor="@color/md_theme_scrim"/>
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="@string/ingredients"
+                            android:fontFamily="@font/poppins_medium"
+                            android:textSize="14sp"
+                            android:textColor="@color/md_theme_scrim"/>
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="@string/ingredients"
+                            android:fontFamily="@font/poppins_medium"
+                            android:textSize="14sp"
+                            android:textColor="@color/md_theme_scrim"/>
+                    </LinearLayout>
+                </LinearLayout>
+            </LinearLayout>
+        </LinearLayout>
     </androidx.constraintlayout.widget.ConstraintLayout>
 
 

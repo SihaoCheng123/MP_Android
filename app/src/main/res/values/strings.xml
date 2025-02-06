@@ -105,6 +105,10 @@
     <string name="steps">Steps</string>
     <string name="add_all_to_cart">Add all to cart</string>
     <string name="ingredient_image">Ingredient image</string>
+    <string name="year">2024</string>
+    <string name="september">September</string>
+    <string name="sept_18">Sept 18</string>
+    <string name="coffe_amp_bread"><![CDATA[Coffe & bread]]></string>
 
     <string-array name="ingredient_name_cv">
         <item>Lettuce</item>
