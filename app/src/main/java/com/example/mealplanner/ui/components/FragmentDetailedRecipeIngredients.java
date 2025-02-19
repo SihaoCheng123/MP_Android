@@ -1,4 +1,4 @@
-package com.example.mealplanner;
+package com.example.mealplanner.ui.components;
 
 import android.os.Bundle;
 
@@ -12,9 +12,9 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
+import com.example.mealplanner.R;
 import com.example.mealplanner.model.recycler.ingredientsSimple.IngredientSimpleAdapter;
 import com.example.mealplanner.model.recycler.ingredientsSimple.IngredientSimpleEventModel;
-import com.example.mealplanner.model.recycler.stepsSimple.StepsSimpleAdapter;
 
 
 import java.util.ArrayList;

@@ -5,8 +5,8 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.fragment.app.Fragment;
 import androidx.viewpager2.adapter.FragmentStateAdapter;
 
-import com.example.mealplanner.FragmentDetailedRecipeIngredients;
-import com.example.mealplanner.ui.FragmentDetailedRecipeSteps;
+import com.example.mealplanner.ui.components.FragmentDetailedRecipeIngredients;
+import com.example.mealplanner.ui.components.FragmentDetailedRecipeSteps;
 
 public class ViewPagerAdapterDR extends FragmentStateAdapter {
 

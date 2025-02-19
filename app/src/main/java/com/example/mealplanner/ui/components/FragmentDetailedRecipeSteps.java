@@ -1,4 +1,4 @@
-package com.example.mealplanner.ui;
+package com.example.mealplanner.ui.components;
 
 import android.os.Bundle;
 
