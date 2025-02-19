@@ -1,5 +1,8 @@
 package com.example.mealplanner.io.api;
 
+import java.util.Arrays;
+
+import okhttp3.ConnectionSpec;
 import okhttp3.OkHttpClient;
 import okhttp3.logging.HttpLoggingInterceptor;
 import retrofit2.Retrofit;
@@ -12,10 +15,12 @@ public class ApiClient {
     public static Retrofit getClient(){
         HttpLoggingInterceptor interceptor = new HttpLoggingInterceptor();
         interceptor.setLevel(HttpLoggingInterceptor.Level.BODY);
-        OkHttpClient client = new OkHttpClient.Builder().addInterceptor(interceptor).build();
+        OkHttpClient client = new OkHttpClient.Builder()
+                .connectionSpecs(Arrays.asList(ConnectionSpec.CLEARTEXT, ConnectionSpec.MODERN_TLS))
+                .addInterceptor(interceptor).build();
 
         retrofit = new Retrofit.Builder()
-                .baseUrl("http://192.168.73.209:8080/api")
+                .baseUrl("http://192.168.1.154:8080/api/")
                 .addConverterFactory(GsonConverterFactory.create())
                 .client(client)
                 .build();

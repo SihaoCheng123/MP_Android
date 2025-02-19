@@ -61,7 +61,7 @@
             android:layout_marginTop="42dp">
 
             <com.google.android.material.textfield.TextInputLayout
-                android:id="@+id/firstName"
+                android:id="@+id/name"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 style="@style/ThemeOverlay.Material3.TextInputEditText.FilledBox.Dense"
@@ -75,10 +75,10 @@
 
                 <EditText
                     android:autofillHints="Lara"
-                    android:labelFor="@id/firstName"
+                    android:labelFor="@+id/name"
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
-                    android:hint="@string/firstName"
+                    android:hint="@string/name"
                     android:inputType="text"
                     android:textSize="16sp"
                     android:padding="12dp"
@@ -88,7 +88,7 @@
             </com.google.android.material.textfield.TextInputLayout>
 
             <com.google.android.material.textfield.TextInputLayout
-                android:id="@+id/lastName"
+                android:id="@+id/phone"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 style="@style/ThemeOverlay.Material3.TextInputEditText.FilledBox.Dense"
@@ -101,11 +101,11 @@
                 app:boxStrokeWidth="0dp">
 
                 <EditText
-                    android:labelFor="@id/lastName"
-                    android:autofillHints="Croft"
+                    android:labelFor="@+id/phone"
+                    android:autofillHints="123456789"
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
-                    android:hint="@string/lastName"
+                    android:hint="@string/phone"
                     android:inputType="text"
                     android:textSize="16sp"
                     android:padding="12dp"
