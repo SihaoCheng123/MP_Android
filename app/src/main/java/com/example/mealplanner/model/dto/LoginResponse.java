@@ -1,7 +1,5 @@
 package com.example.mealplanner.model.dto;
 
-import com.example.mealplanner.model.data.Users;
-
 public class LoginResponse {
     private Long id;
     private String name;
@@ -11,15 +9,6 @@ public class LoginResponse {
     private int age;
     private String token;
 
-    public LoginResponse(Users user, String token) {
-        this.id = user.getId();
-        this.email = user.getEmail();
-        this.password = user.getPassword();
-        this.name = user.getUser_data().getName();
-        this.phone = user.getUser_data().getPhone();
-        this.age = user.getUser_data().getAge();
-        this.token = token;
-    }
 
     public Long getId() {
         return id;
