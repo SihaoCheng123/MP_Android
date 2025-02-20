@@ -3,7 +3,6 @@ package com.example.mealplanner.ui.auth;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
-import android.util.Log;
 import android.widget.Toast;
 
 import androidx.annotation.NonNull;
@@ -52,25 +51,22 @@ public class Login extends AppCompatActivity {
                     if (response.isSuccessful()){
                         if (response.body() != null){
                             LoginResponse loginResponse = response.body().getData();
-                            Log.e("Respuestas: ", loginResponse.getEmail() + loginResponse.getPassword());
-                            if (!loginRequest.getEmail().equals(loginResponse.getEmail())) {
-                                Toast.makeText(Login.this, "User not found", Toast.LENGTH_SHORT).show();
-                            }
-                            if (!loginRequest.getPassword().equals(loginResponse.getPassword())) {
-                                Toast.makeText(Login.this, "Incorrect password", Toast.LENGTH_SHORT).show();
-                            }
+//                            if (!loginRequest.getEmail().equals(loginResponse.getEmail())) {
+//                                Toast.makeText(Login.this, "User not found", Toast.LENGTH_SHORT).show();
+//                            }
+//                            if (!loginRequest.getPassword().equals(loginResponse.getPassword())) {
+//                                Toast.makeText(Login.this, "Incorrect password", Toast.LENGTH_SHORT).show();
+//                            }
                             String token = loginResponse.getToken();
                             saveToken(token);
                             goMain();
-
                         }
                     }
                 }
 
-
                 @Override
                 public void onFailure(@NonNull Call<ApiDelivery<LoginResponse>> call, @NonNull Throwable throwable) {
-
+                    Toast.makeText(Login.this, "Connection error", Toast.LENGTH_SHORT).show();
                 }
             });
         }

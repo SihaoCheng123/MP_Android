@@ -10,6 +10,10 @@ import retrofit2.converter.gson.GsonConverterFactory;
 
 public class ApiClient {
 
+    private static final String URL_HOME_PHONE = "http://192.168.1.154:8080/api/";
+    private static final String URL_SCHOOL = "http://192.168.73.209:8080/api/";
+
+    private static final String ANDROID_URL = "http://10.0.2.2:8080/api/";
     private static Retrofit retrofit = null;
 
     public static Retrofit getClient(){
@@ -20,7 +24,7 @@ public class ApiClient {
                 .addInterceptor(interceptor).build();
 
         retrofit = new Retrofit.Builder()
-                .baseUrl("http://192.168.1.154:8080/api/")
+                .baseUrl(ANDROID_URL)
                 .addConverterFactory(GsonConverterFactory.create())
                 .client(client)
                 .build();
