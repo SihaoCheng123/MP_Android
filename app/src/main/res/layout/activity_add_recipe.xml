@@ -16,6 +16,7 @@
         android:fillViewport="true">
 
         <androidx.constraintlayout.widget.ConstraintLayout
+            android:id="@+id/mainConstraint"
             android:layout_width="match_parent"
             android:layout_height="wrap_content">
 
@@ -39,7 +40,8 @@
                 android:layout_marginVertical="18dp"
                 android:layout_marginHorizontal="32dp">
 
-                <EditText
+                <com.google.android.material.textfield.TextInputEditText
+                    android:id="@+id/editRecipeAR"
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
                     android:hint="@string/recipe_name"
@@ -89,7 +91,8 @@
                 app:layout_constraintStart_toStartOf="parent"
                 android:layout_marginHorizontal="32dp">
 
-                <EditText
+                <com.google.android.material.textfield.TextInputEditText
+                    android:id="@+id/editTimeAR"
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
                     android:hint="@string/time"
@@ -107,7 +110,8 @@
                 android:layout_marginVertical="18dp"
                 android:layout_marginHorizontal="32dp">
 
-                <EditText
+                <com.google.android.material.textfield.TextInputEditText
+                    android:id="@+id/editStepAR"
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
                     android:hint="@string/add_steps"
@@ -155,7 +159,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="@string/breakfast"
-                    android:paddingHorizontal="20dp"
+                    android:paddingHorizontal="15dp"
                     android:paddingVertical="10dp"
                     android:background="@drawable/round_category_grey"
                     android:layout_marginEnd="10dp" />
@@ -165,9 +169,19 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="@string/lunch"
-                    android:paddingHorizontal="20dp"
+                    android:paddingHorizontal="15dp"
                     android:paddingVertical="10dp"
                     android:background="@drawable/round_category_secondary"
+                    android:layout_marginEnd="10dp" />
+
+                <TextView
+                    android:id="@+id/categorySnackAR"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/snack"
+                    android:paddingHorizontal="15dp"
+                    android:paddingVertical="10dp"
+                    android:background="@drawable/round_category_primary"
                     android:layout_marginEnd="10dp" />
 
                 <TextView
@@ -175,102 +189,69 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="@string/dinner"
-                    android:paddingHorizontal="20dp"
+                    android:paddingHorizontal="15dp"
                     android:paddingVertical="10dp"
-                    android:background="@drawable/round_category_primary"
+                    android:background="@drawable/round_category_grey"
                     android:layout_marginEnd="10dp" />
 
             </LinearLayout>
 
-            <TextView
-                android:id="@+id/textAddNewCategoryAR"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="@string/add_new_step"
-                app:layout_constraintTop_toBottomOf="@id/categoryLinearAR"
-                android:textColor="@color/md_theme_primary"
-                android:textSize="14sp"
-                app:layout_constraintStart_toStartOf="parent"
-                android:layout_marginHorizontal="32dp"
-                android:layout_marginTop="12dp"
-                android:fontFamily="@font/poppins_regular" />
 
             <TextView
-                android:id="@+id/selectIngredientsAR"
+                android:id="@+id/addIngredientsAR"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginHorizontal="32dp"
                 android:layout_marginStart="32dp"
                 android:layout_marginTop="12dp"
                 android:fontFamily="@font/poppins_regular"
-                android:text="@string/select_ingredients"
+                android:text="@string/add_ingredients"
                 android:textSize="18sp"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@id/textAddNewCategoryAR" />
-
-            <LinearLayout
-                android:id="@+id/ingredientsLinearAR"
+                app:layout_constraintTop_toBottomOf="@id/categoryLinearAR" />
+            <com.google.android.material.textfield.TextInputLayout
+                android:id="@+id/inputAddIngAR"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                app:layout_constraintTop_toBottomOf="@+id/selectIngredientsAR"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/addIngredientsAR"
                 android:layout_marginHorizontal="32dp">
-
-                <TextView
-                    android:id="@+id/ingredient1AR"
-                    android:layout_width="wrap_content"
+                <com.google.android.material.textfield.TextInputEditText
+                    android:hint="@string/ingredients"
+                    android:id="@+id/editIngAR"
+                    android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:text="@string/milk"
-                    android:paddingHorizontal="20dp"
-                    android:paddingVertical="10dp"
-                    android:background="@drawable/round_category_grey"
-                    android:layout_marginEnd="10dp" />
+                    android:background="@drawable/round_edit_text_add_recipe"/>
+            </com.google.android.material.textfield.TextInputLayout>
 
-                <TextView
-                    android:id="@+id/ingredient2AR"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="@string/eggs"
-                    android:paddingHorizontal="20dp"
-                    android:paddingVertical="10dp"
-                    android:background="@drawable/round_category_secondary"
-                    android:layout_marginEnd="10dp" />
-
-                <TextView
-                    android:id="@+id/ingredient3AR"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="@string/rice"
-                    android:paddingHorizontal="20dp"
-                    android:paddingVertical="10dp"
-                    android:background="@drawable/round_category_primary"
-                    android:layout_marginEnd="10dp" />
-
-                <TextView
-                    android:id="@+id/ingredient4AR"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="@string/chicken"
-                    android:paddingHorizontal="20dp"
-                    android:paddingVertical="10dp"
-                    android:background="@drawable/round_category_grey"
-                    android:layout_marginEnd="10dp" />
-
-            </LinearLayout>
 
             <TextView
                 android:id="@+id/textAddNewIngredientAR"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="@string/add_new_step"
-                app:layout_constraintTop_toBottomOf="@id/ingredientsLinearAR"
+                app:layout_constraintTop_toBottomOf="@id/inputAddIngAR"
                 android:textColor="@color/md_theme_primary"
                 android:textSize="14sp"
                 app:layout_constraintStart_toStartOf="parent"
                 android:layout_marginHorizontal="32dp"
                 android:layout_marginTop="12dp"
                 android:fontFamily="@font/poppins_regular" />
+
+            <HorizontalScrollView
+                android:id="@+id/ingHorizontalAR"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                app:layout_constraintTop_toBottomOf="@id/textAddNewIngredientAR"
+                app:layout_constraintStart_toStartOf="parent"
+                android:layout_marginHorizontal="32dp">
+
+                <LinearLayout
+                    android:id="@+id/ingredientsListLayoutAR"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal" />
+            </HorizontalScrollView>
+
 
             <TextView
                 android:id="@+id/addPictureAR"
@@ -280,10 +261,10 @@
                 android:layout_marginStart="32dp"
                 android:layout_marginTop="12dp"
                 android:fontFamily="@font/poppins_regular"
-                android:text="Upload picture"
+                android:text="@string/upload_picture"
                 android:textSize="18sp"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@id/textAddNewIngredientAR" />
+                app:layout_constraintTop_toBottomOf="@id/ingHorizontalAR" />
 
             <androidx.appcompat.widget.AppCompatButton
                 android:id="@+id/uploadPictureAR"
@@ -300,6 +281,7 @@
                 android:contentDescription="@string/upload_picture" />
 
             <com.google.android.material.floatingactionbutton.FloatingActionButton
+                android:id="@+id/addRecipeBtnAR"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_gravity="end"

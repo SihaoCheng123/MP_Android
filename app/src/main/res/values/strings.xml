@@ -111,6 +111,8 @@
     <string name="coffe_amp_bread"><![CDATA[Coffe & bread]]></string>
     <string name="name">Name</string>
     <string name="phone">Phone</string>
+    <string name="snack">Snack</string>
+    <string name="add_ingredients">Add ingredients</string>
 
     <string-array name="ingredient_name_cv">
         <item>Lettuce</item>
