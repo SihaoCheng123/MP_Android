@@ -1,5 +1,6 @@
 package com.example.mealplanner.ui.components;
 
+import android.annotation.SuppressLint;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.LayoutInflater;
@@ -22,11 +23,8 @@ import com.example.mealplanner.model.data.Recipes;
 import com.example.mealplanner.model.data.Steps;
 import com.google.android.material.dialog.MaterialAlertDialogBuilder;
 
-import java.text.SimpleDateFormat;
 import java.util.ArrayList;
-import java.util.Date;
 import java.util.HashSet;
-import java.util.Locale;
 import java.util.Set;
 
 import retrofit2.Call;
@@ -34,7 +32,8 @@ import retrofit2.Callback;
 import retrofit2.Response;
 
 public class AddRecipe extends AppCompatActivity {
-    private String recipeName, date, category, time;
+    private String recipeName, date, category, time, rationsString;
+    private int rations = 0;
     private ArrayList<String> stepsList = new ArrayList<>();
     private ArrayList<String> ingredientsList = new ArrayList<>();
     private ArrayList<TextView> categoryList = new ArrayList<>();
@@ -68,8 +67,8 @@ public class AddRecipe extends AppCompatActivity {
         CalendarView calendar = calendarView.findViewById(R.id.calendarView);
         calendar.setOnDateChangeListener((view, year, month, dayOfMonth) -> {
 
-            String formattedMonth = String.format("%02d", (month +1));
-            String formattedDay = String.format("%02d", dayOfMonth);
+            @SuppressLint("DefaultLocale") String formattedMonth = String.format("%02d", (month +1));
+            @SuppressLint("DefaultLocale") String formattedDay = String.format("%02d", dayOfMonth);
             date = year +  "-" + (formattedMonth) + "-" + formattedDay;
         });
 
@@ -78,17 +77,6 @@ public class AddRecipe extends AppCompatActivity {
         alertDialogBuilder.setView(calendarView);
         alertDialogBuilder.create();
         alertDialogBuilder.show();
-    }
-
-    private Date formatDate(String userDate){
-        Date newDate = new Date();
-        try {
-            SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd");
-            newDate = dateFormat.parse(userDate);
-        }catch (Exception e){
-            Log.e("Error", "Date can not be formatted");
-        }
-        return newDate;
     }
 
     private void addNewStep(){
@@ -164,8 +152,9 @@ public class AddRecipe extends AppCompatActivity {
         }
         //Get time
         time = binding.inputTimeAR.getEditText().getText().toString().trim();
+        rationsString = binding.inputRationsAR.getEditText().getText().toString().trim();
+        rations = Integer.parseInt(rationsString);
 
-        Date userDate = formatDate(date);
         //Get steps list
         Set<Steps> stepsSet = new HashSet<>();
         if (!stepsList.isEmpty()){
@@ -174,24 +163,25 @@ public class AddRecipe extends AppCompatActivity {
                 stepsSet.add(steps);
             }
         }
-        return new Recipes(recipeName, time, 1, date, "", category, stepsSet);
+        return new Recipes(recipeName, time, rations, date, "", category, stepsSet);
     }
 
     private void sendRecipe(Recipes recipes){
         ApiRecipeService apiRecipeService = ApiClient.getClient().create(ApiRecipeService.class);
         Call<Recipes> call = apiRecipeService.createRecipe(recipes);
-        call.enqueue(new Callback<Recipes>() {
+        call.enqueue(new Callback<>() {
             @Override
-            public void onResponse(Call<Recipes> call, Response<Recipes> response) {
-                if (response.isSuccessful() && response.body() != null){
+            public void onResponse(@NonNull Call<Recipes> call, @NonNull Response<Recipes> response) {
+                if (response.isSuccessful() && response.body() != null) {
                     Toast.makeText(AddRecipe.this, "Recipe created successfully", Toast.LENGTH_SHORT).show();
-                }else {
+                    finish();
+                } else {
                     Toast.makeText(AddRecipe.this, "Error creating recipe", Toast.LENGTH_SHORT).show();
                 }
             }
 
             @Override
-            public void onFailure(Call<Recipes> call, Throwable throwable) {
+            public void onFailure(@NonNull Call<Recipes> call, @NonNull Throwable throwable) {
                 Toast.makeText(AddRecipe.this, "Connection error", Toast.LENGTH_SHORT).show();
             }
         });

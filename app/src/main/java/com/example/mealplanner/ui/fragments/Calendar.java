@@ -3,12 +3,14 @@ package com.example.mealplanner.ui.fragments;
 import android.os.Bundle;
 
 import androidx.fragment.app.Fragment;
+import androidx.fragment.app.FragmentTransaction;
 
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
 import com.example.mealplanner.R;
+import com.example.mealplanner.ui.components.CalendarWeek;
 
 /**
  * A simple {@link Fragment} subclass.
@@ -22,12 +24,11 @@ public class Calendar extends Fragment {
     private static final String ARG_PARAM1 = "param1";
     private static final String ARG_PARAM2 = "param2";
 
-    // TODO: Rename and change types of parameters
     private String mParam1;
     private String mParam2;
 
     public Calendar() {
-        // Required empty public constructor
+        super(R.layout.fragment_calendar);
     }
 
     /**
@@ -60,7 +61,13 @@ public class Calendar extends Fragment {
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
+        View view = inflater.inflate(R.layout.fragment_calendar, container, false);
+        if (savedInstanceState == null){
+            FragmentTransaction transaction = getChildFragmentManager().beginTransaction();
+            transaction.replace(R.id.calendarContainerCS, new CalendarWeek());
+            transaction.commit();
+        }
         // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_calendar, container, false);
+        return view;
     }
 }

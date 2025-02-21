@@ -11,7 +11,6 @@ public class Recipes {
     private String date;
     private String image;
     private String category;
-
     private Set<Steps> steps;
 
     public Recipes(String name, String time, int rations, String date, String image, String category, Set<Steps> steps) {

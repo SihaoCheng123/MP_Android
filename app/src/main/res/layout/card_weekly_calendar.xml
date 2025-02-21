@@ -1,0 +1,30 @@
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:padding="12dp"
+    android:id="@+id/parentViewWC"
+    android:background="@drawable/round_card_primary"
+    android:gravity="center"
+    android:layout_weight="1">
+
+    <TextView
+        android:id="@+id/cardDayNameText"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="LU"
+        android:textSize="14sp"
+        android:gravity="center"
+        android:textColor="#000000"
+        android:fontFamily="@font/poppins_regular" />
+
+    <TextView
+        android:id="@+id/cardDayNumberText"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="1"
+        android:textSize="14sp"
+        android:gravity="center"
+        android:textColor="#000000"
+        android:fontFamily="@font/poppins_regular"/>
+</LinearLayout>
