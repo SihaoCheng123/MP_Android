@@ -1,14 +1,18 @@
 package com.example.mealplanner.io.api;
-
 import com.example.mealplanner.model.data.Recipes;
-import com.example.mealplanner.model.data.Users;
+import java.util.List;
 
 import retrofit2.Call;
 import retrofit2.http.Body;
+import retrofit2.http.GET;
 import retrofit2.http.POST;
+import retrofit2.http.Path;
 
 public interface ApiRecipeService {
 
     @POST("recipes/create")
     Call<Recipes> createRecipe(@Body Recipes recipes);
+
+    @GET("recipes/get-by-date/{date}")
+    Call<List<Recipes>> getRecipesByDate(@Path("date") String date);
 }

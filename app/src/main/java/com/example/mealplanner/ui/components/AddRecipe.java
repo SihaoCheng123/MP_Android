@@ -46,6 +46,7 @@ public class AddRecipe extends AppCompatActivity {
         binding = ActivityAddRecipeBinding.inflate(getLayoutInflater());
         setContentView(binding.getRoot());
 
+        binding.iconBackAR.setOnClickListener(v -> finish());
         binding.dateTextAR.setOnClickListener(v -> showCalendar());
 
         binding.textAddNewStepAR.setOnClickListener(v -> addNewStep());
@@ -186,5 +187,6 @@ public class AddRecipe extends AppCompatActivity {
             }
         });
     }
+
 }
 

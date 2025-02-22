@@ -4,6 +4,7 @@ import android.content.Intent;
 import android.os.Bundle;
 
 import androidx.fragment.app.Fragment;
+import androidx.fragment.app.FragmentTransaction;
 
 import android.view.Gravity;
 import android.view.LayoutInflater;
@@ -15,6 +16,8 @@ import android.widget.TextView;
 import com.example.mealplanner.R;
 import com.example.mealplanner.databinding.FragmentHomeScreenBinding;
 import com.example.mealplanner.ui.components.AddRecipe;
+import com.example.mealplanner.ui.components.CalendarWeek;
+import com.example.mealplanner.ui.components.CalendarWeekHS;
 import com.example.mealplanner.ui.components.RecipeDetailed;
 
 /**
@@ -70,7 +73,14 @@ public class HomeScreen extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
+
+        // Inflate the layout for this fragment
         View view = inflater.inflate(R.layout.fragment_home_screen, container, false);
+        if (savedInstanceState == null){
+            FragmentTransaction transaction = getChildFragmentManager().beginTransaction();
+            transaction.replace(R.id.calendarContainerHS, new CalendarWeekHS());
+            transaction.commit();
+        }
         TextView card_breakfast = (TextView) view.findViewById(R.id.card_breakfast);
         TextView card_lunch = (TextView) view.findViewById(R.id.card_lunch);
         TextView card_dinner = (TextView) view.findViewById(R.id.card_dinner);

@@ -25,160 +25,14 @@
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
 
-        <GridLayout
-            android:id="@+id/gridlayout"
-            android:layout_width="wrap_content"
+        <FrameLayout
+            android:id="@+id/calendarContainerHS"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:columnCount="7"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintEnd_toEndOf="parent"
-            android:orientation="horizontal"
             app:layout_constraintTop_toBottomOf="@id/saludo"
-            android:layout_marginTop="16dp">
-
-            <LinearLayout
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:orientation="vertical"
-                android:padding="15dp">
-
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="MO"
-                    android:fontFamily="@font/poppins_regular" />
-
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="19"
-                    android:fontFamily="@font/poppins_regular" />
-
-            </LinearLayout>
-
-            <LinearLayout
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:orientation="vertical"
-                android:padding="15dp">
-
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="TU"
-                    android:fontFamily="@font/poppins_regular" />
-
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="20"
-                    android:fontFamily="@font/poppins_regular" />
-
-            </LinearLayout>
-
-            <LinearLayout
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:orientation="vertical"
-                android:padding="15dp">
-
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="WE"
-                    android:fontFamily="@font/poppins_regular" />
-
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="21"
-                    android:fontFamily="@font/poppins_regular" />
-
-            </LinearLayout>
-
-            <LinearLayout
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:background="@drawable/round_card_primary"
-                android:orientation="vertical"
-                android:padding="15dp">
-
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:fontFamily="@font/poppins_regular"
-                    android:text="TH"
-                    android:textColor="@color/md_theme_onPrimary" />
-
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:fontFamily="@font/poppins_regular"
-                    android:text="22"
-                    android:textColor="@color/md_theme_onPrimary" />
-
-            </LinearLayout>
-
-            <LinearLayout
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:orientation="vertical"
-                android:padding="15dp">
-
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="FR"
-                    android:fontFamily="@font/poppins_regular" />
-
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="23"
-                    android:fontFamily="@font/poppins_regular" />
-
-            </LinearLayout>
-
-            <LinearLayout
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:orientation="vertical"
-                android:padding="15dp">
-
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="SA"
-                    android:fontFamily="@font/poppins_regular" />
-
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="24"
-                    android:fontFamily="@font/poppins_regular" />
-
-            </LinearLayout>
-
-            <LinearLayout
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:orientation="vertical"
-                android:padding="15dp">
-
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="SU"
-                    android:fontFamily="@font/poppins_regular" />
-
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="25"
-                    android:fontFamily="@font/poppins_regular" />
-
-            </LinearLayout>
-        </GridLayout>
+            app:layout_constraintStart_toStartOf="parent"
+            android:layout_marginHorizontal="30dp"
+            android:layout_marginTop="30dp" />
 
         <TextView
             android:id="@+id/menuText"
@@ -187,10 +41,10 @@
             android:text="Today's menu"
             android:fontFamily="@font/poppins_regular"
             android:textSize="24sp"
-            app:layout_constraintTop_toBottomOf="@id/gridlayout"
+            app:layout_constraintTop_toBottomOf="@id/calendarContainerHS"
             app:layout_constraintStart_toStartOf="parent"
             android:layout_marginStart="60dp"
-            android:layout_marginTop="8dp" />
+            android:layout_marginTop="25dp" />
 
         <LinearLayout
             android:layout_width="wrap_content"
