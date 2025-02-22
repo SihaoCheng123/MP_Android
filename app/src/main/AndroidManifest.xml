@@ -23,7 +23,7 @@
             android:name=".ui.components.AddRecipe"
             android:exported="false" />
         <activity
-            android:name=".MainActivity"
+            android:name=".ui.auth.Login"
             android:exported="false" />
         <activity
             android:name=".ui.fragments.FragmentManagerWithNav"
@@ -32,7 +32,7 @@
             android:name=".ui.auth.Register"
             android:exported="false" />
         <activity
-            android:name=".ui.auth.Login"
+            android:name=".MainActivity"
             android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />

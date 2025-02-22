@@ -1,7 +1,6 @@
 package com.example.mealplanner.ui.auth;
 
 import android.content.Intent;
-import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.widget.Toast;
 
@@ -12,6 +11,7 @@ import com.example.mealplanner.databinding.ActivityLoginBinding;
 import com.example.mealplanner.io.api.ApiClient;
 import com.example.mealplanner.io.api.ApiUserService;
 
+import com.example.mealplanner.io.token.TokenManager;
 import com.example.mealplanner.model.dto.ApiDelivery;
 import com.example.mealplanner.model.dto.LoginRequest;
 import com.example.mealplanner.model.dto.LoginResponse;
@@ -25,11 +25,16 @@ import retrofit2.Response;
 public class Login extends AppCompatActivity {
 
     private ActivityLoginBinding binding;
+
+    private TokenManager tokenManager;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         binding = ActivityLoginBinding.inflate(getLayoutInflater());
         setContentView(binding.getRoot());
+
+        tokenManager = new TokenManager(this);
 
         binding.contButton.setOnClickListener(v -> login());
 
@@ -58,7 +63,7 @@ public class Login extends AppCompatActivity {
 //                                Toast.makeText(Login.this, "Incorrect password", Toast.LENGTH_SHORT).show();
 //                            }
                             String token = loginResponse.getToken();
-                            saveToken(token);
+                            tokenManager.saveToken(token);
                             goMain();
                         }
                     }
@@ -85,10 +90,4 @@ public class Login extends AppCompatActivity {
         startActivity(intent);
     }
 
-    private void saveToken(String token){
-        SharedPreferences sharedPreferences = getSharedPreferences("WeatlyPrefs", MODE_PRIVATE);
-        SharedPreferences.Editor editor = sharedPreferences.edit();
-        editor.putString("userToken", token);
-        editor.apply();
-    }
 }
