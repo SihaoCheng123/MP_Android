@@ -1,5 +1,6 @@
 package com.example.mealplanner.model.recycler.weeklyCalendar;
 
+import android.content.Context;
 import android.graphics.Color;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -68,6 +69,7 @@ public class WeeklyCalendarAdapter extends RecyclerView.Adapter<WeeklyCalendarAd
 
     public interface OnItemListener{
         void onItemClick(int position, LocalDate date);
+
     }
 
     public ArrayList<LocalDate> getDaysOfWeek(LocalDate localDate){
