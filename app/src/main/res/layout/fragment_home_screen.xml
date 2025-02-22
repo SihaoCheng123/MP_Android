@@ -32,7 +32,7 @@
             app:layout_constraintTop_toBottomOf="@id/saludo"
             app:layout_constraintStart_toStartOf="parent"
             android:layout_marginHorizontal="30dp"
-            android:layout_marginTop="30dp" />
+            android:layout_marginTop="20dp" />
 
         <TextView
             android:id="@+id/menuText"
@@ -46,14 +46,23 @@
             android:layout_marginStart="60dp"
             android:layout_marginTop="25dp" />
 
-        <LinearLayout
+        <ScrollView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             app:layout_constraintTop_toBottomOf="@id/menuText"
-            android:layout_marginTop="30dp"
-            android:orientation="vertical"
+            android:layout_marginTop="15dp"
+            android:layout_marginBottom="50dp"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintEnd_toEndOf="parent">
+            app:layout_constraintEnd_toEndOf="parent"
+            android:orientation="vertical">
+
+
+        <LinearLayout
+            android:id="@+id/recipesLayout"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+           >
 
             <LinearLayout
                 android:layout_width="wrap_content"
@@ -68,15 +77,13 @@
                     android:fontFamily="@font/poppins_regular"
                     android:layout_marginBottom="8dp" />
 
-                <TextView
-                    android:id="@+id/card_breakfast"
-                    android:layout_width="300dp"
-                    android:layout_height="96dp"
-                    android:background="@drawable/round_card_white"
-                    android:text="@string/add_meal_text"
-                    android:gravity="center"
-                    android:fontFamily="@font/poppins_regular"
-                    android:elevation="1dp" />
+                <FrameLayout
+                    android:id="@+id/breakfastLayout"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"/>
+
+
             </LinearLayout>
 
             <LinearLayout
@@ -91,17 +98,32 @@
                     android:text="@string/lunch"
                     android:fontFamily="@font/poppins_regular"
                     android:layout_marginBottom="8dp" />
+                <FrameLayout
+                    android:id="@+id/lunchLayout"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"/>
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                android:layout_marginBottom="18dp">
 
                 <TextView
-                    android:id="@+id/card_lunch"
-                    android:layout_width="300dp"
-                    android:layout_height="96dp"
-                    android:background="@drawable/round_card_secondary"
-                    android:text="@string/add_meal_text"
-                    android:gravity="center"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/snack"
                     android:fontFamily="@font/poppins_regular"
-                    android:textColor="@color/md_theme_onPrimary"
-                    android:elevation="1dp" />
+                    android:layout_marginBottom="8dp" />
+                <FrameLayout
+                    android:id="@+id/snackLayout"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"/>
+
             </LinearLayout>
 
             <LinearLayout
@@ -116,22 +138,16 @@
                     android:text="@string/dinner"
                     android:fontFamily="@font/poppins_regular"
                     android:layout_marginBottom="8dp" />
-
-                <TextView
-                    android:id="@+id/card_dinner"
-                    android:layout_width="300dp"
-                    android:layout_height="96dp"
-                    android:background="@drawable/round_card_primary"
-                    android:textColor="@color/md_theme_onPrimary"
-                    android:text="@string/add_meal_text"
-                    android:gravity="center"
-                    android:fontFamily="@font/poppins_regular"
-                    android:elevation="1dp" />
+                <FrameLayout
+                    android:id="@+id/dinnerLayout"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"/>
             </LinearLayout>
 
 
         </LinearLayout>
-
+        </ScrollView>
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 </layout>
