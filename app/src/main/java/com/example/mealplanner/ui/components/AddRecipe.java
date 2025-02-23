@@ -35,9 +35,9 @@ import retrofit2.Response;
 public class AddRecipe extends AppCompatActivity {
     private String date;
     private String category;
-    private final ArrayList<String> stepsList = new ArrayList<>();
-    private final ArrayList<String> ingredientsList = new ArrayList<>();
-    private final ArrayList<TextView> categoryList = new ArrayList<>();
+    private ArrayList<String> stepsList = new ArrayList<>();
+    private ArrayList<String> ingredientsList = new ArrayList<>();
+    private ArrayList<TextView> categoryList = new ArrayList<>();
     private TextView selectedCategoryTV;
     ActivityAddRecipeBinding binding;
     @Override
@@ -56,6 +56,9 @@ public class AddRecipe extends AppCompatActivity {
         binding.textAddNewIngredientAR.setOnClickListener(v -> addNewIng());
         binding.addRecipeBtnAR.setOnClickListener(v -> {
           Recipes newRecipe = createRecipe();
+          if (newRecipe == null){
+              return;
+          }
           Log.e("Recipe", newRecipe.toString());
           sendRecipe(newRecipe);
         });
@@ -151,12 +154,17 @@ public class AddRecipe extends AppCompatActivity {
         String recipeName = binding.inputRecipeNameAR.getEditText().getText().toString().trim();
         if (recipeName.isEmpty()){
             Toast.makeText(AddRecipe.this, "Required data", Toast.LENGTH_SHORT).show();
+            return null;
         }
         //Get time
         String time = binding.inputTimeAR.getEditText().getText().toString().trim();
         String rationsString = binding.inputRationsAR.getEditText().getText().toString().trim();
         int rations = Integer.parseInt(rationsString);
 
+        if (stepsList.isEmpty() || ingredientsList.isEmpty()){
+            Toast.makeText(AddRecipe.this, "You need to add ingredients and steps", Toast.LENGTH_SHORT).show();
+            return null;
+        }
         //Get steps list
         Set<Steps> stepsSet = new HashSet<>();
         if (!stepsList.isEmpty()){

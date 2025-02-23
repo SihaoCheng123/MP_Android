@@ -1,5 +1,6 @@
 package com.example.mealplanner.ui.fragments;
 
+import android.content.Intent;
 import android.os.Bundle;
 
 import androidx.annotation.NonNull;
@@ -22,7 +23,9 @@ import com.example.mealplanner.io.api.ApiRecipeService;
 import com.example.mealplanner.io.viewModel.ViewModel;
 import com.example.mealplanner.model.data.Ingredients;
 import com.example.mealplanner.model.data.Recipes;
+import com.example.mealplanner.ui.components.AddRecipe;
 import com.example.mealplanner.ui.components.CalendarWeekHS;
+import com.example.mealplanner.ui.components.RecipeDetailed;
 
 import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
@@ -33,11 +36,7 @@ import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
 
-/**
- * A simple {@link Fragment} subclass.
- * Use the {@link HomeScreen#newInstance} factory method to
- * create an instance of this fragment.
- */
+
 public class HomeScreen extends Fragment {
 
     private List<Recipes> recipesList = new ArrayList<>();
@@ -144,19 +143,23 @@ public class HomeScreen extends Fragment {
         }
         if (breakFastAdded){
             LinearLayout.LayoutParams params = (LinearLayout.LayoutParams) breakfastGeneralLayout.getLayoutParams();
-            params.topMargin = 690;
+            params.topMargin = 700;
             breakfastGeneralLayout.setLayoutParams(params);
         }else {
             inflateNoRecipeCard(R.id.breakfastLayout, R.drawable.round_card_white);
+            goAddRecipe(breakfastLayout);
         }
         if (!lunchAdded) {
             inflateNoRecipeCard(R.id.lunchLayout, R.drawable.round_card_secondary);
+            goAddRecipe(lunchLayout);
         }
         if (!snackAdded){
             inflateNoRecipeCard(R.id.snackLayout, R.drawable.round_card_primary);
+            goAddRecipe(snackLayout);
         }
         if (!dinnerAdded){
             inflateNoRecipeCard(R.id.dinnerLayout, R.drawable.round_card_white);
+            goAddRecipe(dinnerLayout);
         }
     }
 
@@ -199,6 +202,21 @@ public class HomeScreen extends Fragment {
         LinearLayout breakfastLayout = getView().findViewById(R.id.breakfastGeneralLayout);
         breakfastLayout.setLayoutParams(params);
         recipeLayout.addView(noRecipeView);
+    }
+
+    private void goDetailedRecipe(){
+        Intent intent = new Intent(getContext(), RecipeDetailed.class);
+        startActivity(intent);
+    }
+
+    private void goAddRecipe(FrameLayout layout){
+        layout.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(getContext(), AddRecipe.class);
+                startActivity(intent);
+            }
+        });
     }
 
 }
