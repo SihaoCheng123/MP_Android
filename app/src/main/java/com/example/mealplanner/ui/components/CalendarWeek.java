@@ -1,8 +1,9 @@
 package com.example.mealplanner.ui.components;
 
-import android.content.Context;
 import android.os.Bundle;
+import android.view.LayoutInflater;
 import android.view.View;
+import android.widget.CalendarView;
 
 import androidx.annotation.NonNull;
 import androidx.fragment.app.Fragment;
@@ -13,6 +14,7 @@ import com.example.mealplanner.R;
 import com.example.mealplanner.databinding.ComponentWeeklyCalendarBinding;
 import com.example.mealplanner.io.viewModel.ViewModel;
 import com.example.mealplanner.model.recycler.weeklyCalendar.WeeklyCalendarAdapter;
+import com.google.android.material.dialog.MaterialAlertDialogBuilder;
 
 import java.time.DayOfWeek;
 import java.time.LocalDate;
@@ -20,8 +22,9 @@ import java.util.ArrayList;
 
 public class CalendarWeek extends Fragment implements WeeklyCalendarAdapter.OnItemListener{
     ComponentWeeklyCalendarBinding binding;
-    public static LocalDate selectedDate;
+    public LocalDate selectedDate;
     private ViewModel dateViewModel;
+    private LocalDate selectedFromCalendar;
     private WeeklyCalendarAdapter weeklyCalendarAdapter;
 
     public CalendarWeek() {
@@ -34,11 +37,19 @@ public class CalendarWeek extends Fragment implements WeeklyCalendarAdapter.OnIt
         super.onViewCreated(view, savedInstance);
         binding = ComponentWeeklyCalendarBinding.bind(view);
         dateViewModel = new ViewModelProvider(requireParentFragment()).get(ViewModel.class);
-        selectedDate = LocalDate.now();
+        dateViewModel.getSelectedDate().observe(getViewLifecycleOwner(), newDate-> {
+            selectedDate = newDate;
+            setWeekView();
+        });
+        if (selectedDate == null){
+            selectedDate = LocalDate.now();
+            dateViewModel.setSelectedDate(selectedDate);
+        }
         setWeekView();
         binding.iconArrowBackWC.setOnClickListener(v -> previousAction());
         binding.iconArrowForwardWC.setOnClickListener(v -> nextAction());
-        dateViewModel.setSelectedDate(selectedDate);
+
+        binding.monthTextWC.setOnClickListener(v -> showCalendar());
     }
 
 
@@ -77,22 +88,39 @@ public class CalendarWeek extends Fragment implements WeeklyCalendarAdapter.OnIt
     @Override
     public void onItemClick(int position, LocalDate date) {
         selectedDate = date;
-        setWeekView();
         dateViewModel.setSelectedDate(selectedDate);
     }
 
     public void previousAction(){
         selectedDate = selectedDate.minusWeeks(1);
-        setWeekView();
         dateViewModel.setSelectedDate(selectedDate);
     }
 
     public void nextAction(){
         selectedDate = selectedDate.plusWeeks(1);
-        setWeekView();
-
+        dateViewModel.setSelectedDate(selectedDate);
     }
 
+    private void showCalendar(){
+        MaterialAlertDialogBuilder alertDialogBuilder = new MaterialAlertDialogBuilder(requireContext());
+        LayoutInflater inflater = getLayoutInflater();
+        View calendarView = inflater.inflate(R.layout.activity_calendar, null);
+        CalendarView calendar = calendarView.findViewById(R.id.calendarView);
+        dateViewModel = new ViewModelProvider(requireParentFragment()).get(ViewModel.class);
+        calendar.setOnDateChangeListener((view, year, month, dayOfMonth) -> {
+            selectedFromCalendar = LocalDate.of(year, month +1, dayOfMonth);
+        });
+
+        alertDialogBuilder.setTitle("Calendar")
+                .setPositiveButton("OK", ((dialog, which) -> {
+                    dateViewModel.setSelectedDate(selectedFromCalendar);
+                    setWeekView();
+                }))
+                .setNegativeButton("Cancel",((dialog, which) -> {}));
+        alertDialogBuilder.setView(calendarView);
+        alertDialogBuilder.create();
+        alertDialogBuilder.show();
+    }
 
 
 }

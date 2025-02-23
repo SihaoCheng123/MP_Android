@@ -7,10 +7,10 @@ import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentTransaction;
 import androidx.lifecycle.ViewModelProvider;
 
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.CalendarView;
 import android.widget.FrameLayout;
 import android.widget.LinearLayout;
 import android.widget.TextView;
@@ -22,6 +22,7 @@ import com.example.mealplanner.io.api.ApiRecipeService;
 import com.example.mealplanner.io.viewModel.ViewModel;
 import com.example.mealplanner.model.data.Recipes;
 import com.example.mealplanner.ui.components.CalendarWeek;
+import com.google.android.material.dialog.MaterialAlertDialogBuilder;
 
 import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
@@ -35,6 +36,8 @@ import retrofit2.Response;
 public class Calendar extends Fragment {
 
     private List<Recipes> recipesList = new ArrayList<>();
+    private LocalDate selectedFromCalendar;
+    private ViewModel dateViewModel;
 
     public Calendar() {
         super(R.layout.fragment_calendar);
@@ -47,17 +50,22 @@ public class Calendar extends Fragment {
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
-        ViewModel dateViewModel = new ViewModelProvider(this).get(ViewModel.class);
+        dateViewModel = new ViewModelProvider(this).get(ViewModel.class);
         View view = inflater.inflate(R.layout.fragment_calendar, container, false);
         if (savedInstanceState == null){
             FragmentTransaction transaction = getChildFragmentManager().beginTransaction();
             transaction.replace(R.id.calendarContainerCS, new CalendarWeek());
             transaction.commit();
         }
+        dateViewModel.getSelectedDate().observe(getViewLifecycleOwner(), newDate-> {
+            getRecipeByDate(formatDate(newDate));
+            TextView actualDay = view.findViewById(R.id.actualDayTextCS);
+            actualDay.setText(formatDateDayMonth(newDate));
+        });
         LocalDate selectedDate = LocalDate.now();
-        dateViewModel.getSelectedDate().observe(getViewLifecycleOwner(), newDate-> getRecipeByDate(formatDate(newDate)));
+        TextView actualDay = view.findViewById(R.id.actualDayTextCS);
+        actualDay.setText(formatDateDayMonth(selectedDate));
 
-        // Inflate the layout for this fragment
         return view;
     }
 
@@ -68,6 +76,11 @@ public class Calendar extends Fragment {
     }
     private String formatDate(LocalDate selectedDate){
         DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd");
+        return formatter.format(selectedDate);
+    }
+
+    private String formatDateDayMonth(LocalDate selectedDate){
+        DateTimeFormatter formatter = DateTimeFormatter.ofPattern(("MMM dd"));
         return formatter.format(selectedDate);
     }
 
@@ -139,7 +152,7 @@ public class Calendar extends Fragment {
         }else {
             inflateNoRecipeCard(R.id.breakfastLayoutCS, R.drawable.round_card_white);
             LinearLayout.LayoutParams params = (LinearLayout.LayoutParams) breakfastLayout.getLayoutParams();
-            params.topMargin = 0;
+            params.topMargin = 50;
             breakfastLayout.setLayoutParams(params);
         }
         if (!lunchAdded) {
@@ -168,4 +181,6 @@ public class Calendar extends Fragment {
         noRecipeView.setBackgroundResource(bgResourse);
         recipeLayout.addView(noRecipeView);
     }
+//
+
 }
