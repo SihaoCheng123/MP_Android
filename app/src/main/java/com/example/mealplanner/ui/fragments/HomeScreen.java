@@ -12,6 +12,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.FrameLayout;
+import android.widget.LinearLayout;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -78,6 +79,7 @@ public class HomeScreen extends Fragment {
     }
 
     private void getRecipeByDate(String date) {
+
         ApiRecipeService apiRecipeService = ApiClient.getClient().create(ApiRecipeService.class);
         Call<List<Recipes>> call = apiRecipeService.getRecipesByDate(date);
         call.enqueue(new Callback<>() {
@@ -88,6 +90,8 @@ public class HomeScreen extends Fragment {
                     Toast.makeText(getContext(), "Success", Toast.LENGTH_SHORT).show();
                     if (!recipesList.isEmpty()){
                         showRecipes(recipesList);
+                    }else {
+                        showRecipes(new ArrayList<>());
                     }
                 }else {
                     Toast.makeText(getContext(), "Error with recipes", Toast.LENGTH_SHORT).show();
@@ -106,6 +110,18 @@ public class HomeScreen extends Fragment {
         boolean lunchAdded = false;
         boolean snackAdded = false;
         boolean dinnerAdded = false;
+
+        FrameLayout breakfastLayout = getView().findViewById(R.id.breakfastLayout);
+        FrameLayout lunchLayout = getView().findViewById(R.id.lunchLayout);
+        FrameLayout snackLayout = getView().findViewById(R.id.snackLayout);
+        FrameLayout dinnerLayout = getView().findViewById(R.id.dinnerLayout);
+
+        // Limpiar los layouts antes de agregar nuevas recetas
+        breakfastLayout.removeAllViews();
+        lunchLayout.removeAllViews();
+        snackLayout.removeAllViews();
+        dinnerLayout.removeAllViews();
+
         if (!recipes.isEmpty()){
 
             for (Recipes recipe: recipes){
@@ -127,11 +143,14 @@ public class HomeScreen extends Fragment {
         }
         if (!breakFastAdded){
             inflateNoRecipeCard(R.id.breakfastLayout, R.drawable.round_card_white);
-        } else if (!lunchAdded) {
+        }
+        if (!lunchAdded) {
             inflateNoRecipeCard(R.id.lunchLayout, R.drawable.round_card_secondary);
-        }else if (!snackAdded){
+        }
+        if (!snackAdded){
             inflateNoRecipeCard(R.id.snackLayout, R.drawable.round_card_primary);
-        }else if (!dinnerAdded){
+        }
+        if (!dinnerAdded){
             inflateNoRecipeCard(R.id.dinnerLayout, R.drawable.round_card_white);
         }
     }
@@ -142,12 +161,32 @@ public class HomeScreen extends Fragment {
         TextView recipeName = recipeView.findViewById(R.id.recipeName);
         recipeName.setText(recipes.getName());
         recipeView.setBackgroundResource(bgResource);
+        LinearLayout.LayoutParams params = new LinearLayout.LayoutParams(
+                FrameLayout.LayoutParams.MATCH_PARENT,
+                FrameLayout.LayoutParams.WRAP_CONTENT
+        );
+
+        if (recipes.getCategory().equals("Breakfast")) {
+            params.topMargin = 680;
+            params.bottomMargin = 36;
+        }
+        LinearLayout breakfastLayout = getView().findViewById(R.id.breakfastGeneralLayout);
+
+        breakfastLayout.setLayoutParams(params);
         recipeLayout.addView(recipeView);
     }
     private void inflateNoRecipeCard(int layoutId, int bgResourse){
         FrameLayout recipeLayout = getView().findViewById(layoutId);
         View noRecipeView = getLayoutInflater().inflate(R.layout.cardview_null_recipe, recipeLayout,false);
         noRecipeView.setBackgroundResource(bgResourse);
+        LinearLayout.LayoutParams params = new LinearLayout.LayoutParams(
+                FrameLayout.LayoutParams.MATCH_PARENT,
+                FrameLayout.LayoutParams.WRAP_CONTENT
+        );
+        params.topMargin = 150;
+        params.bottomMargin = 36;
+        LinearLayout breakfastLayout = getView().findViewById(R.id.breakfastGeneralLayout);
+        breakfastLayout.setLayoutParams(params);
         recipeLayout.addView(noRecipeView);
     }
 
