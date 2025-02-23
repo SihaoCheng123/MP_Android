@@ -19,6 +19,7 @@ import com.example.mealplanner.R;
 import com.example.mealplanner.databinding.ActivityAddRecipeBinding;
 import com.example.mealplanner.io.api.ApiClient;
 import com.example.mealplanner.io.api.ApiRecipeService;
+import com.example.mealplanner.model.data.Ingredients;
 import com.example.mealplanner.model.data.Recipes;
 import com.example.mealplanner.model.data.Steps;
 import com.google.android.material.dialog.MaterialAlertDialogBuilder;
@@ -32,11 +33,11 @@ import retrofit2.Callback;
 import retrofit2.Response;
 
 public class AddRecipe extends AppCompatActivity {
-    private String recipeName, date, category, time, rationsString;
-    private int rations = 0;
-    private ArrayList<String> stepsList = new ArrayList<>();
-    private ArrayList<String> ingredientsList = new ArrayList<>();
-    private ArrayList<TextView> categoryList = new ArrayList<>();
+    private String date;
+    private String category;
+    private final ArrayList<String> stepsList = new ArrayList<>();
+    private final ArrayList<String> ingredientsList = new ArrayList<>();
+    private final ArrayList<TextView> categoryList = new ArrayList<>();
     private TextView selectedCategoryTV;
     ActivityAddRecipeBinding binding;
     @Override
@@ -147,14 +148,14 @@ public class AddRecipe extends AppCompatActivity {
 
     private Recipes createRecipe(){
         //Get recipe name
-        recipeName = binding.inputRecipeNameAR.getEditText().getText().toString().trim();
+        String recipeName = binding.inputRecipeNameAR.getEditText().getText().toString().trim();
         if (recipeName.isEmpty()){
             Toast.makeText(AddRecipe.this, "Required data", Toast.LENGTH_SHORT).show();
         }
         //Get time
-        time = binding.inputTimeAR.getEditText().getText().toString().trim();
-        rationsString = binding.inputRationsAR.getEditText().getText().toString().trim();
-        rations = Integer.parseInt(rationsString);
+        String time = binding.inputTimeAR.getEditText().getText().toString().trim();
+        String rationsString = binding.inputRationsAR.getEditText().getText().toString().trim();
+        int rations = Integer.parseInt(rationsString);
 
         //Get steps list
         Set<Steps> stepsSet = new HashSet<>();
@@ -164,7 +165,15 @@ public class AddRecipe extends AppCompatActivity {
                 stepsSet.add(steps);
             }
         }
-        return new Recipes(recipeName, time, rations, date, "", category, stepsSet);
+        //Get ingredients list
+        Set<Ingredients> ingredientsSet = new HashSet<>();
+        if(!ingredientsList.isEmpty()){
+            for (int i = 0; i < ingredientsList.size(); i++) {
+                Ingredients newIng = new Ingredients(ingredientsList.get(i));
+                ingredientsSet.add(newIng);
+            }
+        }
+        return new Recipes(recipeName, time, rations, date, "", category, stepsSet, ingredientsSet);
     }
 
     private void sendRecipe(Recipes recipes){

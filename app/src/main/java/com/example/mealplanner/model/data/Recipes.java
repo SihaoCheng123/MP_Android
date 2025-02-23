@@ -13,7 +13,9 @@ public class Recipes {
     private String category;
     private Set<Steps> steps;
 
-    public Recipes(String name, String time, int rations, String date, String image, String category, Set<Steps> steps) {
+    private Set<Ingredients> ingredients;
+
+    public Recipes(String name, String time, int rations, String date, String image, String category, Set<Steps> steps, Set<Ingredients> ingredients) {
         this.name = name;
         this.time = time;
         this.rations = rations;
@@ -21,6 +23,7 @@ public class Recipes {
         this.image = image;
         this.category = category;
         this.steps = steps;
+        this.ingredients = ingredients;
     }
 
     public Long getId() {
@@ -98,5 +101,13 @@ public class Recipes {
                 ", category='" + category + '\'' +
                 ", steps=" + steps +
                 '}';
+    }
+
+    public Set<Ingredients> getIngredients() {
+        return ingredients;
+    }
+
+    public void setIngredients(Set<Ingredients> ingredients) {
+        this.ingredients = ingredients;
     }
 }

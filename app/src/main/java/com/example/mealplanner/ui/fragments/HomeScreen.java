@@ -20,6 +20,7 @@ import com.example.mealplanner.R;
 import com.example.mealplanner.io.api.ApiClient;
 import com.example.mealplanner.io.api.ApiRecipeService;
 import com.example.mealplanner.io.viewModel.ViewModel;
+import com.example.mealplanner.model.data.Ingredients;
 import com.example.mealplanner.model.data.Recipes;
 import com.example.mealplanner.ui.components.CalendarWeekHS;
 
@@ -114,6 +115,7 @@ public class HomeScreen extends Fragment {
         FrameLayout lunchLayout = getView().findViewById(R.id.lunchLayout);
         FrameLayout snackLayout = getView().findViewById(R.id.snackLayout);
         FrameLayout dinnerLayout = getView().findViewById(R.id.dinnerLayout);
+        LinearLayout breakfastGeneralLayout = getView().findViewById(R.id.breakfastGeneralLayout);
 
         // Limpiar los layouts antes de agregar nuevas recetas
         breakfastLayout.removeAllViews();
@@ -140,7 +142,11 @@ public class HomeScreen extends Fragment {
 
             }
         }
-        if (!breakFastAdded){
+        if (breakFastAdded){
+            LinearLayout.LayoutParams params = (LinearLayout.LayoutParams) breakfastGeneralLayout.getLayoutParams();
+            params.topMargin = 690;
+            breakfastGeneralLayout.setLayoutParams(params);
+        }else {
             inflateNoRecipeCard(R.id.breakfastLayout, R.drawable.round_card_white);
         }
         if (!lunchAdded) {
@@ -160,18 +166,24 @@ public class HomeScreen extends Fragment {
         TextView recipeName = recipeView.findViewById(R.id.recipeName);
         recipeName.setText(recipes.getName());
         recipeView.setBackgroundResource(bgResource);
-        LinearLayout.LayoutParams params = new LinearLayout.LayoutParams(
-                FrameLayout.LayoutParams.MATCH_PARENT,
-                FrameLayout.LayoutParams.WRAP_CONTENT
-        );
 
-        if (recipes.getCategory().equals("Breakfast")) {
-            params.topMargin = 680;
-            params.bottomMargin = 36;
+        TextView ing1 = recipeView.findViewById(R.id.recipeIng1);
+        TextView ing2 = recipeView.findViewById(R.id.recipeIng2);
+        TextView ing3 = recipeView.findViewById(R.id.recipeIng3);
+        List<TextView> ingViews = new ArrayList<>();
+        ingViews.add(ing1);
+        ingViews.add(ing2);
+        ingViews.add(ing3);
+        int i = 0;
+        if (!recipes.getIngredients().isEmpty()){
+            for (Ingredients ing : recipes.getIngredients()){
+                if (i < ingViews.size()){
+                    ingViews.get(i).setText(ing.getName());
+                    i++;
+                }
+            }
         }
-        LinearLayout breakfastLayout = getView().findViewById(R.id.breakfastGeneralLayout);
 
-        breakfastLayout.setLayoutParams(params);
         recipeLayout.addView(recipeView);
     }
     private void inflateNoRecipeCard(int layoutId, int bgResourse){
