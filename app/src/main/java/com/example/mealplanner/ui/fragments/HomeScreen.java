@@ -87,7 +87,6 @@ public class HomeScreen extends Fragment {
             public void onResponse(@NonNull Call<List<Recipes>> call, @NonNull Response<List<Recipes>> response) {
                 if (response.isSuccessful()) {
                     recipesList = response.body();
-                    Toast.makeText(getContext(), "Success", Toast.LENGTH_SHORT).show();
                     if (!recipesList.isEmpty()){
                         showRecipes(recipesList);
                     }else {
