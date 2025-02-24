@@ -15,6 +15,7 @@ import com.example.mealplanner.io.api.ApiClient;
 import com.example.mealplanner.io.api.ApiRecipeService;
 import com.example.mealplanner.model.data.Ingredients;
 import com.example.mealplanner.model.data.Recipes;
+import com.example.mealplanner.model.data.Steps;
 import com.example.mealplanner.model.recycler.ViewPagerAdapterDR;
 import com.google.android.material.tabs.TabLayoutMediator;
 
@@ -31,8 +32,10 @@ public class RecipeDetailed extends AppCompatActivity {
 
     ActivityRecipeDetailedBinding binding;
     private Set<Ingredients> ingredientsSet = new HashSet<>();
+    private Set<Steps> stepsSet = new HashSet<>();
 
     private ArrayList<Ingredients> ingredientsList;
+    private ArrayList<Steps> stepsList;
     private Recipes newRecipe;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -46,8 +49,6 @@ public class RecipeDetailed extends AppCompatActivity {
 
         binding.iconBackDR.setOnClickListener(v -> finish());
         getRecipeById(recipeId);
-
-
 
     }
 
@@ -64,12 +65,13 @@ public class RecipeDetailed extends AppCompatActivity {
                         binding.recipeTimeTextDR.setText(newRecipe.getTime());
                         binding.servingsAmountDR.setText(String.valueOf(newRecipe.getRations()));
                         ingredientsSet = newRecipe.getIngredients();
-
-                        if(!ingredientsSet.isEmpty()){
+                        stepsSet = newRecipe.getSteps();
+                        if(!ingredientsSet.isEmpty() && !stepsSet.isEmpty()){
                             ingredientsList = new ArrayList<>(ingredientsSet);
+                            stepsList = new ArrayList<>(stepsSet);
                             if (!ingredientsList.isEmpty()){
                                 ViewPager2 viewPager2 = findViewById(R.id.viewPagerDR);
-                                ViewPagerAdapterDR viewPagerAdapterDR = new ViewPagerAdapterDR(RecipeDetailed.this, recipeId, ingredientsList);
+                                ViewPagerAdapterDR viewPagerAdapterDR = new ViewPagerAdapterDR(RecipeDetailed.this, recipeId, ingredientsList, stepsList);
                                 binding.viewPagerDR.setAdapter(viewPagerAdapterDR);
                                 new TabLayoutMediator(binding.tabLayoutDR, viewPager2, (tab, position) -> {
                                     if (position == 0) {
@@ -80,7 +82,6 @@ public class RecipeDetailed extends AppCompatActivity {
                                 }).attach();
                             }
                         }
-
 
                     } else {
                         Toast.makeText(RecipeDetailed.this, "Error in fetching recipe", Toast.LENGTH_SHORT).show();

@@ -10,15 +10,15 @@ import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.mealplanner.R;
-import com.example.mealplanner.model.recycler.ingredientsSimple.IngredientSimpleAdapter;
+import com.example.mealplanner.model.data.Steps;
 
 import java.util.ArrayList;
 
 public class StepsSimpleAdapter extends RecyclerView.Adapter<StepsSimpleAdapter.MyViewHolder>{
     Context context;
-    ArrayList<StepsSimpleEventModel> stepsList;
+    ArrayList<Steps> stepsList;
 
-    public StepsSimpleAdapter(Context context, ArrayList<StepsSimpleEventModel> stepsList) {
+    public StepsSimpleAdapter(Context context, ArrayList<Steps> stepsList) {
         this.context = context;
         this.stepsList = stepsList;
     }
@@ -33,10 +33,9 @@ public class StepsSimpleAdapter extends RecyclerView.Adapter<StepsSimpleAdapter.
 
     @Override
     public void onBindViewHolder(@NonNull MyViewHolder holder, int position) {
-        String stepDescription = stepsList.get(position).getStepDescription();
-        String stepNumber = stepsList.get(position).getNumberStep();
-        holder.stepNumber.setText(stepNumber);
-        holder.stepDescription.setText(stepDescription);
+        Steps step = stepsList.get(position);
+        holder.stepNumber.setText(String.valueOf(step.getNumber_step()));
+        holder.stepDescription.setText(step.getDescription());
     }
 
     @Override
