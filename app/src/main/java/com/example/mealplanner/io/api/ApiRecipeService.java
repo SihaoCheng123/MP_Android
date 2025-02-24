@@ -1,4 +1,5 @@
 package com.example.mealplanner.io.api;
+import com.example.mealplanner.model.data.Ingredients;
 import com.example.mealplanner.model.data.Recipes;
 import java.util.List;
 
@@ -23,4 +24,7 @@ public interface ApiRecipeService {
 
     @GET("recipes/get/{id}")
     Call<Recipes> getRecipeById(@Path("id") Long id);
+
+    @GET("recipes/weekly-ingredients/{date}")
+    Call<List<Ingredients>> getIngredientsFromThisWeek(@Path("date") String date);
 }

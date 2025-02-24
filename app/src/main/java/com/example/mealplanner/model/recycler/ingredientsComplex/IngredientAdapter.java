@@ -1,6 +1,7 @@
 package com.example.mealplanner.model.recycler.ingredientsComplex;
 
 import android.content.Context;
+import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -10,14 +11,16 @@ import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.mealplanner.R;
+import com.example.mealplanner.model.data.Ingredients;
 
 import java.util.ArrayList;
+import java.util.List;
 
 public class IngredientAdapter extends RecyclerView.Adapter<IngredientAdapter.MyViewHolder> {
     Context context;
-    ArrayList<IngredientEventModel> ingredientsList;
+    List<Ingredients> ingredientsList;
 
-    public IngredientAdapter(Context context, ArrayList<IngredientEventModel> ingredientsList) {
+    public IngredientAdapter(Context context, List<Ingredients> ingredientsList) {
         this.context = context;
         this.ingredientsList = ingredientsList;
     }
@@ -27,18 +30,14 @@ public class IngredientAdapter extends RecyclerView.Adapter<IngredientAdapter.My
     public MyViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
         LayoutInflater inflater = LayoutInflater.from(context);
         View view = inflater.inflate(R.layout.cardview_ingredient_complex, parent, false);
+        Bundle bundle = new Bundle();
         return new IngredientAdapter.MyViewHolder(view);
     }
 
     @Override
     public void onBindViewHolder(@NonNull MyViewHolder holder, int position) {
-        String ingredientName = ingredientsList.get(position).getIngredientName();
-        String ingredientDetail = ingredientsList.get(position).getIngredientDetail();
-        String ingredientPrice = ingredientsList.get(position).getIngredientPrice();
-
+        String ingredientName = ingredientsList.get(position).getName();
         holder.ingredientNameCV.setText(ingredientName);
-        holder.ingredientDetailCV.setText(ingredientDetail);
-        holder.ingredientPriceCV.setText(ingredientPrice);
     }
 
     @Override
@@ -48,13 +47,11 @@ public class IngredientAdapter extends RecyclerView.Adapter<IngredientAdapter.My
 
     public static class MyViewHolder extends RecyclerView.ViewHolder{
 
-        TextView ingredientNameCV, ingredientDetailCV, ingredientPriceCV;
+        TextView ingredientNameCV, ingredientCategoryCV;
 
         public MyViewHolder(@NonNull View itemView) {
             super(itemView);
             ingredientNameCV = itemView.findViewById(R.id.ingredientNameCV);
-            ingredientDetailCV = itemView.findViewById(R.id.ingredientDetailCV);
-            ingredientPriceCV = itemView.findViewById(R.id.ingredientPriceCV);
         }
     }
 }

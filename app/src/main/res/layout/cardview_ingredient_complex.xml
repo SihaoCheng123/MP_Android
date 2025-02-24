@@ -20,7 +20,7 @@
 
             <ImageView
                 android:id="@+id/foodImgCV"
-                android:layout_width="180dp"
+                android:layout_width="250dp"
                 android:layout_height="match_parent"
                 android:layout_weight="1"
                 android:layout_marginEnd="16dp"
@@ -46,7 +46,7 @@
                     android:id="@+id/ingredientDetailCV"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:text="@string/details"
+                    android:text="@string/category"
                     android:layout_marginBottom="9dp"
                     android:fontFamily="@font/poppins_medium"
                     android:textColor="@color/md_theme_onTertiaryContainer"
@@ -75,9 +75,12 @@
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:layout_marginHorizontal="6dp"
+                            android:layout_marginVertical="2dp"
                             android:fontFamily="@font/poppins_regular"
                             android:text="1"
-                            android:textSize="14sp" />
+                            android:textSize="14sp"
+                            android:gravity="center"
+                            android:layout_gravity="center"/>
                         <ImageView
                             android:id="@+id/iconMoreCV"
                             android:layout_width="wrap_content"
@@ -85,19 +88,21 @@
                             android:src="@drawable/icon_minus_ingredient"/>
                     </LinearLayout>
 
-                    <TextView
-                        android:id="@+id/ingredientPriceCV"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:text="2.00 €"
-                        android:fontFamily="@font/poppins_bold"
-                        android:textColor="@color/md_theme_scrim"
-                        android:textSize="14sp"
-                        android:layout_marginVertical="4dp"
-                        app:layout_constraintEnd_toEndOf="parent"
-                        app:layout_constraintTop_toTopOf="parent"
-                        android:layout_marginEnd="16dp"/>
                 </androidx.constraintlayout.widget.ConstraintLayout>
+
+            </LinearLayout>
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:layout_gravity="center"
+                android:orientation="vertical"
+                android:gravity="center">
+                <CheckBox
+                    android:id="@+id/checkBoxIngComplex"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginEnd="10dp"
+                    />
             </LinearLayout>
         </LinearLayout>
     </androidx.cardview.widget.CardView>
