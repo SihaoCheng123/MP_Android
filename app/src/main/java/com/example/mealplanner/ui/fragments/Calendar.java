@@ -1,5 +1,6 @@
 package com.example.mealplanner.ui.fragments;
 
+import android.content.Intent;
 import android.os.Bundle;
 
 import androidx.annotation.NonNull;
@@ -21,8 +22,11 @@ import com.example.mealplanner.io.api.ApiClient;
 import com.example.mealplanner.io.api.ApiRecipeService;
 import com.example.mealplanner.io.token.UserIdManager;
 import com.example.mealplanner.io.viewModel.ViewModel;
+import com.example.mealplanner.model.data.Ingredients;
 import com.example.mealplanner.model.data.Recipes;
+import com.example.mealplanner.ui.components.AddRecipe;
 import com.example.mealplanner.ui.components.CalendarWeek;
+import com.example.mealplanner.ui.components.RecipeDetailed;
 import com.google.android.material.dialog.MaterialAlertDialogBuilder;
 
 import java.time.LocalDate;
@@ -122,51 +126,63 @@ public class Calendar extends Fragment {
         FrameLayout lunchLayout = getView().findViewById(R.id.lunchLayoutCS);
         FrameLayout snackLayout = getView().findViewById(R.id.snackLayoutCS);
         FrameLayout dinnerLayout = getView().findViewById(R.id.dinnerLayoutCS);
-
         // Limpiar los layouts antes de agregar nuevas recetas
         breakfastLayout.removeAllViews();
         lunchLayout.removeAllViews();
         snackLayout.removeAllViews();
         dinnerLayout.removeAllViews();
-
+        int addedCount = 0;
         if (!recipes.isEmpty()){
 
             for (Recipes recipe: recipes){
                 if (recipe.getCategory().equals("Breakfast")){
                     inflateRecipeCard(recipe, R.id.breakfastLayoutCS, R.drawable.round_card_white);
                     breakFastAdded = true;
+                    addedCount++;
                 } else if (recipe.getCategory().equals("Lunch")) {
                     inflateRecipeCard(recipe, R.id.lunchLayoutCS, R.drawable.round_card_secondary);
                     lunchAdded = true;
+                    addedCount++;
                 }else if (recipe.getCategory().equals("Snack")) {
                     inflateRecipeCard(recipe, R.id.snackLayoutCS, R.drawable.round_card_primary);
                     snackAdded = true;
+                    addedCount++;
                 }else if (recipe.getCategory().equals("Dinner")) {
                     inflateRecipeCard(recipe, R.id.dinnerLayoutCS, R.drawable.round_card_white);
                     dinnerAdded = true;
+                    addedCount++;
                 }
 
             }
         }
-        if (breakFastAdded){
-            LinearLayout.LayoutParams params = (LinearLayout.LayoutParams) breakfastLayout.getLayoutParams();
-            params.topMargin = 270;
-            breakfastLayout.setLayoutParams(params);
-        }else {
+        if (!breakFastAdded){
             inflateNoRecipeCard(R.id.breakfastLayoutCS, R.drawable.round_card_white);
-            LinearLayout.LayoutParams params = (LinearLayout.LayoutParams) breakfastLayout.getLayoutParams();
-            params.topMargin = 50;
-            breakfastLayout.setLayoutParams(params);
+            goAddRecipe(breakfastLayout);
         }
         if (!lunchAdded) {
             inflateNoRecipeCard(R.id.lunchLayoutCS, R.drawable.round_card_secondary);
+            goAddRecipe(lunchLayout);
         }
         if (!snackAdded){
             inflateNoRecipeCard(R.id.snackLayoutCS, R.drawable.round_card_primary);
+            goAddRecipe(snackLayout);
         }
         if (!dinnerAdded){
             inflateNoRecipeCard(R.id.dinnerLayoutCS, R.drawable.round_card_white);
+            goAddRecipe(dinnerLayout);
         }
+        LinearLayout.LayoutParams params = (LinearLayout.LayoutParams) breakfastLayout.getLayoutParams();
+        if (addedCount == 1){
+            params.topMargin = 40;
+        } else if (addedCount == 2) {
+            params.topMargin = 100;
+        } else if (addedCount == 3) {
+            params.topMargin = 230;
+        } else if (addedCount == 4) {
+            params.topMargin = 360;
+        }
+
+        breakfastLayout.setLayoutParams(params);
     }
 
     private void inflateRecipeCard(Recipes recipes,int layoutId, int bgResource){
@@ -175,14 +191,48 @@ public class Calendar extends Fragment {
         TextView recipeName = recipeView.findViewById(R.id.recipeName);
         recipeName.setText(recipes.getName());
         recipeView.setBackgroundResource(bgResource);
-
+        TextView ing1 = recipeView.findViewById(R.id.recipeIng1);
+        TextView ing2 = recipeView.findViewById(R.id.recipeIng2);
+        TextView ing3 = recipeView.findViewById(R.id.recipeIng3);
+        List<TextView> ingViews = new ArrayList<>();
+        ingViews.add(ing1);
+        ingViews.add(ing2);
+        ingViews.add(ing3);
+        int i = 0;
+        if (!recipes.getIngredients().isEmpty()){
+            for (Ingredients ing : recipes.getIngredients()){
+                if (i < ingViews.size()){
+                    ingViews.get(i).setText(ing.getName());
+                    i++;
+                }
+            }
+        }
+        recipeView.setOnClickListener(v -> {
+            Intent intent = new Intent(getContext(), RecipeDetailed.class);
+            intent.putExtra("recipeId", recipes.getId());
+            startActivity(intent);
+        });
         recipeLayout.addView(recipeView);
     }
     private void inflateNoRecipeCard(int layoutId, int bgResourse){
         FrameLayout recipeLayout = getView().findViewById(layoutId);
         View noRecipeView = getLayoutInflater().inflate(R.layout.cardview_null_recipe, recipeLayout,false);
         noRecipeView.setBackgroundResource(bgResourse);
+        FrameLayout breakfastLayout = getView().findViewById(R.id.breakfastLayoutCS);
+        LinearLayout.LayoutParams params = (LinearLayout.LayoutParams) breakfastLayout.getLayoutParams();
+        params.topMargin = 50;
+        breakfastLayout.setLayoutParams(params);
         recipeLayout.addView(noRecipeView);
+    }
+
+    private void goAddRecipe(FrameLayout layout){
+        layout.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(getContext(), AddRecipe.class);
+                startActivity(intent);
+            }
+        });
     }
 //
 

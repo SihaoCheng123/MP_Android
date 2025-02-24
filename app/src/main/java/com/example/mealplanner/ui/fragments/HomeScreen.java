@@ -118,7 +118,6 @@ public class HomeScreen extends Fragment {
         FrameLayout snackLayout = getView().findViewById(R.id.snackLayout);
         FrameLayout dinnerLayout = getView().findViewById(R.id.dinnerLayout);
         LinearLayout breakfastGeneralLayout = getView().findViewById(R.id.breakfastGeneralLayout);
-        TextView breakfastText = getView().findViewById(R.id.breakfastText);
 
         // Limpiar los layouts antes de agregar nuevas recetas
         breakfastLayout.removeAllViews();
