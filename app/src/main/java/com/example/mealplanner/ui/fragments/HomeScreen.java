@@ -20,6 +20,7 @@ import android.widget.Toast;
 import com.example.mealplanner.R;
 import com.example.mealplanner.io.api.ApiClient;
 import com.example.mealplanner.io.api.ApiRecipeService;
+import com.example.mealplanner.io.token.UserIdManager;
 import com.example.mealplanner.io.viewModel.ViewModel;
 import com.example.mealplanner.model.data.Ingredients;
 import com.example.mealplanner.model.data.Recipes;
@@ -40,6 +41,7 @@ import retrofit2.Response;
 public class HomeScreen extends Fragment {
 
     private List<Recipes> recipesList = new ArrayList<>();
+    private UserIdManager userIdManager;
 
     public HomeScreen() {
         // Required empty public constructor
@@ -62,6 +64,7 @@ public class HomeScreen extends Fragment {
         // Inflate the layout for this fragment
         View view = inflater.inflate(R.layout.fragment_home_screen, container, false);
         ViewModel dateViewModel = new ViewModelProvider(this).get(ViewModel.class);
+        userIdManager = new UserIdManager(getContext());
         if (savedInstanceState == null) {
             FragmentTransaction transaction = getChildFragmentManager().beginTransaction();
             transaction.replace(R.id.calendarContainerHS, new CalendarWeekHS());
@@ -81,7 +84,7 @@ public class HomeScreen extends Fragment {
     private void getRecipeByDate(String date) {
 
         ApiRecipeService apiRecipeService = ApiClient.getClient().create(ApiRecipeService.class);
-        Call<List<Recipes>> call = apiRecipeService.getRecipesByDate(date);
+        Call<List<Recipes>> call = apiRecipeService.getRecipesByDateAndUserId(date, userIdManager.getUserId());
         call.enqueue(new Callback<>() {
             @Override
             public void onResponse(@NonNull Call<List<Recipes>> call, @NonNull Response<List<Recipes>> response) {
@@ -115,6 +118,7 @@ public class HomeScreen extends Fragment {
         FrameLayout snackLayout = getView().findViewById(R.id.snackLayout);
         FrameLayout dinnerLayout = getView().findViewById(R.id.dinnerLayout);
         LinearLayout breakfastGeneralLayout = getView().findViewById(R.id.breakfastGeneralLayout);
+        TextView breakfastText = getView().findViewById(R.id.breakfastText);
 
         // Limpiar los layouts antes de agregar nuevas recetas
         breakfastLayout.removeAllViews();
@@ -122,29 +126,32 @@ public class HomeScreen extends Fragment {
         snackLayout.removeAllViews();
         dinnerLayout.removeAllViews();
 
+        int addedCount = 0;
+
         if (!recipes.isEmpty()){
 
             for (Recipes recipe: recipes){
                 if (recipe.getCategory().equals("Breakfast")){
                     inflateRecipeCard(recipe, R.id.breakfastLayout, R.drawable.round_card_white);
                     breakFastAdded = true;
+                    addedCount++;
                 } else if (recipe.getCategory().equals("Lunch")) {
                     inflateRecipeCard(recipe, R.id.lunchLayout, R.drawable.round_card_secondary);
                     lunchAdded = true;
+                    addedCount++;
                 }else if (recipe.getCategory().equals("Snack")) {
                     inflateRecipeCard(recipe, R.id.snackLayout, R.drawable.round_card_primary);
                     snackAdded = true;
+                    addedCount++;
                 }else if (recipe.getCategory().equals("Dinner")) {
                     inflateRecipeCard(recipe, R.id.dinnerLayout, R.drawable.round_card_white);
                     dinnerAdded = true;
+                    addedCount++;
                 }
             }
         }
-        if (breakFastAdded){
-            LinearLayout.LayoutParams params = (LinearLayout.LayoutParams) breakfastGeneralLayout.getLayoutParams();
-            params.topMargin = 700;
-            breakfastGeneralLayout.setLayoutParams(params);
-        }else {
+
+        if (!breakFastAdded){
             inflateNoRecipeCard(R.id.breakfastLayout, R.drawable.round_card_white);
             goAddRecipe(breakfastLayout);
         }
@@ -160,6 +167,19 @@ public class HomeScreen extends Fragment {
             inflateNoRecipeCard(R.id.dinnerLayout, R.drawable.round_card_white);
             goAddRecipe(dinnerLayout);
         }
+        LinearLayout.LayoutParams params = (LinearLayout.LayoutParams) breakfastGeneralLayout.getLayoutParams();
+        if (addedCount == 1){
+            params.topMargin = 270;
+        } else if (addedCount == 2) {
+            params.topMargin = 400;
+        } else if (addedCount == 3) {
+            params.topMargin = 530;
+        } else if (addedCount == 4) {
+            params.topMargin = 660;
+        }
+
+        breakfastGeneralLayout.setLayoutParams(params);
+
     }
 
     private void inflateRecipeCard(Recipes recipes,int layoutId, int bgResource){

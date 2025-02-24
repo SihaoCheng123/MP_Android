@@ -19,6 +19,7 @@ import android.widget.Toast;
 import com.example.mealplanner.R;
 import com.example.mealplanner.io.api.ApiClient;
 import com.example.mealplanner.io.api.ApiRecipeService;
+import com.example.mealplanner.io.token.UserIdManager;
 import com.example.mealplanner.io.viewModel.ViewModel;
 import com.example.mealplanner.model.data.Recipes;
 import com.example.mealplanner.ui.components.CalendarWeek;
@@ -38,6 +39,7 @@ public class Calendar extends Fragment {
     private List<Recipes> recipesList = new ArrayList<>();
     private LocalDate selectedFromCalendar;
     private ViewModel dateViewModel;
+    private UserIdManager userIdManager;
 
     public Calendar() {
         super(R.layout.fragment_calendar);
@@ -57,6 +59,7 @@ public class Calendar extends Fragment {
             transaction.replace(R.id.calendarContainerCS, new CalendarWeek());
             transaction.commit();
         }
+        userIdManager = new UserIdManager(getContext());
         dateViewModel.getSelectedDate().observe(getViewLifecycleOwner(), newDate-> {
             getRecipeByDate(formatDate(newDate));
             TextView actualDay = view.findViewById(R.id.actualDayTextCS);
@@ -86,7 +89,7 @@ public class Calendar extends Fragment {
 
     private void getRecipeByDate(String date){
         ApiRecipeService apiRecipeService = ApiClient.getClient().create(ApiRecipeService.class);
-        Call<List<Recipes>> call = apiRecipeService.getRecipesByDate(date);
+        Call<List<Recipes>> call = apiRecipeService.getRecipesByDateAndUserId(date, userIdManager.getUserId());
         call.enqueue(new Callback<>() {
             @Override
             public void onResponse(@NonNull Call<List<Recipes>> call, @NonNull Response<List<Recipes>> response) {
