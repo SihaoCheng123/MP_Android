@@ -19,6 +19,7 @@ import com.example.mealplanner.R;
 import com.example.mealplanner.databinding.ActivityAddRecipeBinding;
 import com.example.mealplanner.io.api.ApiClient;
 import com.example.mealplanner.io.api.ApiRecipeService;
+import com.example.mealplanner.io.token.UserIdManager;
 import com.example.mealplanner.model.data.Ingredients;
 import com.example.mealplanner.model.data.Recipes;
 import com.example.mealplanner.model.data.Steps;
@@ -186,7 +187,8 @@ public class AddRecipe extends AppCompatActivity {
 
     private void sendRecipe(Recipes recipes){
         ApiRecipeService apiRecipeService = ApiClient.getClient().create(ApiRecipeService.class);
-        Call<Recipes> call = apiRecipeService.createRecipe(recipes);
+        UserIdManager userIdManager = new UserIdManager(this);
+        Call<Recipes> call = apiRecipeService.createRecipe(recipes, userIdManager.getUserId());
         call.enqueue(new Callback<>() {
             @Override
             public void onResponse(@NonNull Call<Recipes> call, @NonNull Response<Recipes> response) {

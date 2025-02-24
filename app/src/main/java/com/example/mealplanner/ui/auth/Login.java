@@ -2,6 +2,7 @@ package com.example.mealplanner.ui.auth;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.util.Log;
 import android.widget.Toast;
 
 import androidx.annotation.NonNull;
@@ -12,6 +13,7 @@ import com.example.mealplanner.io.api.ApiClient;
 import com.example.mealplanner.io.api.ApiUserService;
 
 import com.example.mealplanner.io.token.TokenManager;
+import com.example.mealplanner.io.token.UserIdManager;
 import com.example.mealplanner.model.dto.ApiDelivery;
 import com.example.mealplanner.model.dto.LoginRequest;
 import com.example.mealplanner.model.dto.LoginResponse;
@@ -28,6 +30,8 @@ public class Login extends AppCompatActivity {
 
     private TokenManager tokenManager;
 
+    private UserIdManager userIdManager;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -35,6 +39,7 @@ public class Login extends AppCompatActivity {
         setContentView(binding.getRoot());
 
         tokenManager = new TokenManager(this);
+        userIdManager = new UserIdManager(this);
 
         binding.contButton.setOnClickListener(v -> login());
 
@@ -64,6 +69,13 @@ public class Login extends AppCompatActivity {
 //                            }
                             String token = loginResponse.getToken();
                             tokenManager.saveToken(token);
+                            if (loginResponse.getId() == null){
+                                Log.e("Error", "No hay id");
+                            }else {
+                                Long id = loginResponse.getId();
+                                userIdManager.saveUserId(id);
+                            }
+
                             goMain();
                         }
                     }
