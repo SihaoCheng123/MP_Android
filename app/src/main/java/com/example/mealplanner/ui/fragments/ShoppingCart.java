@@ -15,6 +15,7 @@ import android.widget.Toast;
 import com.example.mealplanner.R;
 import com.example.mealplanner.io.api.ApiClient;
 import com.example.mealplanner.io.api.ApiRecipeService;
+import com.example.mealplanner.io.token.UserIdManager;
 import com.example.mealplanner.model.data.Ingredients;
 import com.example.mealplanner.model.recycler.ingredientsComplex.IngredientAdapter;
 import java.time.LocalDate;
@@ -31,6 +32,7 @@ public class ShoppingCart extends Fragment {
    List<Ingredients> ingredientsList = new ArrayList<>();
    private RecyclerView recyclerView;
    private IngredientAdapter adapter;
+   private UserIdManager userIdManager;
 
     public ShoppingCart() {
         // Required empty public constructor
@@ -49,6 +51,7 @@ public class ShoppingCart extends Fragment {
         View view = inflater.inflate(R.layout.fragment_shopping_cart, container, false);
         LocalDate today = LocalDate.now();
         recyclerView = view.findViewById(R.id.ingredientsRecycler);
+        userIdManager = new UserIdManager(container.getContext());
         loadIngredients(formatDate(today));
         return view;
     }
@@ -60,7 +63,7 @@ public class ShoppingCart extends Fragment {
 
     private void loadIngredients(String date){
         ApiRecipeService apiRecipeService = ApiClient.getClient().create(ApiRecipeService.class);
-        Call<List<Ingredients>> call = apiRecipeService.getIngredientsFromThisWeek(date);
+        Call<List<Ingredients>> call = apiRecipeService.getIngredientsFromThisWeekAndUser(date, userIdManager.getUserId());
         call.enqueue(new Callback<>() {
             @Override
             public void onResponse(@NonNull Call<List<Ingredients>> call, @NonNull Response<List<Ingredients>> response) {

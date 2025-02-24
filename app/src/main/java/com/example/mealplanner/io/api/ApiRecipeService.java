@@ -27,4 +27,7 @@ public interface ApiRecipeService {
 
     @GET("recipes/weekly-ingredients/{date}")
     Call<List<Ingredients>> getIngredientsFromThisWeek(@Path("date") String date);
+
+    @GET("recipes/weekly-ingredients-user/{date}/{id}")
+    Call<List<Ingredients>> getIngredientsFromThisWeekAndUser(@Path("date") String date, @Path("id") Long user_id);
 }
