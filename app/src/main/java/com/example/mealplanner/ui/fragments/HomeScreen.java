@@ -138,7 +138,6 @@ public class HomeScreen extends Fragment {
                     inflateRecipeCard(recipe, R.id.dinnerLayout, R.drawable.round_card_white);
                     dinnerAdded = true;
                 }
-
             }
         }
         if (breakFastAdded){
@@ -186,6 +185,11 @@ public class HomeScreen extends Fragment {
                 }
             }
         }
+        recipeView.setOnClickListener(v -> {
+            Intent intent = new Intent(getContext(), RecipeDetailed.class);
+            intent.putExtra("recipeId", recipes.getId());
+            startActivity(intent);
+        });
 
         recipeLayout.addView(recipeView);
     }
@@ -204,11 +208,6 @@ public class HomeScreen extends Fragment {
         recipeLayout.addView(noRecipeView);
     }
 
-    private void goDetailedRecipe(){
-        Intent intent = new Intent(getContext(), RecipeDetailed.class);
-        startActivity(intent);
-    }
-
     private void goAddRecipe(FrameLayout layout){
         layout.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -218,5 +217,6 @@ public class HomeScreen extends Fragment {
             }
         });
     }
+
 
 }

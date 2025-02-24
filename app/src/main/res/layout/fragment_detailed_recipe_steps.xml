@@ -9,13 +9,15 @@
     <ScrollView
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        tools:context=".ui.components.FragmentDetailedRecipeIngredients">
+        tools:context=".ui.components.FragmentDetailedRecipeIngredients"
+        android:background="@color/md_theme_detailed_recipe">
 
         <androidx.recyclerview.widget.RecyclerView
             android:id="@+id/stepsRecyclerDR"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="50dp"/>
+            android:layout_height="0dp"
+            android:layout_marginTop="50dp"
+            android:backgroundTint="@color/md_theme_detailed_recipe"/>
 
     </ScrollView>
 </layout>

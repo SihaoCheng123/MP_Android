@@ -20,10 +20,11 @@
             app:layout_constraintTop_toTopOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintEnd_toEndOf="parent">
+
             <ImageView
                 android:id="@+id/recipeImageDR"
                 android:layout_width="match_parent"
-                android:layout_height="350dp"
+                android:layout_height="300dp"
                 android:background="@color/md_theme_primary_opacity"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
@@ -74,15 +75,14 @@
             android:background="@drawable/round_corner_detailed_recipe"
             android:backgroundTint="@color/md_theme_detailed_recipe"
             android:orientation="vertical"
-            app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/frameImageDR">
 
             <TextView
-                android:id="@+id/ingredientNameDR"
+                android:id="@+id/recipeNameDR"
                 android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
+                android:layout_height="match_parent"
                 android:layout_marginStart="35sp"
                 android:layout_marginTop="30dp"
                 android:fontFamily="@font/poppins_medium"
@@ -201,14 +201,16 @@
                     android:text="@string/steps" />
             </com.google.android.material.tabs.TabLayout>
 
-            <androidx.viewpager2.widget.ViewPager2
-                android:id="@+id/viewPagerDR"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                />
-
-
         </LinearLayout>
+        <androidx.viewpager2.widget.ViewPager2
+            android:id="@+id/viewPagerDR"
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:backgroundTint="@color/md_theme_detailed_recipe"
+            app:layout_constraintTop_toBottomOf="@id/frameDetailDR"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent" />
 
 
 

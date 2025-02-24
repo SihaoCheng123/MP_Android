@@ -1,9 +1,10 @@
 package com.example.mealplanner.model.data;
 
+import java.io.Serializable;
 import java.util.Date;
 import java.util.Set;
 
-public class Recipes {
+public class Recipes implements Serializable {
     private Long id;
     private String name;
     private String time;

@@ -1,6 +1,8 @@
 package com.example.mealplanner.model.data;
 
-public class Steps {
+import java.io.Serializable;
+
+public class Steps implements Serializable {
 
     private Long id;
     private int number_step;

@@ -17,4 +17,7 @@ public interface ApiRecipeService {
 
     @GET("recipes/get-by-date/{date}")
     Call<List<Recipes>> getRecipesByDate(@Path("date") String date);
+
+    @GET("recipes/get/{id}")
+    Call<Recipes> getRecipeById(@Path("id") Long id);
 }

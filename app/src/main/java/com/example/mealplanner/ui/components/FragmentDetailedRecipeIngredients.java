@@ -11,42 +11,46 @@ import androidx.recyclerview.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Toast;
 
 import com.example.mealplanner.R;
-import com.example.mealplanner.model.recycler.ingredientsSimple.IngredientSimpleAdapter;
-import com.example.mealplanner.model.recycler.ingredientsSimple.IngredientSimpleEventModel;
+import com.example.mealplanner.model.data.Ingredients;
 
+import com.example.mealplanner.model.recycler.ingredientsSimple.IngredientSimpleAdapter;
 
 import java.util.ArrayList;
 
-public class FragmentDetailedRecipeIngredients extends Fragment {
-    private IngredientSimpleAdapter adapter;
-    private ArrayList<IngredientSimpleEventModel> ingredientSimpleList = new ArrayList<>();
 
-    public FragmentDetailedRecipeIngredients(){}
+public class FragmentDetailedRecipeIngredients extends Fragment {
+    private ArrayList<Ingredients> ingredientList;
+
     @Nullable
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container,
                              @Nullable Bundle savedInstanceState) {
-        return inflater.inflate(R.layout.fragment_recycler_detailed_recipe_ingredients, container, false);
+        View view = inflater.inflate(R.layout.fragment_recycler_detailed_recipe_ingredients, container, false);
+        Bundle bundle = getArguments();
+
+        if (bundle != null){
+            ingredientList = (ArrayList<Ingredients>) bundle.getSerializable("ingredientsList");
+        }
+        if (ingredientList == null || ingredientList.isEmpty()){
+            Toast.makeText(getContext(), "No ingredients found", Toast.LENGTH_SHORT).show();
+        }else{
+            IngredientSimpleAdapter adapter = new IngredientSimpleAdapter(view.getContext(), ingredientList);
+            RecyclerView recyclerView = view.findViewById(R.id.ingredientsRecyclerDR);
+            recyclerView.setLayoutManager(new LinearLayoutManager(getContext()));
+            recyclerView.setAdapter(adapter);
+        }
+
+        return view;
     }
 
     @Override
     public void onViewCreated(@NonNull View view, Bundle savedInstanceState){
         super.onViewCreated(view, savedInstanceState);
-        setIngredientEventModels();
-        adapter = new IngredientSimpleAdapter(view.getContext(), ingredientSimpleList);
-        RecyclerView recyclerView = view.findViewById(R.id.ingredientsRecyclerDR);
-        recyclerView.setLayoutManager(new LinearLayoutManager(getContext()));
-        recyclerView.setAdapter(adapter);
+
     }
 
-    private void setIngredientEventModels(){
-        String[] ingredientNames = getResources().getStringArray(R.array.ingredient_name_cv);
-
-        for (int i = 0; i < ingredientNames.length ;i++) {
-            ingredientSimpleList.add(new IngredientSimpleEventModel(ingredientNames[i]));
-        }
-    }
 
 }
