@@ -10,14 +10,15 @@ import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.mealplanner.R;
+import com.example.mealplanner.model.data.Ingredients;
 
 import java.util.ArrayList;
 
 public class IngredientSimpleAdapter extends RecyclerView.Adapter<IngredientSimpleAdapter.MyViewHolder> {
     Context context;
-    ArrayList<IngredientSimpleEventModel> ingredientSimpleList;
+    ArrayList<Ingredients> ingredientSimpleList;
 
-    public IngredientSimpleAdapter(Context context, ArrayList<IngredientSimpleEventModel> ingredientSimpleList) {
+    public IngredientSimpleAdapter(Context context, ArrayList<Ingredients> ingredientSimpleList) {
         this.context = context;
         this.ingredientSimpleList = ingredientSimpleList;
     }
@@ -32,8 +33,8 @@ public class IngredientSimpleAdapter extends RecyclerView.Adapter<IngredientSimp
 
     @Override
     public void onBindViewHolder(@NonNull MyViewHolder holder, int position) {
-        String ingredientName = ingredientSimpleList.get(position).getIngredientName();
-        holder.ingredientNameCV.setText(ingredientName);
+        Ingredients ingredient = ingredientSimpleList.get(position);
+        holder.ingredientNameCV.setText(ingredient.getName());
     }
 
     @Override

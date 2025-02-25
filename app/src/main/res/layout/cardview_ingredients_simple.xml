@@ -43,6 +43,7 @@
                 app:layout_constraintTop_toTopOf="parent"
                 app:layout_constraintBottom_toBottomOf="parent"/>
             <CheckBox
+                android:id="@+id/checkBoxIngSimple"
                 android:buttonTint="@color/md_theme_outline_add_recipe"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"

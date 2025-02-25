@@ -10,11 +10,13 @@
     <ScrollView
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        tools:context=".model.recycler.ingredientsSimple.FragmentDetailedRecipeIngredients">
+        tools:context=".ui.components.FragmentDetailedRecipeIngredients"
+        android:background="@color/md_theme_detailed_recipe">
 
         <androidx.constraintlayout.widget.ConstraintLayout
             android:layout_width="match_parent"
-            android:layout_height="wrap_content">
+            android:layout_height="wrap_content"
+            android:background="@color/md_theme_detailed_recipe">
             <TextView
                 android:id="@+id/textAddCart"
                 android:layout_width="match_parent"
@@ -32,12 +34,14 @@
             <androidx.recyclerview.widget.RecyclerView
                 android:id="@+id/ingredientsRecyclerDR"
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                app:layout_constraintTop_toBottomOf="@id/textAddCart"
+                android:layout_height="0dp"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="0.0"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintEnd_toEndOf="parent"/>
+                app:layout_constraintTop_toBottomOf="@id/textAddCart"
+                android:backgroundTint="@color/md_theme_detailed_recipe"
+                android:layout_marginBottom="10dp"/>
         </androidx.constraintlayout.widget.ConstraintLayout>
-
 
     </ScrollView>
 </layout>
