@@ -16,6 +16,10 @@ public interface ApiRecipeService {
     @POST("recipes/create/{user_id}")
     Call<Recipes> createRecipe(@Body Recipes recipes, @Path("user_id") Long id);
 
+    @Headers("Content-Type: application/json")
+    @POST("recipes/fav-recipes/{recipe_id}/{user_id}")
+    Call<Recipes> makeRecipeFav(@Path("recipe_id") Long recipe_id, @Path("user_id") Long user_id);
+
     @GET("recipes/get-by-date/{date}")
     Call<List<Recipes>> getRecipesByDate(@Path("date") String date);
 

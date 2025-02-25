@@ -174,7 +174,7 @@ public class HomeScreen extends Fragment {
         } else if (addedCount == 3) {
             params.topMargin = 530;
         } else if (addedCount == 4) {
-            params.topMargin = 660;
+            params.topMargin = 680;
         }
 
         breakfastGeneralLayout.setLayoutParams(params);

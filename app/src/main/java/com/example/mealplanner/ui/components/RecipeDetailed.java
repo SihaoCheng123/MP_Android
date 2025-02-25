@@ -13,6 +13,7 @@ import com.example.mealplanner.R;
 import com.example.mealplanner.databinding.ActivityRecipeDetailedBinding;
 import com.example.mealplanner.io.api.ApiClient;
 import com.example.mealplanner.io.api.ApiRecipeService;
+import com.example.mealplanner.io.token.UserIdManager;
 import com.example.mealplanner.model.data.Ingredients;
 import com.example.mealplanner.model.data.Recipes;
 import com.example.mealplanner.model.data.Steps;
@@ -37,6 +38,8 @@ public class RecipeDetailed extends AppCompatActivity {
     private ArrayList<Ingredients> ingredientsList;
     private ArrayList<Steps> stepsList;
     private Recipes newRecipe;
+    private UserIdManager userIdManager;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -44,17 +47,19 @@ public class RecipeDetailed extends AppCompatActivity {
         setContentView(R.layout.activity_recipe_detailed);
         binding = ActivityRecipeDetailedBinding.inflate(getLayoutInflater());
         setContentView(binding.getRoot());
-
-        Long recipeId = getIntent().getLongExtra("recipeId", -1);
+        userIdManager = new UserIdManager(this);
+        Long recipe_id = getIntent().getLongExtra("recipeId", -1);
 
         binding.iconBackDR.setOnClickListener(v -> finish());
-        getRecipeById(recipeId);
+        getRecipeById(recipe_id);
+
+        binding.iconFavRecipeDR.setOnClickListener(v -> makeRecipeFav(recipe_id, userIdManager.getUserId()));
 
     }
 
-    private void getRecipeById(Long recipeId){
+    private void getRecipeById(Long recipe_id){
         ApiRecipeService apiRecipeService = ApiClient.getClient().create(ApiRecipeService.class);
-        Call<Recipes> call = apiRecipeService.getRecipeById(recipeId);
+        Call<Recipes> call = apiRecipeService.getRecipeById(recipe_id);
         call.enqueue(new Callback<>() {
             @Override
             public void onResponse(@NonNull Call<Recipes> call, @NonNull Response<Recipes> response) {
@@ -71,7 +76,7 @@ public class RecipeDetailed extends AppCompatActivity {
                             stepsList = new ArrayList<>(stepsSet);
                             if (!ingredientsList.isEmpty()){
                                 ViewPager2 viewPager2 = findViewById(R.id.viewPagerDR);
-                                ViewPagerAdapterDR viewPagerAdapterDR = new ViewPagerAdapterDR(RecipeDetailed.this, recipeId, ingredientsList, stepsList);
+                                ViewPagerAdapterDR viewPagerAdapterDR = new ViewPagerAdapterDR(RecipeDetailed.this, recipe_id, ingredientsList, stepsList);
                                 binding.viewPagerDR.setAdapter(viewPagerAdapterDR);
                                 new TabLayoutMediator(binding.tabLayoutDR, viewPager2, (tab, position) -> {
                                     if (position == 0) {
@@ -86,6 +91,26 @@ public class RecipeDetailed extends AppCompatActivity {
                     } else {
                         Toast.makeText(RecipeDetailed.this, "Error in fetching recipe", Toast.LENGTH_SHORT).show();
                     }
+                }
+            }
+
+            @Override
+            public void onFailure(@NonNull Call<Recipes> call, @NonNull Throwable throwable) {
+                Toast.makeText(RecipeDetailed.this, "Connection error", Toast.LENGTH_SHORT).show();
+            }
+        });
+    }
+
+    private void makeRecipeFav(Long recipe_id, Long user_id){
+        ApiRecipeService apiRecipeService = ApiClient.getClient().create(ApiRecipeService.class);
+        Call<Recipes> call = apiRecipeService.makeRecipeFav(recipe_id, user_id);
+        call.enqueue(new Callback<>() {
+            @Override
+            public void onResponse(@NonNull Call<Recipes> call, @NonNull Response<Recipes> response) {
+                if (response.isSuccessful()) {
+                    Toast.makeText(RecipeDetailed.this, "Recipe saved in favourites", Toast.LENGTH_SHORT).show();
+                } else {
+                    Toast.makeText(RecipeDetailed.this, "Error saving recipe in favourites", Toast.LENGTH_SHORT).show();
                 }
             }
 
