@@ -107,9 +107,7 @@ public class CalendarWeek extends Fragment implements WeeklyCalendarAdapter.OnIt
         View calendarView = inflater.inflate(R.layout.activity_calendar, null);
         CalendarView calendar = calendarView.findViewById(R.id.calendarView);
         dateViewModel = new ViewModelProvider(requireParentFragment()).get(ViewModel.class);
-        calendar.setOnDateChangeListener((view, year, month, dayOfMonth) -> {
-            selectedFromCalendar = LocalDate.of(year, month +1, dayOfMonth);
-        });
+        calendar.setOnDateChangeListener((view, year, month, dayOfMonth) -> selectedFromCalendar = LocalDate.of(year, month +1, dayOfMonth));
 
         alertDialogBuilder.setTitle("Calendar")
                 .setPositiveButton("OK", ((dialog, which) -> {

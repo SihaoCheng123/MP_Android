@@ -18,7 +18,6 @@ import com.example.mealplanner.model.data.Steps;
 import com.example.mealplanner.model.recycler.stepsSimple.StepsSimpleAdapter;
 
 import java.util.ArrayList;
-import java.util.Collections;
 import java.util.Comparator;
 
 public class FragmentDetailedRecipeSteps extends Fragment {
@@ -37,12 +36,7 @@ public class FragmentDetailedRecipeSteps extends Fragment {
         if (stepsList == null || stepsList.isEmpty()){
             Toast.makeText(getContext(), "No steps found", Toast.LENGTH_SHORT).show();
         }else {
-            Collections.sort(stepsList, new Comparator<Steps>() {
-                @Override
-                public int compare(Steps o1, Steps o2) {
-                    return Integer.compare(o1.getNumber_step(), o2.getNumber_step());
-                }
-            });
+            stepsList.sort(Comparator.comparingInt(Steps::getNumber_step));
             StepsSimpleAdapter adapter = new StepsSimpleAdapter(view.getContext(), stepsList);
             RecyclerView recyclerView = view.findViewById(R.id.stepsRecyclerDR);
             recyclerView.setLayoutManager(new LinearLayoutManager(getContext()));

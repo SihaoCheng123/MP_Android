@@ -16,13 +16,11 @@ import java.util.ArrayList;
 
 public class ViewPagerAdapterDR extends FragmentStateAdapter {
 
-    private Long recipeId;
     private ArrayList<Ingredients> ingredientsList;
 
     private ArrayList<Steps> stepsList;
-    public ViewPagerAdapterDR(AppCompatActivity activity, Long recipeId, ArrayList<Ingredients> ingredientsList, ArrayList<Steps> stepsList){
+    public ViewPagerAdapterDR(AppCompatActivity activity, ArrayList<Ingredients> ingredientsList, ArrayList<Steps> stepsList){
         super(activity);
-        this.recipeId = recipeId;
         this.ingredientsList = ingredientsList;
         this.stepsList = stepsList;
     }

@@ -1,7 +1,6 @@
 package com.example.mealplanner.model.recycler.ingredientsComplex;
 
 import android.content.Context;
-import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -13,7 +12,6 @@ import androidx.recyclerview.widget.RecyclerView;
 import com.example.mealplanner.R;
 import com.example.mealplanner.model.data.Ingredients;
 
-import java.util.ArrayList;
 import java.util.List;
 
 public class IngredientAdapter extends RecyclerView.Adapter<IngredientAdapter.MyViewHolder> {
@@ -30,7 +28,6 @@ public class IngredientAdapter extends RecyclerView.Adapter<IngredientAdapter.My
     public MyViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
         LayoutInflater inflater = LayoutInflater.from(context);
         View view = inflater.inflate(R.layout.cardview_ingredient_complex, parent, false);
-        Bundle bundle = new Bundle();
         return new IngredientAdapter.MyViewHolder(view);
     }
 
@@ -47,7 +44,7 @@ public class IngredientAdapter extends RecyclerView.Adapter<IngredientAdapter.My
 
     public static class MyViewHolder extends RecyclerView.ViewHolder{
 
-        TextView ingredientNameCV, ingredientCategoryCV;
+        TextView ingredientNameCV;
 
         public MyViewHolder(@NonNull View itemView) {
             super(itemView);

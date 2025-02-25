@@ -14,6 +14,7 @@ import com.example.mealplanner.io.api.ApiUserService;
 
 import com.example.mealplanner.io.token.TokenManager;
 import com.example.mealplanner.io.token.UserIdManager;
+import com.example.mealplanner.io.token.UserNameManager;
 import com.example.mealplanner.model.dto.ApiDelivery;
 import com.example.mealplanner.model.dto.LoginRequest;
 import com.example.mealplanner.model.dto.LoginResponse;
@@ -31,6 +32,7 @@ public class Login extends AppCompatActivity {
     private TokenManager tokenManager;
 
     private UserIdManager userIdManager;
+    private UserNameManager userNameManager;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -40,6 +42,7 @@ public class Login extends AppCompatActivity {
 
         tokenManager = new TokenManager(this);
         userIdManager = new UserIdManager(this);
+        userNameManager = new UserNameManager(this);
 
         binding.contButton.setOnClickListener(v -> login());
 
@@ -61,19 +64,19 @@ public class Login extends AppCompatActivity {
                     if (response.isSuccessful()){
                         if (response.body() != null){
                             LoginResponse loginResponse = response.body().getData();
-//                            if (!loginRequest.getEmail().equals(loginResponse.getEmail())) {
-//                                Toast.makeText(Login.this, "User not found", Toast.LENGTH_SHORT).show();
-//                            }
-//                            if (!loginRequest.getPassword().equals(loginResponse.getPassword())) {
-//                                Toast.makeText(Login.this, "Incorrect password", Toast.LENGTH_SHORT).show();
-//                            }
                             String token = loginResponse.getToken();
                             tokenManager.saveToken(token);
                             if (loginResponse.getId() == null){
-                                Log.e("Error", "No hay id");
+                                Log.e("Error", "No id found");
                             }else {
                                 Long id = loginResponse.getId();
                                 userIdManager.saveUserId(id);
+                            }
+                            if (loginResponse.getName() == null){
+                                Log.e("Error", "No username found");
+                            }else {
+                                String username = loginResponse.getName();
+                                userNameManager.saveUserName(username);
                             }
 
                             goMain();
@@ -87,7 +90,6 @@ public class Login extends AppCompatActivity {
                 }
             });
         }
-
 
     }
     private void goMain(){

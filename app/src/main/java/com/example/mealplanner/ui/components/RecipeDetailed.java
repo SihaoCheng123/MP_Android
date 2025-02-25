@@ -1,7 +1,6 @@
 package com.example.mealplanner.ui.components;
 
 import android.os.Bundle;
-import android.util.Log;
 import android.widget.Toast;
 
 import androidx.activity.EdgeToEdge;
@@ -76,7 +75,7 @@ public class RecipeDetailed extends AppCompatActivity {
                             stepsList = new ArrayList<>(stepsSet);
                             if (!ingredientsList.isEmpty()){
                                 ViewPager2 viewPager2 = findViewById(R.id.viewPagerDR);
-                                ViewPagerAdapterDR viewPagerAdapterDR = new ViewPagerAdapterDR(RecipeDetailed.this, recipe_id, ingredientsList, stepsList);
+                                ViewPagerAdapterDR viewPagerAdapterDR = new ViewPagerAdapterDR(RecipeDetailed.this, ingredientsList, stepsList);
                                 binding.viewPagerDR.setAdapter(viewPagerAdapterDR);
                                 new TabLayoutMediator(binding.tabLayoutDR, viewPager2, (tab, position) -> {
                                     if (position == 0) {

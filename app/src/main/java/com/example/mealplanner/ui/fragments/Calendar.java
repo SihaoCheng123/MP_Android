@@ -11,7 +11,6 @@ import androidx.lifecycle.ViewModelProvider;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.CalendarView;
 import android.widget.FrameLayout;
 import android.widget.LinearLayout;
 import android.widget.TextView;
@@ -27,7 +26,6 @@ import com.example.mealplanner.model.data.Recipes;
 import com.example.mealplanner.ui.components.AddRecipe;
 import com.example.mealplanner.ui.components.CalendarWeek;
 import com.example.mealplanner.ui.components.RecipeDetailed;
-import com.google.android.material.dialog.MaterialAlertDialogBuilder;
 
 import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
@@ -41,16 +39,11 @@ import retrofit2.Response;
 public class Calendar extends Fragment {
 
     private List<Recipes> recipesList = new ArrayList<>();
-    private LocalDate selectedFromCalendar;
     private ViewModel dateViewModel;
     private UserIdManager userIdManager;
 
     public Calendar() {
         super(R.layout.fragment_calendar);
-    }
-
-    public static Calendar newInstance() {
-        return new Calendar();
     }
 
     @Override
@@ -63,7 +56,7 @@ public class Calendar extends Fragment {
             transaction.replace(R.id.calendarContainerCS, new CalendarWeek());
             transaction.commit();
         }
-        userIdManager = new UserIdManager(getContext());
+        userIdManager = new UserIdManager(container.getContext());
         dateViewModel.getSelectedDate().observe(getViewLifecycleOwner(), newDate-> {
             getRecipeByDate(formatDate(newDate));
             TextView actualDay = view.findViewById(R.id.actualDayTextCS);
@@ -111,7 +104,7 @@ public class Calendar extends Fragment {
 
             @Override
             public void onFailure(@NonNull Call<List<Recipes>> call, @NonNull Throwable throwable) {
-                Toast.makeText(getContext(), "Error trayendo receta", Toast.LENGTH_SHORT).show();
+                Toast.makeText(getContext(), "Error fetching recipes", Toast.LENGTH_SHORT).show();
             }
         });
     }
@@ -126,7 +119,6 @@ public class Calendar extends Fragment {
         FrameLayout lunchLayout = getView().findViewById(R.id.lunchLayoutCS);
         FrameLayout snackLayout = getView().findViewById(R.id.snackLayoutCS);
         FrameLayout dinnerLayout = getView().findViewById(R.id.dinnerLayoutCS);
-        // Limpiar los layouts antes de agregar nuevas recetas
         breakfastLayout.removeAllViews();
         lunchLayout.removeAllViews();
         snackLayout.removeAllViews();
@@ -214,10 +206,10 @@ public class Calendar extends Fragment {
         });
         recipeLayout.addView(recipeView);
     }
-    private void inflateNoRecipeCard(int layoutId, int bgResourse){
+    private void inflateNoRecipeCard(int layoutId, int bgResource){
         FrameLayout recipeLayout = getView().findViewById(layoutId);
         View noRecipeView = getLayoutInflater().inflate(R.layout.cardview_null_recipe, recipeLayout,false);
-        noRecipeView.setBackgroundResource(bgResourse);
+        noRecipeView.setBackgroundResource(bgResource);
         FrameLayout breakfastLayout = getView().findViewById(R.id.breakfastLayoutCS);
         LinearLayout.LayoutParams params = (LinearLayout.LayoutParams) breakfastLayout.getLayoutParams();
         params.topMargin = 50;
@@ -226,12 +218,9 @@ public class Calendar extends Fragment {
     }
 
     private void goAddRecipe(FrameLayout layout){
-        layout.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Intent intent = new Intent(getContext(), AddRecipe.class);
-                startActivity(intent);
-            }
+        layout.setOnClickListener(v -> {
+            Intent intent = new Intent(getContext(), AddRecipe.class);
+            startActivity(intent);
         });
     }
 //

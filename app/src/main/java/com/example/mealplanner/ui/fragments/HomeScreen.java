@@ -21,6 +21,7 @@ import com.example.mealplanner.R;
 import com.example.mealplanner.io.api.ApiClient;
 import com.example.mealplanner.io.api.ApiRecipeService;
 import com.example.mealplanner.io.token.UserIdManager;
+import com.example.mealplanner.io.token.UserNameManager;
 import com.example.mealplanner.io.viewModel.ViewModel;
 import com.example.mealplanner.model.data.Ingredients;
 import com.example.mealplanner.model.data.Recipes;
@@ -42,14 +43,12 @@ public class HomeScreen extends Fragment {
 
     private List<Recipes> recipesList = new ArrayList<>();
     private UserIdManager userIdManager;
+    private UserNameManager userNameManager;
 
     public HomeScreen() {
         // Required empty public constructor
     }
 
-    public static HomeScreen newInstance() {
-        return new HomeScreen();
-    }
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
@@ -64,12 +63,15 @@ public class HomeScreen extends Fragment {
         // Inflate the layout for this fragment
         View view = inflater.inflate(R.layout.fragment_home_screen, container, false);
         ViewModel dateViewModel = new ViewModelProvider(this).get(ViewModel.class);
-        userIdManager = new UserIdManager(getContext());
+        userIdManager = new UserIdManager(container.getContext());
+        userNameManager = new UserNameManager(container.getContext());
         if (savedInstanceState == null) {
             FragmentTransaction transaction = getChildFragmentManager().beginTransaction();
             transaction.replace(R.id.calendarContainerHS, new CalendarWeekHS());
             transaction.commit();
         }
+        TextView usernameTV = view.findViewById(R.id.usernameHS);
+        usernameTV.setText(userNameManager.getUserName());
         LocalDate selectedDate = LocalDate.now();
         dateViewModel.getSelectedDate().observe(getViewLifecycleOwner(), newDate-> getRecipeByDate(formatDate(newDate)));
 
@@ -119,7 +121,6 @@ public class HomeScreen extends Fragment {
         FrameLayout dinnerLayout = getView().findViewById(R.id.dinnerLayout);
         LinearLayout breakfastGeneralLayout = getView().findViewById(R.id.breakfastGeneralLayout);
 
-        // Limpiar los layouts antes de agregar nuevas recetas
         breakfastLayout.removeAllViews();
         lunchLayout.removeAllViews();
         snackLayout.removeAllViews();
@@ -212,10 +213,10 @@ public class HomeScreen extends Fragment {
 
         recipeLayout.addView(recipeView);
     }
-    private void inflateNoRecipeCard(int layoutId, int bgResourse){
+    private void inflateNoRecipeCard(int layoutId, int bgResource){
         FrameLayout recipeLayout = getView().findViewById(layoutId);
         View noRecipeView = getLayoutInflater().inflate(R.layout.cardview_null_recipe, recipeLayout,false);
-        noRecipeView.setBackgroundResource(bgResourse);
+        noRecipeView.setBackgroundResource(bgResource);
         LinearLayout.LayoutParams params = new LinearLayout.LayoutParams(
                 FrameLayout.LayoutParams.MATCH_PARENT,
                 FrameLayout.LayoutParams.WRAP_CONTENT
@@ -228,12 +229,9 @@ public class HomeScreen extends Fragment {
     }
 
     private void goAddRecipe(FrameLayout layout){
-        layout.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Intent intent = new Intent(getContext(), AddRecipe.class);
-                startActivity(intent);
-            }
+        layout.setOnClickListener(v -> {
+            Intent intent = new Intent(getContext(), AddRecipe.class);
+            startActivity(intent);
         });
     }
 

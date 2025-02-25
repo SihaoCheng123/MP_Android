@@ -13,17 +13,40 @@
         tools:context=".ui.fragments.HomeScreen"
         android:background="@color/md_theme_tertiaryContainer">
 
-        <TextView
-            android:id="@+id/saludo"
+        <LinearLayout
+            android:id="@id/saludo"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:textSize="30sp"
-            android:text="@string/hello_user"
-            android:fontFamily="@font/poppins_regular"
             android:layout_marginTop="50dp"
             android:layout_marginStart="35dp"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent" />
+            app:layout_constraintTop_toTopOf="parent"
+            android:orientation="horizontal">
+            <TextView
+                android:id="@+id/saludo"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textSize="30sp"
+                android:text="@string/hello"
+                android:fontFamily="@font/poppins_regular"
+                android:paddingEnd="10dp"/>
+            <TextView
+                android:id="@+id/usernameHS"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:fontFamily="@font/poppins_regular"
+                android:textSize="30sp"
+                android:textColor="@color/md_theme_primary"/>
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:fontFamily="@font/poppins_regular"
+                android:textSize="30sp"
+                android:text="!"
+                android:textColor="@color/md_theme_primary"
+                />
+        </LinearLayout>
+
 
         <FrameLayout
             android:id="@+id/calendarContainerHS"

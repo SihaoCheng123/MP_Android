@@ -2,7 +2,7 @@ package com.example.mealplanner.ui.auth;
 
 import android.content.Intent;
 import android.os.Bundle;
-import android.util.Log;
+
 import android.widget.Toast;
 
 import androidx.annotation.NonNull;
@@ -31,6 +31,7 @@ public class Register extends AppCompatActivity {
     }
 
     private void register(){
+
             String email = binding.email.getEditText().getText().toString().trim();
             String password = binding.password.getEditText().getText().toString().trim();
             String confirmPassword = binding.confirmPassword.getEditText().getText().toString().trim();
@@ -39,16 +40,13 @@ public class Register extends AppCompatActivity {
             String age = binding.age.getEditText().getText().toString().trim();
             String phone = binding.phone.getEditText().getText().toString().trim();
 
-        int ageInt = 0;
-
         if (email.isEmpty() || password.isEmpty() || confirmPassword.isEmpty()
         || name.isEmpty() || age.isEmpty() || phone.isEmpty()){
             Toast.makeText(this, "Required data", Toast.LENGTH_SHORT).show();
-            Log.e(email + password + confirmPassword + name + age + phone, "");
-            ageInt = Integer.parseInt(age);
         }else if (!password.equals(confirmPassword)){
             Toast.makeText(this, "Passwords must match", Toast.LENGTH_SHORT).show();
         }else{
+            int ageInt = Integer.parseInt(age);
             ApiUserService apiUserService = ApiClient.getClient().create(ApiUserService.class);
             User_Data newUser_Data = new User_Data(name, ageInt, phone);
             Users newUser = new Users(email, password,newUser_Data);

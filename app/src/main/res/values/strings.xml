@@ -73,6 +73,7 @@
     <string name="snack">Snack</string>
     <string name="add_ingredients">Add ingredients</string>
     <string name="today_s_menu">Today\'s menu</string>
+    <string name="hello">Hello,</string>
 
 
 </resources>
