@@ -20,7 +20,7 @@ public class MainActivity extends AppCompatActivity {
         TokenManager tokenManager = new TokenManager(this);
 
         String token = tokenManager.getToken();
-
+        tokenManager.deleteToken();
         if (token != null){
             goHomeScreen();
         }else {

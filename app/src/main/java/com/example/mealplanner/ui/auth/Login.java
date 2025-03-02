@@ -81,6 +81,8 @@ public class Login extends AppCompatActivity {
 
                             goMain();
                         }
+                    }else {
+                        Toast.makeText(getApplicationContext(),"Incorrect credentials", Toast.LENGTH_SHORT).show();
                     }
                 }
 
