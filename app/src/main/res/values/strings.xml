@@ -74,6 +74,8 @@
     <string name="add_ingredients">Add ingredients</string>
     <string name="today_s_menu">Today\'s menu</string>
     <string name="hello">Hello,</string>
+    <string name="edit">Edit</string>
+    <string name="save">Save</string>
 
 
 </resources>

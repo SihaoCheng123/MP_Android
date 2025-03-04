@@ -17,6 +17,18 @@
         android:usesCleartextTraffic="true"
         tools:targetApi="31">
         <activity
+            android:name=".ui.user.UserFavRecipes"
+            android:exported="false" />
+        <activity
+            android:name=".ui.user.UserRecipes"
+            android:exported="false" />
+        <activity
+            android:name=".ui.user.UserPassword"
+            android:exported="false" />
+        <activity
+            android:name=".ui.user.UserProfile"
+            android:exported="false" />
+        <activity
             android:name=".ui.components.RecipeDetailed"
             android:exported="false" />
         <activity
