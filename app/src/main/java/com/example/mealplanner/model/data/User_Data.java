@@ -12,6 +12,10 @@ public class User_Data {
         this.phone = phone;
     }
 
+    public User_Data(){
+
+    }
+
     public Long getId() {
         return id;
     }
@@ -42,5 +46,14 @@ public class User_Data {
 
     public void setPhone(String phone) {
         this.phone = phone;
+    }
+
+    @Override
+    public String toString() {
+        return "User_Data{" +
+                "name='" + name + '\'' +
+                ", age=" + age +
+                ", phone='" + phone + '\'' +
+                '}';
     }
 }

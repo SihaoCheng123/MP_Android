@@ -45,7 +45,7 @@
                 android:contentDescription="@string/user_image"/>
 
             <TextView
-                android:id="@+id/editUserBtnUP"
+                android:id="@+id/editUserBtnUDP"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="@string/edit"
@@ -76,7 +76,7 @@
                 android:paddingBottom="35dp">
 
                 <TextView
-                    android:id="@+id/userNameUP"
+                    android:id="@+id/userNameUDP"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="@string/name"
@@ -86,122 +86,76 @@
                     android:textSize="12sp"
                     android:layout_marginTop="30dp" />
 
-                <com.google.android.material.textfield.TextInputLayout
-                    android:id="@+id/userNameInputUP"
+                <TextView
+                    android:id="@+id/userActualNameUDP"
                     android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    app:layout_constraintTop_toBottomOf="@id/userNameUP"
-                    android:layout_marginTop="8dp">
+                    android:layout_height="50dp"
+                    android:background="@drawable/round_edit_text_add_recipe"
+                    app:layout_constraintTop_toBottomOf="@id/userNameUDP"
+                    android:textColor="@color/md_theme_scrim"
+                    android:gravity="center"/>
 
-                    <com.google.android.material.textfield.TextInputEditText
-                        android:id="@+id/userNameEditUP"
-                        android:layout_width="match_parent"
-                        android:layout_height="50dp"
-                        android:background="@drawable/round_edit_text_add_recipe"
-                        android:inputType="text"
-                        android:textColorHint="@color/md_theme_scrim"
-                        android:textSize="12sp" />
-                </com.google.android.material.textfield.TextInputLayout>
 
                 <TextView
-                    android:id="@+id/userEmailUP"
+                    android:id="@+id/userEmailUDP"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="@string/email"
-                    app:layout_constraintTop_toBottomOf="@id/userNameInputUP"
+                    app:layout_constraintTop_toBottomOf="@id/userActualNameUDP"
                     app:layout_constraintStart_toStartOf="parent"
                     android:fontFamily="@font/poppins_bold"
                     android:textSize="12sp"
-                    android:layout_marginTop="18dp" />
-
-                <com.google.android.material.textfield.TextInputLayout
-                    android:id="@+id/userEmailInputUP"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    app:layout_constraintTop_toBottomOf="@id/userEmailUP"
-                    android:layout_marginTop="8dp">
-
-                    <com.google.android.material.textfield.TextInputEditText
-                        android:id="@+id/userEmailEditUP"
-                        android:layout_width="match_parent"
-                        android:layout_height="50dp"
-                        android:background="@drawable/round_edit_text_add_recipe"
-                        android:inputType="text"
-                        android:textColorHint="@color/md_theme_scrim"
-                        android:textSize="12sp" />
-                </com.google.android.material.textfield.TextInputLayout>
+                    android:layout_marginTop="28dp" />
 
                 <TextView
-                    android:id="@+id/userAgeUP"
+                    android:id="@+id/userActualEmailUDP"
+                    android:layout_width="match_parent"
+                    android:layout_height="50dp"
+                    android:background="@drawable/round_edit_text_add_recipe"
+                    app:layout_constraintTop_toBottomOf="@id/userEmailUDP"
+                    android:textColor="@color/md_theme_scrim"
+                    android:gravity="center"/>
+
+                <TextView
+                    android:id="@+id/userAgeUDP"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="@string/age"
-                    app:layout_constraintTop_toBottomOf="@id/userEmailInputUP"
+                    app:layout_constraintTop_toBottomOf="@id/userActualEmailUDP"
                     app:layout_constraintStart_toStartOf="parent"
                     android:fontFamily="@font/poppins_bold"
                     android:textSize="12sp"
-                    android:layout_marginTop="18dp" />
-
-                <com.google.android.material.textfield.TextInputLayout
-                    android:id="@+id/userAgeInputUP"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    app:layout_constraintTop_toBottomOf="@id/userAgeUP"
-                    android:layout_marginTop="8dp">
-
-                    <com.google.android.material.textfield.TextInputEditText
-                        android:id="@+id/userAgeEditUP"
-                        android:layout_width="match_parent"
-                        android:layout_height="50dp"
-                        android:background="@drawable/round_edit_text_add_recipe"
-                        android:inputType="number"
-                        android:textColorHint="@color/md_theme_scrim"
-                        android:textSize="12sp" />
-                </com.google.android.material.textfield.TextInputLayout>
+                    android:layout_marginTop="28dp" />
 
                 <TextView
-                    android:id="@+id/userPhoneUP"
+                    android:id="@+id/userActualAgeUDP"
+                    android:layout_width="match_parent"
+                    android:layout_height="50dp"
+                    android:background="@drawable/round_edit_text_add_recipe"
+                    app:layout_constraintTop_toBottomOf="@id/userAgeUDP"
+                    android:textColor="@color/md_theme_scrim"
+                    android:gravity="center"/>
+
+                <TextView
+                    android:id="@+id/userPhoneUDP"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="@string/phone"
-                    app:layout_constraintTop_toBottomOf="@id/userAgeInputUP"
+                    app:layout_constraintTop_toBottomOf="@id/userActualAgeUDP"
                     app:layout_constraintStart_toStartOf="parent"
                     android:fontFamily="@font/poppins_bold"
                     android:textSize="12sp"
-                    android:layout_marginTop="18dp" />
-
-                <com.google.android.material.textfield.TextInputLayout
-                    android:id="@+id/userPhoneInputUP"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    app:layout_constraintTop_toBottomOf="@id/userPhoneUP"
-                    android:layout_marginTop="8dp">
-
-                    <com.google.android.material.textfield.TextInputEditText
-                        android:id="@+id/userPhoneEditUP"
-                        android:layout_width="match_parent"
-                        android:layout_height="50dp"
-                        android:background="@drawable/round_edit_text_add_recipe"
-                        android:inputType="text"
-                        android:textColorHint="@color/md_theme_scrim"
-                        android:textSize="12sp" />
-                </com.google.android.material.textfield.TextInputLayout>
+                    android:layout_marginTop="28dp" />
 
                 <TextView
-                    android:id="@+id/btnUpdateUserUP"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    app:layout_constraintTop_toBottomOf="@id/userPhoneInputUP"
-                    app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintEnd_toEndOf="parent"
-                    android:layout_marginTop="30dp"
-                    android:text="@string/save"
-                    android:background="@drawable/round_card_user_profile"
-                    android:paddingVertical="7dp"
-                    android:paddingHorizontal="25dp"
-                    android:fontFamily="@font/poppins_medium"
-                    android:textSize="15sp"
-                    android:backgroundTint="@color/md_theme_primary" />
+                    android:id="@+id/userActualPhoneUDP"
+                    android:layout_width="match_parent"
+                    android:layout_height="50dp"
+                    android:background="@drawable/round_edit_text_add_recipe"
+                    app:layout_constraintTop_toBottomOf="@id/userPhoneUDP"
+                    android:textColor="@color/md_theme_scrim"
+                    android:gravity="center" />
+
             </androidx.constraintlayout.widget.ConstraintLayout>
 
 

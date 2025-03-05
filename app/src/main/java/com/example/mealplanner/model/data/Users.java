@@ -12,6 +12,9 @@ public class Users {
         this.password = password;
         this.user_data = user_data;
     }
+    public Users(){
+
+    }
 
     public Long getId() {
         return id;
@@ -51,6 +54,15 @@ public class Users {
 
     public void setToken(String token) {
         this.token = token;
+    }
+
+    @Override
+    public String toString() {
+        return "Users{" +
+                "email='" + email + '\'' +
+                ", password='" + password + '\'' +
+                ", user_data=" + user_data +
+                '}';
     }
 }
 
