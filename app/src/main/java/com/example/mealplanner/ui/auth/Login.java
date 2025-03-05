@@ -14,7 +14,9 @@ import com.example.mealplanner.io.api.ApiUserService;
 
 import com.example.mealplanner.io.token.TokenManager;
 import com.example.mealplanner.io.token.UserIdManager;
-import com.example.mealplanner.io.token.UserNameManager;
+import com.example.mealplanner.io.token.UserManager;
+import com.example.mealplanner.model.data.User_Data;
+import com.example.mealplanner.model.data.Users;
 import com.example.mealplanner.model.dto.ApiDelivery;
 import com.example.mealplanner.model.dto.LoginRequest;
 import com.example.mealplanner.model.dto.LoginResponse;
@@ -32,7 +34,7 @@ public class Login extends AppCompatActivity {
     private TokenManager tokenManager;
 
     private UserIdManager userIdManager;
-    private UserNameManager userNameManager;
+    private UserManager userManager;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -42,7 +44,7 @@ public class Login extends AppCompatActivity {
 
         tokenManager = new TokenManager(this);
         userIdManager = new UserIdManager(this);
-        userNameManager = new UserNameManager(this);
+        userManager = new UserManager(this);
 
         binding.contButton.setOnClickListener(v -> login());
 
@@ -64,6 +66,10 @@ public class Login extends AppCompatActivity {
                     if (response.isSuccessful()){
                         if (response.body() != null){
                             LoginResponse loginResponse = response.body().getData();
+                            User_Data newUserData = new User_Data(loginResponse.getName(), loginResponse.getAge(), loginResponse.getPhone());
+                            Users newUser = new Users(loginResponse.getEmail(), loginResponse.getPassword(), newUserData);
+                            Log.e("Usuario guardado", newUser.toString());
+                            userManager.saveUser(newUser);
                             String token = loginResponse.getToken();
                             tokenManager.saveToken(token);
                             if (loginResponse.getId() == null){
@@ -72,15 +78,10 @@ public class Login extends AppCompatActivity {
                                 Long id = loginResponse.getId();
                                 userIdManager.saveUserId(id);
                             }
-                            if (loginResponse.getName() == null){
-                                Log.e("Error", "No username found");
-                            }else {
-                                String username = loginResponse.getName();
-                                userNameManager.saveUserName(username);
-                            }
-
                             goMain();
                         }
+                    }else {
+                        Toast.makeText(getApplicationContext(),"Incorrect credentials", Toast.LENGTH_SHORT).show();
                     }
                 }
 

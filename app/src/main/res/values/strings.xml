@@ -33,7 +33,7 @@
     <string name="add_meal_text">Add a meal for today</string>
     <string name="account_overview">Account overview</string>
     <string name="my_profile">My profile</string>
-    <string name="preapared_recipes">Preapared recipes</string>
+    <string name="preapared_recipes">Prepared recipes</string>
     <string name="change_password">Change password</string>
     <string name="settings">Settings</string>
     <string name="add_new_recipe">Add new recipe!</string>
@@ -74,6 +74,18 @@
     <string name="add_ingredients">Add ingredients</string>
     <string name="today_s_menu">Today\'s menu</string>
     <string name="hello">Hello,</string>
+    <string name="edit">Edit</string>
+    <string name="save">Save</string>
+    <string name="enter_and_confirm_your_new_password">Enter and confirm your new password</string>
+    <string name="old_password">Old password</string>
+    <string name="new_password">New password</string>
+    <string name="confirm_password">Confirm password</string>
+    <string name="user_image">User image</string>
+    <string name="go_back_button">Go back button</string>
+    <string name="new_age">New age</string>
+    <string name="new_email">New email</string>
+    <string name="new_name">New name</string>
+    <string name="new_phone">New phone</string>
 
 
 </resources>

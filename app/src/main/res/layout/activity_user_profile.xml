@@ -1,0 +1,210 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+
+    </data>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/main"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        tools:context=".ui.user.UserProfile"
+        android:background="@color/md_theme_user_profile_background">
+
+        <ImageView
+            android:id="@+id/iconBackUP"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:src="@drawable/back_secondary"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            android:layout_marginTop="35dp"
+            android:layout_marginStart="40dp"
+            android:contentDescription="@string/go_back_button"/>
+        <LinearLayout
+            android:id="@+id/userImageLinear"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            app:layout_constraintTop_toBottomOf="@id/iconBackUP"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            android:orientation="vertical"
+            android:textAlignment="center">
+
+            <ImageView
+                android:id="@+id/userImg"
+                android:layout_width="120dp"
+                android:layout_height="120dp"
+                android:src="@drawable/ic_launcher_foreground"
+                android:background="@drawable/round_user_profile"
+                android:backgroundTint="@color/md_theme_secondaryContainer"
+                android:layout_marginTop="30dp"
+                android:contentDescription="@string/user_image"/>
+
+            <TextView
+                android:id="@+id/editUserBtnUP"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/edit"
+                android:background="@drawable/round_card_user_profile"
+                android:backgroundTint="@color/md_theme_tertiaryContainer"
+                android:paddingHorizontal="20dp"
+                android:paddingVertical="5dp"
+                android:layout_marginTop="12dp"
+                android:fontFamily="@font/poppins_medium"
+                android:layout_gravity="center" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/userImageLinear"
+            android:layout_marginTop="25dp"
+            android:background="@drawable/round_card_grey"
+            android:layout_marginHorizontal="20dp"
+            android:orientation="vertical">
+
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_marginHorizontal="35dp"
+                android:paddingBottom="35dp">
+
+                <TextView
+                    android:id="@+id/userNameUP"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/name"
+                    app:layout_constraintTop_toTopOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    android:fontFamily="@font/poppins_bold"
+                    android:textSize="12sp"
+                    android:layout_marginTop="30dp" />
+
+                <com.google.android.material.textfield.TextInputLayout
+                    android:id="@+id/userNameInputUP"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    app:layout_constraintTop_toBottomOf="@id/userNameUP"
+                    android:layout_marginTop="8dp">
+
+                    <com.google.android.material.textfield.TextInputEditText
+                        android:id="@+id/userNameEditUP"
+                        android:layout_width="match_parent"
+                        android:layout_height="50dp"
+                        android:background="@drawable/round_edit_text_add_recipe"
+                        android:inputType="text"
+                        android:textColorHint="@color/md_theme_scrim"
+                        android:textSize="12sp" />
+                </com.google.android.material.textfield.TextInputLayout>
+
+                <TextView
+                    android:id="@+id/userEmailUP"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/email"
+                    app:layout_constraintTop_toBottomOf="@id/userNameInputUP"
+                    app:layout_constraintStart_toStartOf="parent"
+                    android:fontFamily="@font/poppins_bold"
+                    android:textSize="12sp"
+                    android:layout_marginTop="18dp" />
+
+                <com.google.android.material.textfield.TextInputLayout
+                    android:id="@+id/userEmailInputUP"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    app:layout_constraintTop_toBottomOf="@id/userEmailUP"
+                    android:layout_marginTop="8dp">
+
+                    <com.google.android.material.textfield.TextInputEditText
+                        android:id="@+id/userEmailEditUP"
+                        android:layout_width="match_parent"
+                        android:layout_height="50dp"
+                        android:background="@drawable/round_edit_text_add_recipe"
+                        android:inputType="text"
+                        android:textColorHint="@color/md_theme_scrim"
+                        android:textSize="12sp" />
+                </com.google.android.material.textfield.TextInputLayout>
+
+                <TextView
+                    android:id="@+id/userAgeUP"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/age"
+                    app:layout_constraintTop_toBottomOf="@id/userEmailInputUP"
+                    app:layout_constraintStart_toStartOf="parent"
+                    android:fontFamily="@font/poppins_bold"
+                    android:textSize="12sp"
+                    android:layout_marginTop="18dp" />
+
+                <com.google.android.material.textfield.TextInputLayout
+                    android:id="@+id/userAgeInputUP"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    app:layout_constraintTop_toBottomOf="@id/userAgeUP"
+                    android:layout_marginTop="8dp">
+
+                    <com.google.android.material.textfield.TextInputEditText
+                        android:id="@+id/userAgeEditUP"
+                        android:layout_width="match_parent"
+                        android:layout_height="50dp"
+                        android:background="@drawable/round_edit_text_add_recipe"
+                        android:inputType="number"
+                        android:textColorHint="@color/md_theme_scrim"
+                        android:textSize="12sp" />
+                </com.google.android.material.textfield.TextInputLayout>
+
+                <TextView
+                    android:id="@+id/userPhoneUP"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/phone"
+                    app:layout_constraintTop_toBottomOf="@id/userAgeInputUP"
+                    app:layout_constraintStart_toStartOf="parent"
+                    android:fontFamily="@font/poppins_bold"
+                    android:textSize="12sp"
+                    android:layout_marginTop="18dp" />
+
+                <com.google.android.material.textfield.TextInputLayout
+                    android:id="@+id/userPhoneInputUP"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    app:layout_constraintTop_toBottomOf="@id/userPhoneUP"
+                    android:layout_marginTop="8dp">
+
+                    <com.google.android.material.textfield.TextInputEditText
+                        android:id="@+id/userPhoneEditUP"
+                        android:layout_width="match_parent"
+                        android:layout_height="50dp"
+                        android:background="@drawable/round_edit_text_add_recipe"
+                        android:inputType="text"
+                        android:textColorHint="@color/md_theme_scrim"
+                        android:textSize="12sp" />
+                </com.google.android.material.textfield.TextInputLayout>
+
+                <TextView
+                    android:id="@+id/btnUpdateUserUP"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    app:layout_constraintTop_toBottomOf="@id/userPhoneInputUP"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    android:layout_marginTop="30dp"
+                    android:text="@string/save"
+                    android:background="@drawable/round_card_user_profile"
+                    android:paddingVertical="7dp"
+                    android:paddingHorizontal="25dp"
+                    android:fontFamily="@font/poppins_medium"
+                    android:textSize="15sp"
+                    android:backgroundTint="@color/md_theme_primary" />
+            </androidx.constraintlayout.widget.ConstraintLayout>
+
+
+        </LinearLayout>
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</layout>
