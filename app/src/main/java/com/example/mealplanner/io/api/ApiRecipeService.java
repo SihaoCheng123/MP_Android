@@ -37,4 +37,7 @@ public interface ApiRecipeService {
 
     @GET("recipes/all-recipes-list/{id}")
     Call<List<Recipes>> getAllUserRecipes(@Path("id") Long user_id);
+
+    @GET("recipes/fav-recipes-list/{id}")
+    Call<List<Recipes>> getUserFavRecipes(@Path("id") Long user_id);
 }
