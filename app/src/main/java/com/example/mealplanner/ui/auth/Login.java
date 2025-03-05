@@ -15,7 +15,6 @@ import com.example.mealplanner.io.api.ApiUserService;
 import com.example.mealplanner.io.token.TokenManager;
 import com.example.mealplanner.io.token.UserIdManager;
 import com.example.mealplanner.io.token.UserManager;
-import com.example.mealplanner.io.token.UserNameManager;
 import com.example.mealplanner.model.data.User_Data;
 import com.example.mealplanner.model.data.Users;
 import com.example.mealplanner.model.dto.ApiDelivery;
@@ -35,7 +34,6 @@ public class Login extends AppCompatActivity {
     private TokenManager tokenManager;
 
     private UserIdManager userIdManager;
-    private UserNameManager userNameManager;
     private UserManager userManager;
 
     @Override
@@ -46,7 +44,6 @@ public class Login extends AppCompatActivity {
 
         tokenManager = new TokenManager(this);
         userIdManager = new UserIdManager(this);
-        userNameManager = new UserNameManager(this);
         userManager = new UserManager(this);
 
         binding.contButton.setOnClickListener(v -> login());
@@ -81,13 +78,6 @@ public class Login extends AppCompatActivity {
                                 Long id = loginResponse.getId();
                                 userIdManager.saveUserId(id);
                             }
-                            if (loginResponse.getName() == null){
-                                Log.e("Error", "No username found");
-                            }else {
-                                String username = loginResponse.getName();
-                                userNameManager.saveUserName(username);
-                            }
-
                             goMain();
                         }
                     }else {

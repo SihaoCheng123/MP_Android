@@ -21,10 +21,11 @@ import com.example.mealplanner.R;
 import com.example.mealplanner.io.api.ApiClient;
 import com.example.mealplanner.io.api.ApiRecipeService;
 import com.example.mealplanner.io.token.UserIdManager;
-import com.example.mealplanner.io.token.UserNameManager;
+import com.example.mealplanner.io.token.UserManager;
 import com.example.mealplanner.io.viewModel.ViewModel;
 import com.example.mealplanner.model.data.Ingredients;
 import com.example.mealplanner.model.data.Recipes;
+import com.example.mealplanner.model.data.Users;
 import com.example.mealplanner.ui.components.AddRecipe;
 import com.example.mealplanner.ui.components.CalendarWeekHS;
 import com.example.mealplanner.ui.components.RecipeDetailed;
@@ -43,7 +44,6 @@ public class HomeScreen extends Fragment {
 
     private List<Recipes> recipesList = new ArrayList<>();
     private UserIdManager userIdManager;
-    private UserNameManager userNameManager;
 
     public HomeScreen() {
         // Required empty public constructor
@@ -64,14 +64,15 @@ public class HomeScreen extends Fragment {
         View view = inflater.inflate(R.layout.fragment_home_screen, container, false);
         ViewModel dateViewModel = new ViewModelProvider(this).get(ViewModel.class);
         userIdManager = new UserIdManager(container.getContext());
-        userNameManager = new UserNameManager(container.getContext());
+        UserManager userManager = new UserManager(container.getContext());
+        Users user = userManager.getUser();
         if (savedInstanceState == null) {
             FragmentTransaction transaction = getChildFragmentManager().beginTransaction();
             transaction.replace(R.id.calendarContainerHS, new CalendarWeekHS());
             transaction.commit();
         }
         TextView usernameTV = view.findViewById(R.id.usernameHS);
-        usernameTV.setText(userNameManager.getUserName());
+        usernameTV.setText(user.getUser_data().getName());
         LocalDate selectedDate = LocalDate.now();
         dateViewModel.getSelectedDate().observe(getViewLifecycleOwner(), newDate-> getRecipeByDate(formatDate(newDate)));
 

@@ -10,6 +10,8 @@ import android.view.View;
 import android.view.ViewGroup;
 
 import com.example.mealplanner.databinding.FragmentUserBinding;
+import com.example.mealplanner.io.token.UserManager;
+import com.example.mealplanner.model.data.Users;
 import com.example.mealplanner.ui.user.UserDataProfile;
 import com.example.mealplanner.ui.user.UserFavRecipes;
 import com.example.mealplanner.ui.user.UserPassword;
@@ -19,6 +21,7 @@ import com.example.mealplanner.ui.user.UserSettings;
 
 public class User extends Fragment {
 
+    private UserManager userManager;
     private FragmentUserBinding binding;
     public User() {
         // Required empty public constructor
@@ -38,6 +41,9 @@ public class User extends Fragment {
         binding.savedRecipesUS.setOnClickListener(v -> goPrepRecipes());
         binding.changePasswordUS.setOnClickListener(v -> goChangePassword());
         binding.settingsUS.setOnClickListener(v -> goSettings());
+        userManager = new UserManager(container.getContext());
+        Users user = userManager.getUser();
+        binding.usernameUS.setText(user.getUser_data().getName());
         return binding.getRoot();
     }
 
