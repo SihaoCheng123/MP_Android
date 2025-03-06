@@ -8,6 +8,7 @@ import com.example.mealplanner.model.dto.PasswordChangeRequest;
 
 import retrofit2.Call;
 import retrofit2.http.Body;
+import retrofit2.http.DELETE;
 import retrofit2.http.PATCH;
 import retrofit2.http.POST;
 import retrofit2.http.PUT;
@@ -18,7 +19,6 @@ public interface ApiUserService {
     @POST("users/create")
     Call<Users> createUser(@Body Users user);
 
-
     @POST("users/login")
     Call<ApiDelivery<LoginResponse>> login(@Body LoginRequest loginRequest);
 
@@ -27,4 +27,7 @@ public interface ApiUserService {
 
     @PUT("users/change-password/{id}")
     Call<Users> changePassword(@Body PasswordChangeRequest passwordChangeRequest, @Path("id") Long user_id);
+
+    @DELETE("users/delete/{id}")
+    Call<Void> deleteUser(@Path("id") Long user_id);
 }
