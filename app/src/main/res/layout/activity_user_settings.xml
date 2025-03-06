@@ -1,10 +1,179 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:tools="http://schemas.android.com/tools"
-    android:id="@+id/main"
-    android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    tools:context=".ui.user.UserSettings">
+    xmlns:tools="http://schemas.android.com/tools">
 
-</androidx.constraintlayout.widget.ConstraintLayout>
+    <data>
+
+    </data>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/main"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        tools:context=".ui.user.UserSettings"
+        android:background="@color/md_theme_user_profile_background">
+
+        <ImageView
+            android:id="@+id/iconBackUS"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:src="@drawable/back_secondary"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            android:layout_marginTop="35dp"
+            android:layout_marginStart="40dp"
+            android:contentDescription="@string/go_back_button" />
+
+        <TextView
+            android:id="@+id/userSettingsUS"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/settings"
+            android:fontFamily="@font/poppins_medium"
+            android:textSize="24sp"
+            app:layout_constraintTop_toBottomOf="@id/iconBackUS"
+            app:layout_constraintStart_toStartOf="parent"
+            android:layout_marginStart="40dp"
+            android:layout_marginTop="90dp" />
+
+        <LinearLayout
+            android:id="@+id/settingsLinearUS"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            app:layout_constraintTop_toBottomOf="@id/userSettingsUS"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            android:layout_marginTop="25dp"
+            android:orientation="vertical"
+            android:layout_marginHorizontal="20dp"
+            android:background="@drawable/round_card_grey">
+
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginHorizontal="35dp"
+                android:paddingBottom="35dp">
+
+                <TextView
+                    android:id="@+id/notificationsTextUS"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/title_notifications"
+                    app:layout_constraintTop_toTopOf="parent"
+                    android:layout_marginTop="60dp"
+                    android:fontFamily="@font/poppins_medium"
+                    android:textSize="18sp"
+                    app:layout_constraintStart_toStartOf="parent" />
+
+                <TextView
+                    android:id="@+id/reminderTextUS"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/receive_notificacions_about_reminders"
+                    app:layout_constraintTop_toBottomOf="@id/notificationsTextUS"
+                    app:layout_constraintStart_toStartOf="parent"
+                    android:fontFamily="@font/poppins_regular"
+                    android:textSize="14sp"
+                    android:textColor="@color/md_theme_card_category" />
+
+                <LinearLayout
+                    android:id="@+id/pushLinearUS"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    app:layout_constraintTop_toBottomOf="@id/reminderTextUS"
+                    app:layout_constraintStart_toStartOf="parent"
+                    android:layout_marginTop="20dp"
+                    android:orientation="horizontal">
+
+                    <androidx.constraintlayout.widget.ConstraintLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content">
+
+                        <TextView
+                            android:id="@+id/pushUS"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="@string/push"
+                            android:fontFamily="@font/poppins_medium"
+                            android:textSize="14sp"
+                            app:layout_constraintTop_toTopOf="parent"
+                            app:layout_constraintBottom_toBottomOf="parent"
+                            app:layout_constraintStart_toStartOf="parent" />
+
+                        <androidx.appcompat.widget.SwitchCompat
+                            android:id="@+id/notificationSwitchUS"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            app:layout_constraintTop_toTopOf="parent"
+                            app:layout_constraintBottom_toBottomOf="parent"
+                            app:layout_constraintEnd_toEndOf="parent"
+                            android:layout_marginEnd="20dp"
+                            app:trackTint="@drawable/switch_thumb_color_settings"
+                            app:thumbTint="@color/md_theme_primary" />
+                    </androidx.constraintlayout.widget.ConstraintLayout>
+
+                </LinearLayout>
+
+
+                <TextView
+                    android:id="@+id/logOutBtnUS"
+                    android:layout_width="250dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="48dp"
+                    android:background="@drawable/round_button_settings"
+                    android:fontFamily="@font/poppins_medium"
+                    android:textAlignment="center"
+                    android:paddingVertical="8dp"
+                    android:text="@string/log_out"
+                    android:textSize="15sp"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@id/pushLinearUS" />
+
+                <TextView
+                    android:id="@+id/deleteAccountTextUS"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/delete_account"
+                    android:fontFamily="@font/poppins_medium"
+                    android:textSize="18sp"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@id/logOutBtnUS"
+                    android:layout_marginTop="64dp" />
+
+                <TextView
+                    android:id="@+id/deleteTextUS"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/your_account_will_be_permanently_removed_from_the_application_all_your_data_will_be_lost"
+                    app:layout_constraintStart_toStartOf="parent"
+                    android:fontFamily="@font/poppins_regular"
+                    android:textSize="14sp"
+                    android:textColor="@color/md_theme_card_category"
+                    app:layout_constraintTop_toBottomOf="@id/deleteAccountTextUS"
+                    android:layout_marginTop="8dp" />
+
+                <TextView
+                    android:id="@+id/deleteBtnUS"
+                    android:layout_width="250dp"
+                    android:layout_height="wrap_content"
+                    android:text="@string/delete_account"
+                    android:paddingVertical="8dp"
+                    android:fontFamily="@font/poppins_medium"
+                    android:textSize="15sp"
+                    android:textAlignment="center"
+                    android:textColor="@color/md_theme_error"
+                    android:backgroundTint="@color/md_theme_errorContainer"
+                    android:background="@drawable/round_button_settings"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintTop_toBottomOf="@id/deleteTextUS"
+                    android:layout_marginTop="26dp" />
+
+
+            </androidx.constraintlayout.widget.ConstraintLayout>
+        </LinearLayout>
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</layout>
