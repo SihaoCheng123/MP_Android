@@ -70,10 +70,11 @@ public class ShoppingCart extends Fragment {
                 if (response.isSuccessful() && response.body() != null) {
                     ingredientsList = response.body();
                     if (!ingredientsList.isEmpty()) {
-                        Toast.makeText(getContext(), "Success in fetching ingredients", Toast.LENGTH_SHORT).show();
                         adapter = new IngredientAdapter(getContext(), ingredientsList);
                         recyclerView.setAdapter(adapter);
                         recyclerView.setLayoutManager(new LinearLayoutManager(getContext()));
+                    }else {
+                        Toast.makeText(getContext(), "No ingredients yet", Toast.LENGTH_SHORT).show();
                     }
                 } else {
                     Toast.makeText(getContext(), "Error fetching recipes", Toast.LENGTH_SHORT).show();

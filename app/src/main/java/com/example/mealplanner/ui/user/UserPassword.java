@@ -41,14 +41,12 @@ import retrofit2.Response;
             public void onResponse(@NonNull Call<Users> call, @NonNull Response<Users> response) {
                 if (response.isSuccessful()) {
                     Toast.makeText(getApplicationContext(), "Password change successful", Toast.LENGTH_SHORT).show();
-                } else {
-                    Toast.makeText(getApplicationContext(), "Error changing password", Toast.LENGTH_SHORT).show();
                 }
             }
 
             @Override
             public void onFailure(@NonNull Call<Users> call, @NonNull Throwable throwable) {
-                Toast.makeText(getApplicationContext(), "Connection error", Toast.LENGTH_SHORT).show();
+                Toast.makeText(getApplicationContext(), "Incorrect password", Toast.LENGTH_SHORT).show();
             }
         });
     }

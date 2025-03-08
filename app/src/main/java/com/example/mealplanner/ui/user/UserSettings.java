@@ -46,12 +46,11 @@ public class UserSettings extends AppCompatActivity {
     }
 
     private void logOut(){
-        tokenManager = new TokenManager(this);
         MaterialAlertDialogBuilder alertDialogBuilder = new MaterialAlertDialogBuilder(this);
         alertDialogBuilder.setTitle("Log out")
                         .setMessage("Do you really want to log out?")
                         .setPositiveButton("Yes", (dialog, which) -> {
-                                    tokenManager.deleteToken();
+                                    deleteData();
                                     goLogin();})
                         .setNegativeButton("No", (dialog, which) -> dialog.dismiss());
         alertDialogBuilder.show();
@@ -95,10 +94,11 @@ public class UserSettings extends AppCompatActivity {
     }
 
     private void deleteData(){
+        tokenManager = new TokenManager(this);
+        tokenManager.deleteToken();
         userIdManager = new UserIdManager(this);
         UserManager userManager = new UserManager(this);
         userIdManager.deleteUserId();
         userManager.deleteUser();
-
     }
 }

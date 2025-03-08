@@ -98,7 +98,6 @@ public class Calendar extends Fragment {
                         showRecipes(new ArrayList<>());
                     }
 
-                    Toast.makeText(getContext(), "Success", Toast.LENGTH_SHORT).show();
                 }
             }
 
