@@ -1,6 +1,7 @@
 package com.example.mealplanner.ui.components;
 
 import android.os.Bundle;
+import android.view.View;
 import android.widget.Toast;
 
 import androidx.activity.EdgeToEdge;
@@ -52,7 +53,10 @@ public class RecipeDetailed extends AppCompatActivity {
         binding.iconBackDR.setOnClickListener(v -> finish());
         getRecipeById(recipe_id);
 
-        binding.iconFavRecipeDR.setOnClickListener(v -> makeRecipeFav(recipe_id, userIdManager.getUserId()));
+        binding.iconFavRecipeDR.setOnClickListener(v -> {
+            binding.iconFavRecipeDR.setImageResource(R.drawable.star_filled);
+            makeRecipeFav(recipe_id, userIdManager.getUserId());
+        });
 
     }
 
